@@ -1,3 +1,70 @@
-<p>
-  details works!
-</p>
+<div class='title'>
+  DETALLE DEL PRODUCTO uwu
+</div>
+<div class="body">
+  <div class='productInfoContainer'>
+    <div class='ContainerProductImage'>
+    <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
+    <div class="LittleImages">
+      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/8.jpeg' alt='img'>
+      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/9.jpeg' alt='img'>
+      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/10.jpeg' alt='img'>
+    </div>
+    </div>
+    <div class='descriptionContainer'>
+      <div class='productName'>nombre del producto</div>
+      <h2>Description </h2>
+      <p class='productDescription'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed beatae asperiores vel
+        officiis perferendis iusto eligendi. Necessitatibus voluptates ipsum ex magnam velit, labore harum odit illo
+        atque, maxime neque aut.</p> 
+        <h3>$200.000</h3>
+        <p>cantidad</p>
+      <div class='productButtons'>
+        <button class='button' (click)='disminuirCompra()'>-</button>
+        <span class='variable'>{{ producto }}</span>
+        <button class='button' (click)='aumentarCompra()'>+</button>
+      </div>
+      <div>
+        <button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
+      </div>
+    </div>
+  </div>
+  <div class='latestAddedTitle'>
+    <h2>Ultimos agregados</h2>
+  </div>
+  <div class='latestAdded'>
+
+
+    <div class='productComponent'>
+      <div class='ImageContainer'>
+        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
+      </div>
+      <div class='descriptionContainerImg'>
+        <p>producto 1</p>
+        <h3>$200.000</h3>
+      </div>
+    </div>
+    <div class='productComponent'>
+      <div class='ImageContainer'>
+        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/3.jpeg' alt='img'>
+      </div>
+      <div class='descriptionContainerImg'>
+        <p>peoducto 1</p>
+        <h3>$200.000</h3>
+      </div>
+    </div>
+    <div class='productComponent'>
+      <div class='ImageContainer'>
+        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/4.jpeg' alt='img'>
+      </div>
+      <div class='descriptionContainerImg'>
+        <p>peoducto 1</p>
+        <h3>$200.000</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='viewFooter'>
+  TODO LO QUE TU NECESITAS EN UNA SOLA TIENDA  
+</div>
+<hr>
