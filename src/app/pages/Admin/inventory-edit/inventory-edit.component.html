@@ -1,0 +1,48 @@
+<h2>Edit Inventory</h2>
+
+<div *ngIf="loading">Loading...</div>
+
+<div *ngIf="!loading && inventory">
+  <div *ngFor="let item of inventory">
+    <input
+      type="number"
+      [(ngModel)]="item.productID"
+      [disabled]="disabled"
+      placeholder="Item id"
+    />
+    <input
+      type="text"
+      [(ngModel)]="item.product.productName"
+      [disabled]="disabled"
+      placeholder="Item name"
+    />
+    <input
+      type="number"
+      [(ngModel)]="item.quantity"
+      [disabled]="disabled"
+      placeholder="Quantity"
+    />
+    <input
+      type="number"
+      [(ngModel)]="item.stockMin"
+      [disabled]="disabled"
+      placeholder="Stock Min"
+    />
+    <input
+      type="number"
+      [(ngModel)]="item.stockMax"
+      [disabled]="disabled"
+      placeholder="Stock Max"
+    />
+    <input
+      type="number"
+      [(ngModel)]="item.product.price"
+      [disabled]="disabled"
+      placeholder="Price"
+    />
+    <!-- Actions -->
+    <button (click)="editInventory()" *ngIf="disabled">Edit</button>
+    <button (click)="saveInventory()" *ngIf="!disabled">Save</button>
+  </div>
+
+</div>

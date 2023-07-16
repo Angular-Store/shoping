@@ -7,10 +7,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './pages/cart/cart.component';
-import { UserEditComponent } from './pages/Admin/user-edit/user-edit.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './pages/Admin/Admin.component';
+import { AdminModule } from './pages/Admin/Admin.module';
 
 @NgModule({
   declarations: [
@@ -19,15 +18,14 @@ import { AdminComponent } from './pages/Admin/Admin.component';
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
     CartComponent,
-    UserEditComponent,
-    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule, // Agrega FormsModule a los imports
-    HttpClientModule, // Agrega HttpClientModule a los imports
+    FormsModule,
+    HttpClientModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

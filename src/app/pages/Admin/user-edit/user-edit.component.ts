@@ -11,7 +11,6 @@ export class UserEditComponent implements OnInit {
   disabled: boolean = true;
   user: any;
 
-
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
