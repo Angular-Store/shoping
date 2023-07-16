@@ -1,6 +1,6 @@
-CREATE DATABASE nike_store;
+CREATE DATABASE angular_store;
 
-USE nike_store;
+USE angular_store;
 
 CREATE TABLE users (
     userID INT AUTO_INCREMENT,
