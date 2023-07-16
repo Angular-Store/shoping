@@ -1,4 +1,4 @@
 export const environment = {
-  api: 'https://angular-store.onrender.com',
+  api: 'http://localhost:8000/api',
   production: false
 };

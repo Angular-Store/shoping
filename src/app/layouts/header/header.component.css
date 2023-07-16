@@ -1,9 +1,9 @@
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-right: 20px;
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    height: 70px;
 }
 
-mat-icon {
-  font-size: 30px;
-}
