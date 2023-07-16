@@ -1,43 +1,45 @@
 <div class='title'>
-  DETALLE DEL PRODUCTO uwu
+  DETALLE DEL PRODUCTO
 </div>
-<div class="body">
+<div class='body'>
   <div class='productInfoContainer'>
     <div class='ContainerProductImage'>
-    <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
-    <div class="LittleImages">
-      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/8.jpeg' alt='img'>
-      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/9.jpeg' alt='img'>
-      <img class='Littleimage' src='https://rickandmortyapi.com/api/character/avatar/10.jpeg' alt='img'>
+    <img   class='productImage' src='{{img1}}' alt='img'>
+    <div class='LittleImages'>
+      <img (click)="changeImage(2)" class='Littleimage' src='{{img2}}' alt='img'>
+      <img (click)="changeImage(3)" class='Littleimage' src='{{img3}}' alt='img'>
+      <img (click)="changeImage(4)" class='Littleimage' src='{{img4}}' alt='img'>
     </div>
     </div>
     <div class='descriptionContainer'>
-      <div class='productName'>nombre del producto</div>
-      <h2>Description </h2>
+      <div class='productName'>Product name</div>
+      <h2>DESCRIPTION </h2>
       <p class='productDescription'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed beatae asperiores vel
         officiis perferendis iusto eligendi. Necessitatibus voluptates ipsum ex magnam velit, labore harum odit illo
         atque, maxime neque aut.</p> 
-        <h3>$200.000</h3>
-        <p>cantidad</p>
-      <div class='productButtons'>
-        <button class='button' (click)='disminuirCompra()'>-</button>
-        <span class='variable'>{{ producto }}</span>
-        <button class='button' (click)='aumentarCompra()'>+</button>
+        <h3 class='productPrice'>$200.000</h3>
+        <p class='AmountP'>Amount</p>
+      <div class='amountBtn'>
+          <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
+          <mat-button-toggle class='decrementBtn' (click)='disminuirCompra()' value='bold'>-</mat-button-toggle>
+          <mat-button-toggle class='productAmount' value='italic'>{{ producto }}</mat-button-toggle>
+          <mat-button-toggle class='incrementBtn' (click)='aumentarCompra()' value='underline'>+</mat-button-toggle>
+          </mat-button-toggle-group>    
       </div>
-      <div>
+      <div class='exampleButtonRow'>
         <button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
       </div>
     </div>
   </div>
+  
   <div class='latestAddedTitle'>
     <h2>Ultimos agregados</h2>
   </div>
+
   <div class='latestAdded'>
-
-
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
+        <img class='latestProductImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
         <p>producto 1</p>
@@ -46,7 +48,7 @@
     </div>
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/3.jpeg' alt='img'>
+        <img class='latestProductImage' src='https://rickandmortyapi.com/api/character/avatar/3.jpeg' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
         <p>peoducto 1</p>
@@ -55,7 +57,7 @@
     </div>
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='productImage' src='https://rickandmortyapi.com/api/character/avatar/4.jpeg' alt='img'>
+        <img class='latestPoductImage' src='https://rickandmortyapi.com/api/character/avatar/4.jpeg' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
         <p>peoducto 1</p>

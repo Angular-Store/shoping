@@ -11,6 +11,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
 import { CartComponent } from './pages/cart/cart.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CartComponent } from './pages/cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule 
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
