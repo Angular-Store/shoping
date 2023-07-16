@@ -18,10 +18,6 @@ export class HomeComponent implements OnInit {
     this.http.get<any[]>(url).subscribe(response => {
       this.products = response;
       //console de cada producto con un ciclo
-       for (let i = 0; i < this.products.length; i++) {
-         console.log(this.products[i]);
-        }
-      console.log(this.products);
     });
   }
 

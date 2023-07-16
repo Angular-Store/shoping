@@ -1,0 +1,11 @@
+<div *ngIf="isSuccess" class="container">
+  <h1>Payment Successful</h1>
+  <p>Thank you for your payment!</p>
+  <button (click)="redirectToHome()">Go to Homepage</button>
+</div>
+
+<div *ngIf="!isSuccess" class="container">
+  <h1>Payment Failed</h1>
+  <p>Sorry, your payment was not successful.</p>
+  <button (click)="redirectToHome()">Go to Homepage</button>
+</div>
