@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    console.log('LoginComponent');
+    // console.log('LoginComponent');
   }
 
 
-  
+
   decodeToken(): any {
     const token = localStorage.getItem('token');
     if (token) {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   
 
   Ingresar(): any {
-    console.log(this.form);
+    // console.log(this.form);
     const username = this.form.value.username;
     const password = this.form.value.password;
 
@@ -81,9 +81,10 @@ export class LoginComponent implements OnInit {
   fakeLoading() {
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/'])
-      //Redireccionamos al dashboard
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
     }, 1500);
-  }
+}
 }
 
