@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = true;
+  isMenuOpen: boolean = false;
+  isMenuIconClose: boolean = false; // Agregar variable para el icono del menú
+
 
   constructor() { }
 
@@ -27,5 +30,14 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = !!accessToken; // Verificar si el token existe
   }
 
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    this.isMenuIconClose = !this.isMenuIconClose; // Cambiar el estado del icono del menú
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.isMenuIconClose = false; // Restaurar el icono de hamburguesa
+  }
 }
 
