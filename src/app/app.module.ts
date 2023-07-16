@@ -11,7 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { MatCardModule } from '@angular/material/card';
-
+import { AdminGuard } from './guard/admin.guard';
+import { AuthGuard } from './guard/auth.guard';
 //importar mat icon de material
 import { MatIconModule } from '@angular/material/icon';
 
@@ -39,7 +40,7 @@ import { MatRadioModule } from '@angular/material/radio';
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
     CartComponent,
-    
+
  LoginComponent,
     HeaderComponent,
     CartComponent,
