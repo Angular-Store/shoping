@@ -8,7 +8,7 @@ const loginRouter = async (req, res) => {
     const user = await User.findOne({ where: { username, password } });
 
     if (user) {
-      const token = jwt.sign({ username }, "Stack", {
+      const token = jwt.sign({user}, "Stack", {
         expiresIn: '40m'
       });
       res.send({ token });
