@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { HomeComponent } from './pages/Home/Home.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
-import { AdminComponent } from './pages/Admin/Admin.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
@@ -18,6 +16,7 @@ const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'paymentStatus/:cartID', component: PaymentStatusComponent },
+
 ];
 
 @NgModule({
