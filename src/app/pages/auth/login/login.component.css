@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .login-form {
@@ -153,7 +154,7 @@
     .login-form {
         width: 200px;
         height: 55%;
-        padding:  40px 80px 80px 80px;
+        padding: 40px 80px 80px 80px;
       }
 
       .login-form .titleContainer {
