@@ -17,11 +17,11 @@ router.get('/', (req, res) => {
 		message: 'Welcome to the API',
 		users: {
 			allUsers: 'GET /api/users', // Admin only
-			userByID: 'GET /api/users/:id',
+			userByID: 'GET /api/users/:userID',
 			userByUsername: 'GET /api/users/username/:username',
 			createUser: 'POST /api/users',
-			updateUser: 'PUT /api/users/:id',
-			deleteUser: 'DELETE /api/users/:id',
+			updateUser: 'PUT /api/users/:userID',
+			deleteUser: 'DELETE /api/users/:userID',
 		},
 		products: {
 			allProducts: 'GET /api/products',
