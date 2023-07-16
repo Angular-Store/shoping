@@ -13,39 +13,55 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 //importar mat icon de material
 import { MatIconModule } from '@angular/material/icon';
-
-
 import { HeaderComponent } from './layouts/header/header.component';
-
 import { CartComponent } from './pages/cart/cart.component';
+import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './pages/Admin/Admin.module';
 import { HomeComponent } from './pages/Home/Home.component';
+// Agrega los módulos de Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
     AppComponent,
- LoginComponent,
-    HeaderComponent,
+    FooterComponent, // Agrega FooterComponent a las declaraciones
+    HeaderComponent, // Agrega HeaderComponent a las declaraciones
+    LoginComponent,
     CartComponent,
-    FooterComponent,
+    PaymentStatusComponent,
     DetailsComponent,
     HomeComponent,
-
   ],
   imports: [
     BrowserModule,
     MatIconModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    // Agrega los módulos de Angular Material
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
     MatToolbarModule,
     FormsModule,
     MatCardModule,
-    MatButtonModule,
     CommonModule,
     FormsModule,
     AdminModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

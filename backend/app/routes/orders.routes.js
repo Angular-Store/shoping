@@ -106,13 +106,7 @@ orderRouter.post('/', async (req, res) => {
 	const { cartID, shippingAddress } = req.body;
 
 	try {
-		// Verify if the user exists
-		const user = await User.findByPk(cartID);
-
-		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
-		}
-
+	
 		// Obtaining the active carts of the user
 		const activeCarts = await ShoppingCart.findAll({
 			where: {
@@ -123,6 +117,13 @@ orderRouter.post('/', async (req, res) => {
 
 		if (activeCarts.length === 0) {
 			return res.status(404).json({ message: 'Empty cart' });
+		}
+
+		// Obtaining the user
+		const user = await User.findByPk(activeCarts[0].userID);
+
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
 		}
 
 		let totalPrice = 0;
