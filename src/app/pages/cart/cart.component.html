@@ -1,3 +1,34 @@
-<p>
-  cart works!
-</p>
+<div class="container"> 
+  <div class="encabezado">
+    <div class="imagen">Imagen</div>
+    <div class="producto">Producto</div>
+    <div class="precio">Precio</div>
+    <div class="cantidad">Cantidad</div>
+    <div class="total">Total</div>
+  </div>
+
+  <div class="lista-productos">
+    <div *ngFor="let producto of productos" class="item-producto">
+      <label  (click)="seleccionarProducto(producto)">
+        <input type="checkbox" class="seleccionar">
+      </label>
+      <div class="imagen" > Imagen del producto</div>
+      <div class="producto">{{ producto.nombre }}</div>
+      <div class="precio">{{ producto.precio}}</div>
+      <div class="cantidad-productos">
+        <button (click)="restarProducto()">-</button>
+        <div class="cantidad-indicador">{{ cantidadProductos }}</div>
+        <button (click)="sumarProducto()">+</button>
+      </div>
+      <div class="total">{{(producto.precio * cantidadProductos)}}</div>
+      <div class="borrar">
+        <button (click)="borrarProducto(producto)">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="resumen-total">
+    <div class="total-etiqueta">Total</div>
+    <div class="total-suma">Suma de todos los productos</div>
+  </div>
+</div>

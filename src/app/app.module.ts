@@ -6,13 +6,15 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent, // Agrega FooterComponent a las declaraciones
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
-    LoginComponent
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
