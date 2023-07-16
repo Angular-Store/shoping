@@ -1,0 +1,119 @@
+<h1>Inventory</h1>
+<button (click)="goBack()">Back</button>
+<div *ngIf="loading">Loading...</div>
+
+<div *ngIf="!loading" class="inventory">
+  <p class="messageSuccess">
+    {{ inventoryMessage }}
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">
+          Inventory #{{ inventory.inventoryID }} - Name:
+          {{ product.productName }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Quantity:</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="inventory.quantity"
+            [disabled]="inventoryDisabled"
+            placeholder="Quantity"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Stock Min:</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="inventory.stockMin"
+            [disabled]="inventoryDisabled"
+            placeholder="Stock Min"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Stock Max:</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="inventory.stockMax"
+            [disabled]="inventoryDisabled"
+            placeholder="Stock Max"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button (click)="editInventory()" *ngIf="inventoryDisabled">
+            Edit
+          </button>
+          <button
+            (click)="inventoryDisabled = !inventoryDisabled"
+            *ngIf="!inventoryDisabled"
+          >
+            Cancel
+          </button>
+          <button (click)="saveInventory()" *ngIf="!inventoryDisabled">
+            Save
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="messageSuccess">
+    {{ productMessage }}
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">
+          Product #{{ product.productID }} - Name: {{ product.productName }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product Name:</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="product.productName"
+            [disabled]="productDisabled"
+            placeholder="Product Name"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="product.price"
+            [disabled]="productDisabled"
+            placeholder="Price"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button (click)="editProduct()" *ngIf="productDisabled">Edit</button>
+          <button
+            (click)="productDisabled = !productDisabled"
+            *ngIf="!productDisabled"
+          >
+            Cancel
+          </button>
+          <button (click)="saveProduct()" *ngIf="!productDisabled">Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

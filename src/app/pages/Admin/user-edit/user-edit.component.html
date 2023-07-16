@@ -1,0 +1,81 @@
+<h2>Edit User</h2>
+
+<button (click)="goBack()">Back</button>
+
+<div class="user-form" *ngIf="!loading && user">
+  {{ message }}
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td>
+        <input
+          type="text"
+          [(ngModel)]="user.username"
+          [disabled]="disabled"
+          placeholder="Username"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          [disabled]="disabled"
+          placeholder="Password"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Full Name:</td>
+      <td>
+        <input
+          type="text"
+          [(ngModel)]="user.fullName"
+          [disabled]="disabled"
+          placeholder="Full Name"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>
+        <input
+          type="email"
+          [(ngModel)]="user.email"
+          [disabled]="disabled"
+          placeholder="Email"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Phone:</td>
+      <td>
+        <input
+          type="text"
+          [(ngModel)]="user.phone"
+          [disabled]="disabled"
+          placeholder="Phone"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td>
+        <input
+          type="text"
+          [(ngModel)]="user.address"
+          [disabled]="disabled"
+          placeholder="Address"
+        />
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <button (click)="editUser()" *ngIf="disabled">Edit</button>
+    <button (click)="disabled = !disabled" *ngIf="!disabled">Cancel</button>
+    <button (click)="saveUser()" *ngIf="!disabled">Save</button>
+  </div>
+</div>

@@ -1,0 +1,239 @@
+.mainContainer {
+    background-color: #0654ae;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.registerForm {
+    width: 280px;
+    height: 68%;
+    padding: 40px 80px 80px 80px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    color: #0f0f0f;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.registerForm .titleContainer {
+    padding: 18px 0;
+    font-size: 32px;
+    width: 100%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.registerForm .titleFullName {
+    padding-top: 20px;
+   
+}
+
+.registerForm .titlePassword,
+.registerForm .titleEmail,
+.registerForm .titleAddress,
+.registerForm .titleCellphone,
+.registerForm .titleFullName {
+    padding-top: 3px;
+    font-size: 16px;
+}
+
+.registerForm .formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.registerForm input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.registerForm .inputContainer {
+    padding-top: 15px;
+    width: 100%;
+    font-weight: bolder;
+}
+
+
+.registerForm .inputEmail,
+.registerForm .inputPassword,
+.registerForm .inputFullName,
+.registerForm .inputAddress,
+.registerForm .inputCellphone {
+    width: 93.5%;
+    height: 10px;
+    border: 1px solid black;
+}
+
+
+.registerForm .BtnContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 18px;
+
+}
+
+.registerForm .btn-login {
+    background-color: #0654ae;
+    color: white;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+
+.registerForm .btn-login:hover {
+    background-color: #1469af;
+}
+
+
+
+
+
+/* Estilos responsive */
+
+
+@media (max-width: 680px) {
+
+    .registerForm {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .registerForm {
+        max-width: 240px;
+    }
+
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName {
+        font-size: 16px;
+    }
+
+
+    .registerForm .titleContainer {
+        font-size: 30px;
+    }
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputCellphone {
+        width: 91%;
+        height: 18px;
+    }
+
+
+    .registerForm .BtnContainer {
+        width: 100%;
+    }
+
+    .registerForm form {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 475px) {
+
+    .registerForm {
+        width: 200px;
+        height: 65%;
+        padding: 40px 80px 80px 80px;
+    }
+
+    .registerForm .titleContainer {
+        font-size: 25px;
+
+    }
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputCellphone {
+        width: 89%;
+        height: 12px;
+    }
+
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName {
+     font-size: 13px;
+}
+}
+
+
+@media (max-width: 400px) {
+
+    .registerForm {
+        width: 150px;
+        height: 65%;
+        padding: 20px 40px 40px 40px;
+    }
+
+    .registerForm .titleContainer {
+        font-size: 20px;
+        padding: 10px 0;
+    }
+
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputCellphone {
+        width: 85%;
+        height: 10px;
+    }
+
+
+    .registerForm .btn-login {
+        height: 33px;
+        font-size: 12px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .registerForm .inputContainer {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .registerForm {
+        min-height: 65%;
+    }
+
+    
+    .registerForm {
+       
+        height: 69%;
+        
+    }
+}
