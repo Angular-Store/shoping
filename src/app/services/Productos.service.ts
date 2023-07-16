@@ -15,3 +15,19 @@ export class ProductosService {
     return this.http.get<any>(url); // Realiza la solicitud GET a la URL de la API y obtén los datos en formato JSON
   }
 }
+
+// '/user/:userID/active'   
+// `${this.apiUrl}/:usersID`
+
+export class carProductsService {
+  private apiUrl = environment.api;
+  constructor(private http: HttpClient){}
+
+  showProducts(userID: string){
+    const url = `${this.apiUrl}/users/${userID}/active`
+    return this.http.get<any>(url);
+  }
+}
+
+
+
