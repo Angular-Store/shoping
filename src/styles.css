@@ -1,5 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body { height: 100%; padding: 0; margin: 0; height: 100vh; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+  padding: 0;
+  margin: 0;
+}
+/* Define tus propios colores personalizados */
+:root {
+  --custom-primary-50: #ffffff;
+  --custom-primary-100: #B3D5FC;
+  --custom-primary-200: #80B9FA;
+  --custom-primary-300: #4D9EFA;
+  --custom-primary-400: #1A82F8;
+  --custom-primary-500: #0654AE; /* Cambia a tu color preferido */
+  --custom-primary-600: #064BA0;
+  --custom-primary-700: #053F8B;
+  --custom-primary-800: #043577;
+  --custom-primary-900: #032962;
+}
 
+:root {
+  --custom-accent-50: #F2F2F2;
+  --custom-accent-100: #ffffff;
+  --custom-accent-200: #C0C0C0;
+  --custom-accent-300: #A7A7A7;
+  --custom-accent-400: #8E8E8E;
+  --custom-accent-500: #747474; /* Cambia a tu color preferido */
+  --custom-accent-600: #6B6B6B;
+  --custom-accent-700: #616161;
+  --custom-accent-800: #585858;
+  --custom-accent-900: #4E4E4E;
+}
+
+/* Aplica el tema personalizado a tu aplicación */
+body {
+  --header: var(--custom-primary-50);
+  --primary: var(--custom-primary-500);
+  --accent: var(--custom-accent-500);
+}
