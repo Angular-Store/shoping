@@ -36,6 +36,11 @@ import { MatRadioModule } from '@angular/material/radio';
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
     CartComponent,
+
+ LoginComponent,
+    HeaderComponent,
+    CartComponent,
+    FooterComponent,
     PaymentStatusComponent,
     DetailsComponent,
     HomeComponent,
