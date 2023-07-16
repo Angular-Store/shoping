@@ -1,0 +1,22 @@
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+    height: 70px;
+}
+
+.firstPart {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.firstElements {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    gap: 10px;
+    cursor: pointer;
+}
