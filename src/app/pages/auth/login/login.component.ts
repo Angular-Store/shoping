@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- form: FormGroup;
- loading = false;
+  form: FormGroup;
+  loading = false;
 
-  constructor( private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { 
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private http: HttpClient) {
     this.form = this.fb.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -23,31 +25,60 @@ export class LoginComponent implements OnInit {
     console.log('LoginComponent');
   }
 
+
+  
+  decodeToken(): any {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = token.split('.')[1];
+      const payloadDecoded = atob(payload);
+      const payloadJSON = JSON.parse(payloadDecoded);
+      localStorage.setItem('user', JSON.stringify(payloadJSON.user));
+      return payloadJSON;
+    } else {
+      return null;
+    }
+  }
+  
+
   Ingresar(): any {
     console.log(this.form);
-    const email = this.form.value.email;
-    const password = this.form.value.password
+    const username = this.form.value.username;
+    const password = this.form.value.password;
 
-    if(email == 'Sergio' && password == '123456'){
-      //redireccionar
-      this.fakeLoading();
-      console.log('Login correcto');
-  } else {
-    //mensaje de error
-    this.error();
-    this.form.reset();
+    const URL = 'https://angular-store.onrender.com/api/login';
+
+
+    this.http.post(URL, { username, password }).subscribe((res: any) => {
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+        this.fakeLoading();
+        this.decodeToken();
+      } else {
+        this.error();
+        this.form.reset();
+      }
+    }
+      , (err) => {
+        console.log(err);
+        this.error();
+        this.form.reset();
+      }
+    )
+
   }
 
-}
-  error(){
-    this._snackBar.open('Usuario o contraseña ingresado inválido', '',{
+
+
+  error() {
+    this._snackBar.open('Usuario o contraseña ingresado inválido', '', {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
-    } ) 
+    })
   }
 
-  fakeLoading(){
+  fakeLoading() {
     this.loading = true;
     setTimeout(() => {
       this.router.navigate(['/'])
@@ -55,3 +86,4 @@ export class LoginComponent implements OnInit {
     }, 1500);
   }
 }
+
