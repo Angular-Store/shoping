@@ -5,21 +5,25 @@ import { InventorySelectedComponent } from './inventory-edit/inventory-selected/
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AdminComponent } from './Admin.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { InventoryEditComponent } from './inventory-edit/inventory-edit.component';
 
 @NgModule({
   declarations: [
     InventorySelectedComponent,
     UserEditComponent,
     AdminComponent,
+    InventoryEditComponent,
   ],
 
   imports: [
     CommonModule,
     RouterModule.forChild([
-    //   { path: '', component: InventoryEditComponent },
+      { path: '', component: InventoryEditComponent },
       { path: 'inventory/:id', component: InventorySelectedComponent },
     ]),
     FormsModule,
+    HttpClientModule,
   ],
 })
 export class AdminModule {}
