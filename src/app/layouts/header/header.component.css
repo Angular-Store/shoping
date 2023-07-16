@@ -1,9 +1,40 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   font-size: 24px;
   font-weight: bold;
-  margin-right: 20px;
 }
 
-mat-icon {
-  font-size: 30px;
+.icon-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+button mat-icon {
+  font-size: 24px;
+}
+
+button span {
+  font-size: 12px;
+  text-align: center;
 }
