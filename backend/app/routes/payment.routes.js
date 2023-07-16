@@ -69,7 +69,10 @@ paymentRouter.get('/success', async (req, res) => {
 			}
 		);
 
-		return res.status(200).json({ message: 'Order created', order });
+		// return res.status(200).json({ message: 'Order created', order });
+
+		// redirect to this url http://localhost:4200/paymentStatus
+		return res.redirect(`http://localhost:4200/paymentStatus?orderID=${order.orderID}`);
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ message: 'Error creating the order' });

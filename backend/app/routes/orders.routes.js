@@ -169,4 +169,30 @@ orderRouter.post('/', async (req, res) => {
 	}
 });
 
+// DELETE
+
+// Deleting an order (base path /api/orders/:orderID)
+orderRouter.delete('/:orderID', async (req, res) => {
+	const orderID = req.params.orderID;
+
+	try {
+		// Verify if the order exists
+		const order = await Order.findByPk(orderID);
+
+		if (!order) {
+			return res.status(404).json({ message: 'Order not found' });
+		}
+
+		// Deleting the order
+		await Order.destroy({
+			where: { orderID },
+		});
+
+		res.status(200).json({ message: 'Order deleted' });
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error deleting the order' });
+	}
+});
+
 export default orderRouter;
