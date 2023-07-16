@@ -13,7 +13,7 @@ const openStripePaymentLink = async (
 	cartID,
 	shippingAddress
 ) => {
-	const url = 'http://localhost:8080';
+	const url = process.env.NODE_ENV === 'production' ? process.env.PROD_URL : process.env.DEV_URL;
 
 	const products = [];
 	// Obtaining the products of the cart items
