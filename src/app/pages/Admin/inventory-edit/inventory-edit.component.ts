@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-edit',
@@ -13,7 +13,7 @@ export class InventoryEditComponent {
   inventory: any;
   editedInventory: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     const url: string = 'https://angular-store.onrender.com';
@@ -32,31 +32,13 @@ export class InventoryEditComponent {
     );
   }
 
-  editInventory() {
-    this.disabled = false;
+  inventorySelected(item: any) {
+    // navigate to inventory selected
+    console.log(item.productID);
+    this.router.navigate(['admin/inventory', item.productID]);
   }
 
-  saveInventory() {
-    // PUT /api/inventory/:productID
-    // this.loading = true;
-    const url: string = 'https://angular-store.onrender.com';
-
-    // Enviar información a la API
-    const productID: number = 1; // Replace with the actual product ID
-
-    // send only the quantity stockMin stockMax to an especific product
-
-    // test console.log
-    console.log(this.inventory);
-    // this.http
-    //   .put(`${url}/api/inventory/${productID}`, {
-    //     quantity: this.inventory.quantity,
-    //     stockMin: this.inventory.stockMin,
-    //     stockMax: this.inventory.stockMax,
-    //   })
-    //   .subscribe((response: any) => {
-    //     this.disabled = true;
-    //     this.loading = false;
-    //   });
+  goBack() {
+    window.history.back();
   }
 }

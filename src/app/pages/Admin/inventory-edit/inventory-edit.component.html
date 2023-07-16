@@ -1,5 +1,7 @@
 <h2>Edit Inventory</h2>
 
+<button (click)="goBack()">Back</button>
+
 <div *ngIf="loading">Loading...</div>
 
 <div *ngIf="!loading && inventory">
@@ -41,8 +43,7 @@
       placeholder="Price"
     />
     <!-- Actions -->
-    <button (click)="editInventory()" *ngIf="disabled">Edit</button>
-    <button (click)="saveInventory()" *ngIf="!disabled">Save</button>
+    <button (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
   </div>
 
 </div>
