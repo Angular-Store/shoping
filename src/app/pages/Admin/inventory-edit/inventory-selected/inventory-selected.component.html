@@ -1,1 +1,66 @@
-<p>inventory-selected works!</p>
+<h1>Inventory</h1>
+<button (click)="goBack()">Back</button>
+<div *ngIf="loading">loading...</div>
+
+<div *ngIf="!loading">
+  <div>
+    <h2>
+      Inventory #{{ inventory.inventoryID }} - Name: {{ product.productName }}
+    </h2>
+    <br />
+    <input
+      type="text"
+      [(ngModel)]="inventory.quantity"
+      placeholder="Nombre del producto"
+      [disabled]="inventoryDisabled"
+    />
+    <input
+      type="text"
+      [(ngModel)]="inventory.stockMin"
+      placeholder="Nombre del producto"
+      [disabled]="inventoryDisabled"
+    />
+    <input
+      type="text"
+      [(ngModel)]="inventory.stockMax"
+      placeholder="Nombre del producto"
+      [disabled]="inventoryDisabled"
+    />
+
+    <button (click)="editInventory()" *ngIf="inventoryDisabled">Editar</button>
+    <button
+      (click)="inventoryDisabled = !inventoryDisabled"
+      *ngIf="!inventoryDisabled"
+    >
+      Cancelar
+    </button>
+    <button (click)="saveInventory()" *ngIf="!inventoryDisabled">
+      Guardar
+    </button>
+  </div>
+
+  <div>
+    <h2>Product #{{ product.productID }} - Name: {{ product.productName }}</h2>
+    <br />
+    <input
+      type="text"
+      [(ngModel)]="product.productName"
+      placeholder="Nombre del producto"
+      [disabled]="productDisabled"
+    />
+    <input
+      type="text"
+      [(ngModel)]="product.price"
+      placeholder="Nombre del producto"
+      [disabled]="productDisabled"
+    />
+    <button (click)="editProduct()" *ngIf="productDisabled">Editar</button>
+    <button
+      (click)="productDisabled = !productDisabled"
+      *ngIf="!productDisabled"
+    >
+      Cancelar
+    </button>
+    <button (click)="saveProduct()" *ngIf="!productDisabled">Guardar</button>
+  </div>
+</div>

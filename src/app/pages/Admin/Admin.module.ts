@@ -22,7 +22,7 @@ import { AdminComponent } from './Admin.component';
       { path: 'admin', component: AdminComponent },
       { path: 'admin/user', component: UserEditComponent },
       { path: 'admin/inventory', component: InventoryEditComponent },
-      { path: 'admin/inventory/:id', component: InventorySelectedComponent}
+      { path: 'admin/inventory/:productID', component: InventorySelectedComponent}
     ]),
     FormsModule,
     HttpClientModule,
