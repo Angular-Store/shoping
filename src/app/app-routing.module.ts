@@ -5,17 +5,15 @@ import { HomeComponent } from './pages/Home/Home.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
-
+import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';import { AdminGuard } from './guard/admin.guard';
+import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'products', component: ProductsComponent },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'paymentStatus/:cartID', component: PaymentStatusComponent },
+  { path: 'paymentStatus/:cartID', component: PaymentStatusComponent ,canActivate: [AuthGuard]},
 
 ];
 
