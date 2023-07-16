@@ -1,0 +1,71 @@
+<h2>Edit Inventory</h2>
+
+<button (click)="goBack()">Back</button>
+
+<div *ngIf="loading">Loading...</div>
+
+<div *ngIf="!loading && inventory">
+  <table>
+    <thead>
+      <tr>
+        <th>Inventory ID</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Stock Min</th>
+        <th>Stock Max</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inventory">
+        <td>{{ item.inventoryID }}</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="item.product.productName"
+            [disabled]="disabled"
+            placeholder="Item name"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            [(ngModel)]="item.quantity"
+            [disabled]="disabled"
+            placeholder="Quantity"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            [(ngModel)]="item.stockMin"
+            [disabled]="disabled"
+            placeholder="Stock Min"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            [(ngModel)]="item.stockMax"
+            [disabled]="disabled"
+            placeholder="Stock Max"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            [(ngModel)]="item.product.price"
+            [disabled]="disabled"
+            placeholder="Price"
+          />
+        </td>
+        <td>
+          <!-- Actions -->
+          <button (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
