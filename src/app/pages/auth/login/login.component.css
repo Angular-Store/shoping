@@ -109,6 +109,85 @@
   
   /* Estilos responsive */
   
+@media (max-width: 680px) {
+
+    .login-form {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .login-form {
+        max-width: 240px;
+    }
+
+    .login-form .titleEmail,
+    .login-form .titlePassword  {
+        font-size: 16px;
+      }
+
+      
+      .login-form .titleContainer {
+        font-size: 30px;   
+ }
+    .login-form .inputEmail,
+    .login-form .inputPassword {
+    width: 91%;
+    height: 18px;
+  }
+
+
+  .login-form .BtnContainer{
+    width: 100%;
+  }
+
+  .login-form form {
+    width: 100%;
+  }
+
+}
+
+  @media (max-width: 475px) {
+
+    .login-form {
+        width: 200px;
+        height: 55%;
+        padding:  40px 80px 80px 80px;
+      }
+
+      .login-form .titleContainer {
+        font-size: 25px;
+
+      }
+
+        .login-form .inputEmail,
+        .login-form .inputPassword {
+        width: 89%;
+        height: 15px;
+      }
+}
+
+
+@media (max-width: 400px) {
+
+    .login-form {
+        width: 150px;
+        height: 60%;
+        padding:  20px 40px 40px 40px;
+      }
+      .login-form .titleContainer {
+        font-size: 20px;   
+ }
+     
+
+.login-form .inputEmail,
+        .login-form .inputPassword {
+        width: 85%;
+        height: 15px;
+      }
+}
+
 
   
   
