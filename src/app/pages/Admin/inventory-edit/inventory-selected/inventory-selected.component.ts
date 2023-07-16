@@ -16,6 +16,8 @@ export class InventorySelectedComponent {
   product: any = {};
   inventoryDisabled: boolean = true;
   productDisabled: boolean = true;
+  inventoryMessage: string = '';
+  productMessage: string = '';
 
   ngOnInit() {
     // Obtener el ID del producto desde la URL
@@ -45,7 +47,6 @@ export class InventorySelectedComponent {
 
   editProduct() {
     this.productDisabled = false;
-    console.log(this.product)
   }
 
   saveInventory() {
@@ -55,16 +56,19 @@ export class InventorySelectedComponent {
     // Enviar información a la API
     const productID: number = this.inventory.productID;
 
-    this.http.put(`${url}/api/inventory/product/${productID}`, this.inventory).subscribe(
-      (response: any) => {
-        this.inventoryDisabled = true;
-        this.loading = false;
-      },
-      (error: any) => {
-        console.error(error);
-        this.loading = false;
-      }
-    );
+    this.http
+      .put(`${url}/api/inventory/product/${productID}`, this.inventory)
+      .subscribe(
+        (response: any) => {
+          this.inventoryMessage = response.message;
+          this.inventoryDisabled = true;
+          this.loading = false;
+        },
+        (error: any) => {
+          console.error(error);
+          this.loading = false;
+        }
+      );
   }
 
   saveProduct() {
@@ -73,9 +77,10 @@ export class InventorySelectedComponent {
 
     // Enviar información a la API
     const productID: number = this.product.productID;
-    
+
     this.http.put(`${url}/api/products/${productID}`, this.product).subscribe(
       (response: any) => {
+        this.productMessage = response.message;
         this.productDisabled = true;
         this.loading = false;
       },
