@@ -324,6 +324,44 @@ cartRouter.put('/:cartID/activate', async (req, res) => {
 	}
 });
 
+// Activate an inactive cart item by its cartID (base path /api/cart/activate/:cartID)
+cartRouter.put('/:cartID/activate-inactive', async (req, res) => {
+	try {
+		const cartID = req.params.cartID;
+
+		// Verify if the cart item exists
+		const cartItem = await ShoppingCart.findByPk(cartID);
+
+		if (!cartItem) {
+			return res.status(404).json({ message: 'Cart item not found' });
+		}
+
+		// Verify if the cart item has cartStatus cancelled
+		if (cartItem.cartStatus !== 'inactive') {
+			return res.status(404).json({
+				message: 'Cart item is not inactive, cannot be activated',
+			});
+		}
+
+		// If the product is available in the inventory, activate the cart item
+		const inventory = await Inventory.findOne({
+			where: { productID: cartItem.productID },
+		});
+
+		if (inventory.quantity > 0) {
+			await cartItem.update({ cartStatus: 'active' });
+			return res.status(200).json({ message: 'Cart item activated' });
+		}
+
+		res.status(404).json({
+			message: 'Cart item cannot be activated, not enough inventory',
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error activating the cart item' });
+	}
+});
+
 // DELETE
 
 // Delete a product from the cart (base path /api/cart/:cartID)
