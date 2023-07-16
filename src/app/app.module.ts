@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './layouts/footer/footer.component';
-import {DetailsComponent} from './pages/details/details.component';
+import { DetailsComponent } from './pages/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './pages/auth/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
 import { CartComponent } from './pages/cart/cart.component';
+import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import { CartComponent } from './pages/cart/cart.component';
     DetailsComponent,
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
-    CartComponent
+    CartComponent,
+    PaymentStatusComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
