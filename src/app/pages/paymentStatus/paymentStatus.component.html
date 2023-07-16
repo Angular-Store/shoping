@@ -1,11 +1,34 @@
-<div *ngIf="isSuccess" class="container">
-  <h1>Payment Successful</h1>
-  <p>Thank you for your payment!</p>
-  <button (click)="redirectToHome()">Go to Homepage</button>
-</div>
+<h2>Order Status</h2>
 
-<div *ngIf="!isSuccess" class="container">
-  <h1>Payment Failed</h1>
-  <p>Sorry, your payment was not successful.</p>
-  <button (click)="redirectToHome()">Go to Homepage</button>
+<div class="user-form" *ngIf="loading">Loading...</div>
+
+<div class="user-form" *ngIf="!loading">
+  {{ message }}
+  <table>
+    <tr>
+      <td>Order ID:</td>
+      <td>
+        {{ order.orderID }}
+      </td>
+    </tr>
+    <tr>
+      <td>Order Status:</td>
+      <td>
+        {{ order.orderStatus }}
+      </td>
+    </tr>
+    <tr>
+      <td>Order Date:</td>
+      <td>
+        {{ order.orderDate }}
+      </td>
+    </tr>
+    <!-- For each order with products -->
+    <tr *ngFor="let product of order.orderWithProducts">
+      <td>Product Name:</td>
+      <td>
+        {{ product.product.productName }}
+      </td>
+    </tr>
+  </table>
 </div>

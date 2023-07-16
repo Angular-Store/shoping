@@ -106,13 +106,7 @@ orderRouter.post('/', async (req, res) => {
 	const { cartID, shippingAddress } = req.body;
 
 	try {
-		// Verify if the user exists
-		const user = await User.findByPk(cartID);
-
-		if (!user) {
-			return res.status(404).json({ message: 'User not found' });
-		}
-
+	
 		// Obtaining the active carts of the user
 		const activeCarts = await ShoppingCart.findAll({
 			where: {
@@ -123,6 +117,13 @@ orderRouter.post('/', async (req, res) => {
 
 		if (activeCarts.length === 0) {
 			return res.status(404).json({ message: 'Empty cart' });
+		}
+
+		// Obtaining the user
+		const user = await User.findByPk(activeCarts[0].userID);
+
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
 		}
 
 		let totalPrice = 0;
@@ -166,6 +167,32 @@ orderRouter.post('/', async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({ message: 'Error creating the order' });
+	}
+});
+
+// DELETE
+
+// Deleting an order (base path /api/orders/:orderID)
+orderRouter.delete('/:orderID', async (req, res) => {
+	const orderID = req.params.orderID;
+
+	try {
+		// Verify if the order exists
+		const order = await Order.findByPk(orderID);
+
+		if (!order) {
+			return res.status(404).json({ message: 'Order not found' });
+		}
+
+		// Deleting the order
+		await Order.destroy({
+			where: { orderID },
+		});
+
+		res.status(200).json({ message: 'Order deleted' });
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'Error deleting the order' });
 	}
 });
 
