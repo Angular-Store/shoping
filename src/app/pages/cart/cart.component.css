@@ -1,0 +1,135 @@
+/* Estilos CSS para el componente de carrito */
+
+/* Contenedor principal */
+div {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .container{
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Encabezado */
+  .encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c4c4c4;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para las celdas del encabezado */
+  .encabezado > div {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  /* Lista de productos */
+  .lista-productos {
+    border: 1px solid #707070;
+    margin-top: 10px;
+  }
+  
+  /* Estilos para cada item de producto */
+  .item-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 10px;
+  }
+  
+  /* Estilos para las celdas de cada item de producto */
+  .item-producto > div {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+  }
+
+  /* Estilos para el boton de seleccionar*/
+  .seleccionar {
+    width: 10px;
+    height: 10px;
+    background-color: #c4c4c4; /* Color normal del botón */
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para el botón seleccionar cuando se presiona */
+  .seleccionar:active {
+    background-color: #0654ae; /* Color cuando se presiona el botón */
+  }
+  
+  /* Estilos para los botones -/+ y el cuadrado de cantidad */
+.cantidad-productos {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+.cantidad-productos button {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cantidad-indicador {
+  width: 30px;
+  height: 30px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 0px;
+}
+
+  
+
+  /* Estilos para el botón Borrar */
+  .borrar button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Resumen del total */
+  .resumen-total {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0654ae;
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para la etiqueta "Total" */
+  .total-etiqueta {
+    flex: 1;
+    padding: 5px;
+    text-align: right;
+  }
+  
+  /* Estilos para la suma de todos los productos */
+  .total-suma {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+  }
+  

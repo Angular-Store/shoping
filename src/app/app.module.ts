@@ -7,12 +7,19 @@ import {DetailsComponent} from './pages/details/details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule  } from '@angular/common/http';
 
+import { LoginComponent } from './pages/auth/login/login.component';
+import { HeaderComponent } from './layouts/header/header.component';
+
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent, // Agrega FooterComponent a las declaraciones
-    DetailsComponent
+    DetailsComponent,
+    HeaderComponent, // Agrega HeaderComponent a las declaraciones
+    LoginComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
