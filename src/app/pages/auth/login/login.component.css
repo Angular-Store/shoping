@@ -8,6 +8,10 @@
     user-select: none;
 }
 
+.spinnerLoading {
+  margin: 0 auto;
+}
+
 .login-form {
     width: 330px;
     height: 65%;
@@ -23,12 +27,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    
   }
 
 
   .login-form .titleContainer {
-    padding: 40px 0 0;
+    padding: 50px 0 40px;
     font-size: 38px;
     width: 100%;
     font-weight: bolder;
@@ -69,12 +73,21 @@
     border: 1px solid black;
   }
 
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+}
+  .inputs {
+    margin: 0;
+    padding: 0;
+  }
 
   .login-form .BtnContainer{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    
+    gap: 15px;
+    padding-top: 60px;
   }
   
   .login-form .btn-login {
@@ -130,7 +143,8 @@
 
       
       .login-form .titleContainer {
-        font-size: 30px;   
+        font-size: 30px; 
+        padding-top: 30px;  
  }
     .login-form .inputEmail,
     .login-form .inputPassword {
@@ -141,6 +155,7 @@
 
   .login-form .BtnContainer{
     width: 100%;
+    padding-top: 30px;
   }
 
   .login-form form {
@@ -179,6 +194,10 @@
       }
       .login-form .titleContainer {
         font-size: 20px;   
+ }
+
+ .BtnContainer {
+  padding-top: 20px;
  }
      
 

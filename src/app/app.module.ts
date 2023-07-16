@@ -8,18 +8,36 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './pages/cart/cart.component';
 
+// Agrega los módulos de Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent, // Agrega FooterComponent a las declaraciones
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
-    CartComponent
+    CartComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    // Agrega los módulos de Angular Material
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

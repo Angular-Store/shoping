@@ -1,23 +1,28 @@
 <div class="mainContainer">
-  <div class="login-form">
+  <mat-spinner *ngIf="loading" class="spinnerLoading" diameter="100" color="warn"> </mat-spinner>
+  <div class="login-form" *ngIf="!loading">
     <div class="content">
       <div class="titleContainer">
         <p>Ingresar / Login </p>
       </div>
-      <form class="formContainer">
+      <form [formGroup]="form" class="formContainer" (ngSubmit)="Ingresar()">
         <div class="inputContainer">
           <p class="titleEmail">Correo Electrónico</p>
-          <input class="inputEmail" type="text" name="user" id="user" placeholder="Correo electrónico" />
+          <input class="inputEmail" type="text" name="user" id="user" placeholder="Correo electrónico" autocomplete="off" formControlName="email" />
           <p class="titlePassword">Contraseña</p>
-          <input class="inputPassword" type="password" name="pass" id="pass" placeholder="Contraseña" />
+          <input class="inputPassword" type="password" name="pass" id="pass" placeholder="Contraseña" autocomplete="off" formControlName="password"/>
+        </div>
+      
+
+        <div class="BtnContainer">
+          <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="form.invalid">Login</button>
+
+          <button mat-raised-button color="primary" class="BtnRegistrame" >REGISTRAME</button>
+
+      
+        
         </div>
       </form>
-
-      <div class="BtnContainer">
-        <input type="submit" class="btn-login" value="INGRESAR">
-
-        <input type="submit" class="BtnRegistrame" value="REGISTRAME">
-      </div>
     </div>
 
   </div>
