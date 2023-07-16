@@ -10,6 +10,7 @@ export class UserEditComponent implements OnInit {
   loading: boolean = true;
   disabled: boolean = true;
   user: any;
+  message: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -43,6 +44,7 @@ export class UserEditComponent implements OnInit {
 
     this.http.put(`${url}/api/users/${userID}`, this.user).subscribe(
       (response: any) => {
+        this.message = response.message;
         this.disabled = true;
         this.loading = false;
       },
