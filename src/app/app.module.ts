@@ -15,16 +15,13 @@ import { AdminGuard } from './guard/admin.guard';
 import { AuthGuard } from './guard/auth.guard';
 //importar mat icon de material
 import { MatIconModule } from '@angular/material/icon';
-
-
 import { HeaderComponent } from './layouts/header/header.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './pages/Admin/Admin.module';
 import { HomeComponent } from './pages/Home/Home.component';
-
-
 // Agrega los módulos de Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -32,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -45,9 +43,9 @@ import { MatRadioModule } from '@angular/material/radio';
     HeaderComponent,
     CartComponent,
     FooterComponent,
+    PaymentStatusComponent,
     DetailsComponent,
     HomeComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -71,7 +69,6 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     FormsModule,
     AdminModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

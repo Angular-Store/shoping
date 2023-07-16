@@ -2,6 +2,9 @@ import express from 'express';
 import ShoppingCart from '../models/cart.models.js';
 import Order from '../models/orders.model.js';
 import Inventory from '../models/inventory.model.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const paymentRouter = express.Router();
 
@@ -69,7 +72,11 @@ paymentRouter.get('/success', async (req, res) => {
 			}
 		);
 
-		return res.status(200).json({ message: 'Order created', order });
+		const url = process.env.NODE_ENV === 'production' ? process.env.PROD_FRONTEND_URL : process.env.DEV_FRONTEND_URL;
+		
+		return res.redirect(`${url}/paymentStatus/${cartID}`);
+
+		
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ message: 'Error creating the order' });
