@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { HeaderComponent } from './layouts/header/header.component';
 import { CartComponent } from './pages/cart/cart.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './pages/Admin/Admin.module';
 import { HomeComponent } from './pages/Home/Home.component';
@@ -52,6 +53,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatButtonModule,
     ReactiveFormsModule,
     // Agrega los módulos de Angular Material
     MatFormFieldModule,
