@@ -35,7 +35,6 @@ import { Page404Component } from './Extrapeges/Page404/Page404.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +75,7 @@ import { Page404Component } from './Extrapeges/Page404/Page404.component';
     MatCardModule,
     CommonModule,
     FormsModule,
-    AdminModule
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
