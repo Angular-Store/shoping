@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   isMenuIconClose: boolean = false; // Agregar variable para el icono del menú
   isAdmin: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.checkAdmin();
@@ -47,6 +48,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('user');
     this.isAdmin = false;
     this.checkAuthentication();
+    this.router.navigate(['/login']);
   }
 
 
