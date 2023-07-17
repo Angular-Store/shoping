@@ -8,21 +8,26 @@
   </div>
 
   <div class="lista-productos">
-    <div *ngFor="let producto of productos" class="item-producto">
-      <label  (click)="seleccionarProducto(producto)">
-        <input type="checkbox" class="seleccionar">
-      </label>
+    <div  class="item-producto">
       <div class="imagen" > Imagen del producto</div>
-      <div class="producto">{{ producto.nombre }}</div>
-      <div class="precio">{{ producto.precio}}</div>
-      <div class="cantidad-productos">
-        <button (click)="restarProducto()">-</button>
-        <div class="cantidad-indicador">{{ cantidadProductos }}</div>
-        <button (click)="sumarProducto()">+</button>
+      <div class="producto">
+
       </div>
-      <div class="total">{{(producto.precio * cantidadProductos)}}</div>
+      <div class="precio">
+
+      </div>
+      <div class="cantidad-productos">
+        <button (click)="substractProduct()">-</button>
+        <div class="cantidad-indicador">
+
+        </div>
+        <button (click)="addProduct()">+</button>
+      </div>
+      <div class="total">
+
+      </div>
       <div class="borrar">
-        <button (click)="borrarProducto(producto)">Borrar</button>
+        <button (click)="substractProduct()">Borrar</button>
       </div>
     </div>
   </div>

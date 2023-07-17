@@ -2,6 +2,9 @@ import express from 'express';
 import ShoppingCart from '../models/cart.models.js';
 import Order from '../models/orders.model.js';
 import Inventory from '../models/inventory.model.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const paymentRouter = express.Router();
 
@@ -11,8 +14,8 @@ const paymentRouter = express.Router();
 paymentRouter.get('/success', async (req, res) => {
 	try {
 		const { totalPrice, cartID, shippingAddress } = req.query; // Utilizamos req.query en lugar de req.body para obtener los parámetros enviados desde la pasarela de pago
+		const url = process.env.NODE_ENV === 'production' ? process.env.PROD_FRONTEND_URL : process.env.DEV_FRONTEND_URL;
 
-		console.log('PRUEBA')
 		// Obtaining the active carts of the user
 		const activeCarts = await ShoppingCart.findAll({
 			where: {
@@ -45,7 +48,7 @@ paymentRouter.get('/success', async (req, res) => {
 		}
 
 		// Creating the order
-		const order = await Order.create({
+		await Order.create({
 			cartID,
 			totalPrice,
 			shippingAddress,
@@ -69,7 +72,7 @@ paymentRouter.get('/success', async (req, res) => {
 			}
 		);
 
-		return res.status(200).json({ message: 'Order created', order });
+		return res.redirect(`${url}/paymentStatus/${cartID}`);
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ message: 'Error creating the order' });

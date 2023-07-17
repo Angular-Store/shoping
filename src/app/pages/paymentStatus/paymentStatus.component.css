@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    max-width: 390px;
+    max-height: 250px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ccc;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 220px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #0654ae;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #474747;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #0099ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #707070;
+}

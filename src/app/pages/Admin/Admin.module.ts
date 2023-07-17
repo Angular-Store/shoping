@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InventoryEditComponent } from './inventory-edit/inventory-edit.component';
 import { AdminComponent } from './Admin.component';
+import { AdminGuard } from 'src/app/guard/admin.guard';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,10 @@ import { AdminComponent } from './Admin.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: 'admin', component: AdminComponent },
-      { path: 'admin/user', component: UserEditComponent },
-      { path: 'admin/inventory', component: InventoryEditComponent },
-      { path: 'admin/inventory/:productID', component: InventorySelectedComponent}
+      { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+      { path: 'admin/user', component: UserEditComponent, canActivate: [AdminGuard] },
+      { path: 'admin/inventory', component: InventoryEditComponent, canActivate: [AdminGuard] },
+      { path: 'admin/inventory/:productID', component: InventorySelectedComponent, canActivate: [AdminGuard] }
     ]),
     FormsModule,
     HttpClientModule,
