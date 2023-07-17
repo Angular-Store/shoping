@@ -69,11 +69,15 @@ export class CartComponent implements OnInit {
 
   removeProduct(cartID: any) {
     const url: string = environment.api;
-    const body = {};
 
-    this.http.put(`${url}/api/${cartID}/cancel`, body).subscribe(
+    this.http.delete(`${url}/api/cart/${cartID}`).subscribe(
       (response: any) => {
+        this.cdr.detectChanges();
+        this.cartItems = this.cartItems.filter((item) => item.cartID !== cartID);
         console.log('Eliminado con éxito', response);
+        //renderi
+
+
       },
       (error: any) => {
         console.error(error);
