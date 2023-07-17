@@ -58,7 +58,7 @@
       <div class="total">{{ calculateTotal() | currency }}</div>
     </div>
     <div class="pagar-button-container">
-      <button mat-raised-button color="primary" class="pagar-button">Pagar</button>
+      <button (click)="payment()" mat-raised-button color="primary" class="pagar-button">Pagar</button>
     </div>
 
   </div>
