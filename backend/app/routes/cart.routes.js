@@ -277,7 +277,7 @@ cartRouter.post('/', async (req, res) => {
 		}
 
 		// Verify if the quantity is less than 1
-		if (quantity < 0) {
+		if (quantity <= 0) {
 			return res.status(404).json({
 				message: 'You must add at least one product to the cart',
 			});
