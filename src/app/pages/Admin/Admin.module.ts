@@ -12,6 +12,7 @@ import { InventoryEditComponent } from './inventory-edit/inventory-edit.componen
 import { AdminComponent } from './Admin.component';
 import { AdminGuard } from 'src/app/guard/admin.guard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   ],
   imports: [
     CommonModule,
+    MatTableModule,
     RouterModule.forChild([
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
       {

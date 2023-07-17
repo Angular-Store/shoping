@@ -34,7 +34,6 @@ import { CarruselProductsComponent } from './layouts/carruselProducts/carruselPr
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +73,7 @@ import { CarruselProductsComponent } from './layouts/carruselProducts/carruselPr
     MatCardModule,
     CommonModule,
     FormsModule,
-    AdminModule
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
