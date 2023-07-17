@@ -1,10 +1,12 @@
-<app-carruselProducts></app-carruselProducts>
-<div class="loading" *ngIf="loading">
-  <mat-spinner></mat-spinner>
-</div>
+
 
 <div class="footerSecond">
   <h2> Tienda </h2>
+</div>
+
+<app-carruselProducts></app-carruselProducts>
+<div class="loading" *ngIf="loading">
+  <mat-spinner></mat-spinner>
 </div>
 
 <div class="product-list" *ngIf="!loading">

@@ -6,6 +6,8 @@
   margin-top: 20px;
   margin-bottom: 20px;
   height: 300px; /* Ajusta la altura según tus necesidades */
+  padding-bottom: 20px;
+  padding-top: 30px;
 }
 
 .carousel {
