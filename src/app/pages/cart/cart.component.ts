@@ -2,6 +2,7 @@ import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -26,7 +27,7 @@ export class CartComponent implements OnInit {
     console.log(userID);
 
     // Obtener usuario desde la API
-    this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
+    this.http.get(`${url}/api/cart/user/:userID/active`).subscribe(
       (response: any) => {
         this.cartItems = response;
         this.quantityCart = response.quantity;
