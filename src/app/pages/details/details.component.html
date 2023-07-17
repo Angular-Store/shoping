@@ -2,6 +2,7 @@
   Detalle del producto
 </div>
 <div class='body'>
+
   <div class='productInfoContainer'>
     <div class='ContainerProductImage'>
       <img class='productImage' [src]='img1' alt='img1'>
@@ -25,7 +26,8 @@
         </mat-button-toggle-group>
       </div>
       <div class='exampleButtonRow'>
-        <button mat-button routerLink='/cart' class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
+        <button mat-button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
+        {{message}}
       </div>
     </div>
   </div>
