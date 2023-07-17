@@ -13,6 +13,11 @@
       <mat-icon aria-label="Home">home</mat-icon>
     </button>
 
+    <button *ngIf="isAdmin" mat-icon-button routerLink="/admin">
+      <mat-icon aria-label="Admin">admin_panel_settings</mat-icon>
+    </button>
+
+
     <button *ngIf="isLoggedIn" mat-icon-button (click)="logout()">
       <mat-icon aria-label="Logout">exit_to_app</mat-icon>
     </button>
@@ -28,7 +33,9 @@
     <button mat-icon-button routerLink="/cart">
       <mat-icon aria-label="Carrito">shopping_cart</mat-icon>
     </button>
-    
+
+
+
   </div>
 
   <div class="mobile-menu" [class.open]="isMenuOpen">
@@ -39,6 +46,7 @@
     <a *ngIf="isLoggedIn" mat-button (click)="logout(); closeMenu()">Cerrar Sesion</a>
     <a *ngIf="!isLoggedIn" mat-button routerLink="/login" (click)="closeMenu()">Iniciar Sesion</a>
     <a *ngIf="!isLoggedIn" mat-button routerLink="/register" (click)="closeMenu()">Registrarse</a>
+    <a  *ngIf="isAdmin" mat-button routerLink="/admin" (click)="closeMenu()">Admin</a>
   </div>
 
 </mat-toolbar>

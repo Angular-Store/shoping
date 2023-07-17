@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder, FormsModule } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/enviroment/enviroment';
 
 
 @Component({
@@ -39,14 +40,18 @@ export class LoginComponent implements OnInit {
       return null;
     }
   }
-  
+
 
   Ingresar(): any {
     // console.log(this.form);
     const username = this.form.value.username;
     const password = this.form.value.password;
 
-    const URL = 'https://angular-store.onrender.com/api/login';
+//url de la api con enviroment
+    const url: string = environment.api;
+    const URL = `${url}/api/login`;
+    
+    //const URL = 'https://angular-store.onrender.com/api/login';
 
 
     this.http.post(URL, { username, password }).subscribe((res: any) => {
@@ -78,7 +83,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  
+
   fakeLoading() {
     this.loading = true;
     setTimeout(() => {
