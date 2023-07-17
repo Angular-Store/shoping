@@ -3,8 +3,7 @@
 <button mat-button (click)="goBack()">Back</button>
 
 <div class="loading" *ngIf="loading">
-  <!-- <mat-spinner></mat-spinner> -->
-  Loading...
+  <mat-spinner></mat-spinner>
 </div>
 
 <div class="user-form" *ngIf="!loading && user">
@@ -97,8 +96,24 @@
   </table>
 
   <div class="actions">
-    <button mat-raised-button color="primary" (click)="editUser()" *ngIf="disabled">Edit</button>
-    <button mat-raised-button (click)="disabled = !disabled" *ngIf="!disabled">Cancel</button>
-    <button mat-raised-button color="primary" (click)="saveUser()" *ngIf="!disabled">Save</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editUser()"
+      *ngIf="disabled"
+    >
+      Edit
+    </button>
+    <button mat-raised-button (click)="disabled = !disabled" *ngIf="!disabled">
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="saveUser()"
+      *ngIf="!disabled"
+    >
+      Save
+    </button>
   </div>
 </div>

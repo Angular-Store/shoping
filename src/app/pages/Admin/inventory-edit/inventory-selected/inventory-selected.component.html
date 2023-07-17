@@ -1,6 +1,8 @@
 <h1>Inventory</h1>
 <button mat-button (click)="goBack()">Back</button>
-<div *ngIf="loading">Loading...</div>
+<div class="loading" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
 
 <div *ngIf="!loading" class="inventory">
   <p class="messageSuccess">
@@ -60,13 +62,27 @@
       </tr>
       <tr>
         <td colspan="2">
-          <button mat-raised-button color="primary" (click)="editInventory()" *ngIf="inventoryDisabled">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="editInventory()"
+            *ngIf="inventoryDisabled"
+          >
             Edit
           </button>
-          <button mat-raised-button (click)="inventoryDisabled = !inventoryDisabled" *ngIf="!inventoryDisabled">
+          <button
+            mat-raised-button
+            (click)="inventoryDisabled = !inventoryDisabled"
+            *ngIf="!inventoryDisabled"
+          >
             Cancel
           </button>
-          <button mat-raised-button color="primary" (click)="saveInventory()" *ngIf="!inventoryDisabled">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveInventory()"
+            *ngIf="!inventoryDisabled"
+          >
             Save
           </button>
         </td>
@@ -116,11 +132,29 @@
       </tr>
       <tr>
         <td colspan="2">
-          <button mat-raised-button color="primary" (click)="editProduct()" *ngIf="productDisabled">Edit</button>
-          <button mat-raised-button (click)="productDisabled = !productDisabled" *ngIf="!productDisabled">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="editProduct()"
+            *ngIf="productDisabled"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            (click)="productDisabled = !productDisabled"
+            *ngIf="!productDisabled"
+          >
             Cancel
           </button>
-          <button mat-raised-button color="primary" (click)="saveProduct()" *ngIf="!productDisabled">Save</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveProduct()"
+            *ngIf="!productDisabled"
+          >
+            Save
+          </button>
         </td>
       </tr>
     </tbody>
