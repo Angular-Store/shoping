@@ -1,34 +1,31 @@
-<h2>Order Status</h2>
+<div class="container">
+  <h2>Order Status</h2>
 
-<div class="user-form" *ngIf="loading">Loading...</div>
+  <div class="user-form" *ngIf="loading">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+  </div>
 
-<div class="user-form" *ngIf="!loading">
-  {{ message }}
-  <table>
-    <tr>
-      <td>Order ID:</td>
-      <td>
-        {{ order.orderID }}
-      </td>
-    </tr>
-    <tr>
-      <td>Order Status:</td>
-      <td>
-        {{ order.orderStatus }}
-      </td>
-    </tr>
-    <tr>
-      <td>Order Date:</td>
-      <td>
-        {{ order.orderDate }}
-      </td>
-    </tr>
-    <!-- For each order with products -->
-    <tr *ngFor="let product of order.orderWithProducts">
-      <td>Product Name:</td>
-      <td>
-        {{ product.product.productName }}
-      </td>
-    </tr>
-  </table>
+  <div class="user-form" *ngIf="!loading">
+    <p>{{ message }}</p>
+    <table>
+      <tr>
+        <td>Order ID:</td>
+        <td>{{ order.orderID }}</td>
+      </tr>
+      <tr>
+        <td>Order Status:</td>
+        <td>{{ order.orderStatus }}</td>
+      </tr>
+      <tr>
+        <td>Order Date:</td>
+        <td>{{ order.orderDate }}</td>
+      </tr>
+      <!-- For each order with products -->
+      <tr *ngFor="let product of order.orderWithProducts">
+        <td>Product Name:</td>
+        <td>{{ product.product.productName }}</td>
+      </tr>
+    </table>
+    <button mat-button routerLink="/">Go Home</button>
+  </div>
 </div>
