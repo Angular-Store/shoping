@@ -27,7 +27,7 @@ export class PaymentStatusComponent implements OnInit {
         this.order = {
           id: 1,
           cartID: 1,
-          userID: 1,
+          userID: 1,    
           status: 'pending',
           total: 98,
         };

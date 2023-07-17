@@ -1,6 +1,7 @@
 import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +16,10 @@ export class CartComponent implements OnInit {
   message: string = '';
   cartItems: any[] = [];
   quantityCart: number = 0;
+  paymentLink: string = '';
 
   constructor(private http: HttpClient,
+    private router: Router,
      private cdr: ChangeDetectorRef ) {}
 
   ngOnInit() {
@@ -43,7 +46,6 @@ export class CartComponent implements OnInit {
   }
   calculateTotal(): number {
     let total = 0;
-    console.log(this.cartItems);
     this.cartItems.forEach(item => {
       const price = Number(item.product.price);
       const quantity = Number(item.quantity);
@@ -51,7 +53,6 @@ export class CartComponent implements OnInit {
         total += price * quantity;
       }
     });
-    console.log(total);
     return total;
   }
 
@@ -122,6 +123,32 @@ export class CartComponent implements OnInit {
         this.cdr.detectChanges();
         product.quantity++;
 
+      },
+      (error: any) => {
+        console.error(error);
+        this.message = error.error.message;
+        this.loading = false;
+      }
+    );
+  }
+
+  payment() {
+    const url: string = environment.api;
+    const userJson: string = localStorage.getItem('user')!;
+    const user = JSON.parse(userJson);
+    const userID = user.userID;
+    const shippingAddress = user.address;
+    const data = {
+      userID: userID,
+      shippingAddress: shippingAddress
+    };
+
+    this.http.post(`${url}/api/orders`, data).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.paymentLink = response.url;
+        // cambiar la url de la misma ventana
+        window.open(this.paymentLink, '_self');
       },
       (error: any) => {
         console.error(error);
