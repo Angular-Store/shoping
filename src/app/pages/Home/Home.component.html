@@ -18,7 +18,7 @@
         <p class="price">{{ product.price | currency }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button class="buttonCard" mat-button color="primary" (click)="addToCart(product)">Añadir al carrito</button>
+        <button class="buttonCard" mat-button color="primary" (click)="addToCart(product.productID)">Añadir al carrito</button>
       </mat-card-actions>
     </mat-card>
   </div>

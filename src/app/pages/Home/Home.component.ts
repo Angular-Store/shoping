@@ -29,10 +29,33 @@ export class HomeComponent implements OnInit {
   }
 
 
-  addToCart(product: any) {
+  addToCart(product: number ) {
     const token = localStorage.getItem('token');
     if (token) {
-      console.log('Producto añadido al carrito:', product);
+      const userJson: string = localStorage.getItem('user')!;
+    const user = JSON.parse(userJson);
+    const userID = user.userID;
+    console.log(userID);
+    const api = environment.api;
+    const data = {
+      userID: userID,
+      productID: product,
+      quantity:1 //contador de productos
+    };
+    console.log(data.quantity);
+    this.http.post(`${api}/api/cart`, data).subscribe(
+      (response: any) => {
+        // Lógica adicional después de agregar un producto al carrito
+        console.log(response);
+        console.log("se logro agregar al carrito }"  );
+        //redirigir a carrito
+        this.router.navigate(['/cart']);
+      },
+      (error: any) => {
+        console.error(error);
+      console.log("no se logro agregar al carrito }"  );
+      }
+    );
     } else {
       alert('Debes iniciar sesión para añadir productos al carrito.');
       setTimeout(() => {
