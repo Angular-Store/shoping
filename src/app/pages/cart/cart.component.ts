@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-cart',
@@ -16,11 +17,11 @@ export class CartComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    const userID: number = 1; // Replace with the actual user ID
-    const url: string = 'localhost:4200';
+    // const userID: number = 1; // Replace with the actual user ID
+    const url: string = environment.api;
 
     // Obtener usuario desde la API
-    this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
+    this.http.get(`${url}/api/cart/user/:userID/active`).subscribe(
       (response: any) => {
         console.log(response)
       },
@@ -31,9 +32,23 @@ export class CartComponent implements OnInit {
     );
   }
 
+  removeProduct(){
+    const url: string = environment.api;
+    const body = {}
+
+    this.http.put(`${url}/api/:cartID/cancel`, body).subscribe(
+      (response: any) => {
+        console.log('Eliminado con exito', response);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
 
   substractProduct(){
-    const url: string = 'localhost:4200'
+    const url: string = environment.api;
 
     this.http.get(`${url}/api/cart`).subscribe(
       (response: any) => {
@@ -49,7 +64,7 @@ export class CartComponent implements OnInit {
   }
 
   addProduct(){
-    const url: string = 'localhost:4200'
+    const url: string = environment.api
 
     this.http.get(`${url}/api/cart`).subscribe(
       (response: any) => {
