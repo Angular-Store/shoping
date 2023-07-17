@@ -63,13 +63,10 @@ export class DetailsComponent implements OnInit {
   changeImage(index: number) {
     if (index === 1) {
       this.imgP = this.img1;
-      this.imgP = this.img1;
     }  if (index === 2) {
       this.imgP = this.img2;
-    this.imgP = this.img2;
     }  if (index === 3) {
       this.imgP = this.img3;
-    this.imgP = this.img3;
     }
   }
 
