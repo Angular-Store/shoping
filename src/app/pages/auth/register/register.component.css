@@ -112,7 +112,22 @@
 /* Estilos responsive */
 
 
-@media (max-width: 680px) {
+@media (max-width: 730px) {
+
+    .registerForm {
+        max-width: 280px;
+        height: 73%;
+        
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 710px) {
 
     .registerForm {
         max-width: 280px;
@@ -164,7 +179,7 @@
 
     .registerForm {
         width: 200px;
-        height: 65%;
+        height: 70%;
         padding: 40px 80px 80px 80px;
     }
 
@@ -198,15 +213,26 @@
 
     .registerForm {
         width: 150px;
-        height: 65%;
+        height: 70%;
         padding: 20px 40px 40px 40px;
     }
 
     .registerForm .titleContainer {
-        font-size: 20px;
-        padding: 10px 0;
+        font-size: 16px;
+        padding: 8px 0;
+        margin-bottom: 2px;
     }
 
+
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    font-size: 10px;
+}
 
     .registerForm .inputEmail,
     .registerForm .inputPassword,
@@ -215,7 +241,8 @@
     .registerForm .inputPhone,
     .registerForm .inputUserName {
         width: 85%;
-        height: 10px;
+        height: 8px;
+        font-size: 9px;
     }
 
 
@@ -242,5 +269,28 @@
        
         height: 69%;
         
+    }
+    
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
+        width: 85%;
+        height: 6px;
+        font-size: 9px;
     }
 }
