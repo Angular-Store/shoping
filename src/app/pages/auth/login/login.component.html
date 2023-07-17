@@ -1,11 +1,12 @@
-<div class="mainContainer">
-  <mat-spinner *ngIf="loading" class="spinnerLoading" diameter="100" color="warn"> </mat-spinner>
-  <div class="login-form" *ngIf="!loading">
+<!-- Es la estructura del formulario de login -->
+<div class="mainContainer">                                                                               
+  <mat-spinner *ngIf="loading" class="spinnerLoading" diameter="100" color="warn"> </mat-spinner>         <!--El *ngIf es para que se muestre solo cuando esta cargando-->
+  <div class="login-form" *ngIf="!loading">                                                               <!--El *ngIf es para que se muestre solo cuando no esta cargando-->
     <div class="content">
       <div class="titleContainer">
         <p> Login </p>
       </div>
-      <form [formGroup]="form" class="formContainer" (ngSubmit)="Ingresar()">
+      <form [formGroup]="form" class="formContainer" (ngSubmit)="Ingresar()">                             <!--formGroup es para que sepa que es un formulario y el (ngSubmit) es para que sepa que es un submit que se va enviar-->
         <div class="inputContainer">
           <p class="titleEmail">User Name</p>
           <input class="inputEmail" type="text" name="user" id="user" placeholder="Username" autocomplete="off" formControlName="username" />
@@ -13,9 +14,9 @@
           <input class="inputPassword" type="password" name="pass" id="pass" placeholder="Contraseña" autocomplete="off" formControlName="password"/>
         </div>
         <div class="BtnContainer">
-          <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="form.invalid">Login</button>
+          <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="form.invalid">Login</button> <!--El [disabled] es para que se deshabilite el boton cuando el formulario es invalido-->
   
-          <a href="/register" mat-raised-button color="primary" class="BtnRegistrame">Sign up</a>
+          <a href="/register" mat-raised-button color="primary" class="BtnRegistrame">Sign up</a> <!--Mat-raised-button es para que se vea como un boton de material-->
           
         </div>
       </form>
