@@ -4,7 +4,7 @@
 div {
     max-width: 800px;
     margin: 0 auto;
-  }
+}
 
   .container{
     background-color: white;
@@ -133,3 +133,6 @@ div {
     text-align: center;
   }
   
+  .imagen > img{
+    height: 100px;
+  }

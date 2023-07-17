@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   user: any;
   message: string = '';
   cartItems: any[] = [];
- quantityCard: number = 0;
+  quantityCart: number = 0;
 
   constructor(private http: HttpClient,
      private cdr: ChangeDetectorRef ) {}
@@ -29,8 +29,8 @@ export class CartComponent implements OnInit {
     this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
       (response: any) => {
         this.cartItems = response;
-        this.quantityCard = response.quantity;
-        console.log('Carrito de compras:', response);
+        this.quantityCart = response.quantity;
+        console.log('Carrito de compras:', this.cartItems[0]);
         this.loading = false;
       },
       (error: any) => {
@@ -66,11 +66,11 @@ export class CartComponent implements OnInit {
     );
   }
 
-  removeProduct(userID: any) {
+  removeProduct(cartID: any) {
     const url: string = environment.api;
     const body = {};
 
-    this.http.put(`${url}/api/${userID}/cancel`, body).subscribe(
+    this.http.put(`${url}/api/${cartID}/cancel`, body).subscribe(
       (response: any) => {
         console.log('Eliminado con éxito', response);
       },
