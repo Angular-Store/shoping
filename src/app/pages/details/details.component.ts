@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -17,10 +19,13 @@ export class DetailsComponent implements OnInit {
   img4: string = '';
   img5: string = '';
   img6: string = '';
+  idProducto: any= ''; // Variable para almacenar el idProducto
   quantity: number; 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {
     this.amountProducts = 1; // Establece el número de productos en 1
+    this.idProducto = this.extractLastParamFromUrl(); // Obtiene el idProducto de la ruta
+    console.log(this.idProducto); // Imprime el idProducto en la consola
     this.quantity = this.amountProducts;
     this.consumirAPI(); // Llama a la función para consumir la API
   }
@@ -29,35 +34,34 @@ export class DetailsComponent implements OnInit {
     // Método ngOnInit, se ejecuta después del constructor
   }
 
+  extractLastParamFromUrl(): string {
+    const urlSegments = this.route.snapshot.url;
+    const lastSegment = urlSegments[urlSegments.length - 1];
+    return lastSegment.path;
+  }
+
   consumirAPI() {
-    const productsUrl = 'https://angular-store.onrender.com/api/products';
-    this.http.get<any[]>(productsUrl).subscribe(response => {
+    const api = environment.api;
+    const productsUrl = `${api}/api/products/${this.idProducto}`; // Agrega el idProducto a la URL
+    this.http.get<any>(productsUrl).subscribe(response => {
       this.products = response; // Asigna la respuesta de la API a la variable products
       //console de cada producto con un ciclo
-      for (let i = 0; i < this.products.length; i++) {
-
-        console.log(this.products[i]);
-      }
       console.log(this.products);
-  
-      // Obtener las imágenes del primer producto
-      if (this.products.length > 0) {
-
-        const product = this.products[4]; // Obtener el primer producto
-        // Asigna las URLs de las imágenes del primer producto a las variables correspondientes
-        this.img1 = product.productImages[0].imageURL;
-        this.img2 = product.productImages[1].imageURL;
-        this.img3 = product.productImages[2].imageURL;
-        this.img4 = 'https://rickandmortyapi.com/api/character/avatar/3.jpeg';
-        this.img5 = 'https://rickandmortyapi.com/api/character/avatar/2.jpeg';
-        this.img6 = 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
-        console.log(this.img1);
-        // Puedes continuar asignando las URLs restantes si es necesario
+      // Obtener las imágenes del producto
+      if (this.idProducto > 0 && this.idProducto < 11) {
+        const product = this.products[0]; // Obtener el primer producto
+        // Asigna las URLs de las imágenes del producto a las variables correspondientes
+        this.img1 = response.productImages[0].imageURL;
+        this.img2 = response.productImages[1].imageURL;
+        this.img3 = response.productImages[2].imageURL;
       }
+      //sino rediriga a home o a una pagina de error
+    }, error => {
+      console.log(error);
+      this.router.navigate(['/']);
     });
   }
-  
-  //funcion para que al dar click en una imagen pequeña se mustre como la principal
+
   changeImage(index: number) {
     if (index === 2) {
       const tempImg = this.img1;
@@ -70,15 +74,12 @@ export class DetailsComponent implements OnInit {
       this.img3 = tempImg;
     }
   }
-  
 
-  //funcion para aumentar la cantidad de productos
   aumentarCompra() {
     this.amountProducts++;
     console.log('cantidad en ' + this.amountProducts);
   }
 
-  //funcion para disminuir la cantidad de productos
   disminuirCompra() {
     if (this.amountProducts === 1) {
       console.log('cantidad en 0');
@@ -88,12 +89,12 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  //aqui se manda la cantidad de productos pero nose como
+
   handleAmountProducts(){
     this.quantity;
   }
-  //esto hay que quitarlo o nose xd
+
   addToCart() {
-    console.log('item added to cart');
+    
   }
 }
