@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -10,16 +12,22 @@ import { environment } from 'src/enviroment/enviroment';
 export class DetailsComponent implements OnInit {
 
   products: any[] = []; // Array para almacenar los productos
-  producto: number; // Variable para el número de productos
+  amountProducts: number; // Variable para el número de productos
+  producto: number=0; // Variable para el número de productos
   img1: string = ''; // Variables para almacenar las URLs de las imágenes
   img2: string = '';
   img3: string = '';
   img4: string = '';
   img5: string = '';
   img6: string = '';
+  idProducto: any= ''; // Variable para almacenar el idProducto
+  quantity: number; 
 
-  constructor(private http: HttpClient) {
-    this.producto = 1; // Establece el número de productos en 1
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {
+    this.amountProducts = 1; // Establece el número de productos en 1
+    this.idProducto = this.extractLastParamFromUrl(); // Obtiene el idProducto de la ruta
+    console.log(this.idProducto); // Imprime el idProducto en la consola
+    this.quantity = this.amountProducts;
     this.consumirAPI(); // Llama a la función para consumir la API
   }
 
@@ -27,49 +35,34 @@ export class DetailsComponent implements OnInit {
     // Método ngOnInit, se ejecuta después del constructor
   }
 
+  extractLastParamFromUrl(): string {
+    const urlSegments = this.route.snapshot.url;
+    const lastSegment = urlSegments[urlSegments.length - 1];
+    return lastSegment.path;
+  }
+
   consumirAPI() {
-    const productsUrl = 'https://angular-store.onrender.com/api/products';
-    this.http.get<any[]>(productsUrl).subscribe(response => {
+    const api = environment.api;
+    const productsUrl = `${api}/api/products/${this.idProducto}`; // Agrega el idProducto a la URL
+    this.http.get<any>(productsUrl).subscribe(response => {
       this.products = response; // Asigna la respuesta de la API a la variable products
       //console de cada producto con un ciclo
-      for (let i = 0; i < this.products.length; i++) {
-        console.log(this.products[i]);
-      }
       console.log(this.products);
-
-      // Obtener las imágenes del primer producto
-      if (this.products.length > 0) {
-        const productId = this.products[0].productID;
-        const imagesUrl = `https://angular-store.onrender.com/api/products/${productId}/imageURL`;
-        this.http.get<any[]>(imagesUrl).subscribe(imagesResponse => {
-          if (imagesResponse.length > 0) {
-            // Asigna las URLs de las imágenes a las variables correspondientes
-            this.img1 = imagesResponse[0].imageURL;
-            this.img2 = imagesResponse[1].imageURL;
-            this.img3 = imagesResponse[2].imageURL;
-            this.img4 = imagesResponse[3].imageURL;
-            this.img5 = imagesResponse[4].imageURL;
-            this.img6 = imagesResponse[5].imageURL;
-          }
-        });
+      // Obtener las imágenes del producto
+      if (this.idProducto > 0 && this.idProducto < 11) {
+        const product = this.products[0]; // Obtener el primer producto
+        // Asigna las URLs de las imágenes del producto a las variables correspondientes
+        this.img1 = response.productImages[0].imageURL;
+        this.img2 = response.productImages[1].imageURL;
+        this.img3 = response.productImages[2].imageURL;
       }
+      //sino rediriga a home o a una pagina de error
+    }, error => {
+      console.log(error);
+      this.router.navigate(['/']);
     });
   }
-  
-  // actualizarImagenes() {
-  //   if (this.products.length > 0) {
-  //     const product = this.products[0]; // Obtener el primer producto
-  //     // Asigna las URLs de las imágenes del primer producto a las variables correspondientes
-  //     this.img1 = product.productImages[0].imageURL;
-  //     this.img2 = product.productImages[1].imageURL;
-  //     this.img3 = product.productImages[2].imageURL;
-  //     this.img4 = product.productImages[3].imageURL;
-  //     this.img5 = product.productImages[4].imageURL;
-  //     this.img6 = product.productImages[5].imageURL;
-  //   }
-  // }
 
-  //funcion para que al dar click en una imagen pequeña se mustre como la principal
   changeImage(index: number) {
     if (index === 2) {
       const tempImg = this.img1;
@@ -83,24 +76,50 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  //funcion para aumentar la cantidad de productos
   aumentarCompra() {
-    this.producto++;
-    console.log('cantidad en ' + this.producto);
+    this.amountProducts++;
+    console.log('cantidad en ' + this.amountProducts);
   }
 
-  //funcion para ¿disminuir la cantidad de productos
   disminuirCompra() {
-    if (this.producto === 0) {
+    if (this.amountProducts === 1) {
       console.log('cantidad en 0');
     } else {
-      this.producto--;
-      console.log('cantidad en ' + this.producto);
+      this.amountProducts--;
+      console.log('cantidad en ' + this.amountProducts);
     }
   }
 
-  //esto hay que quitarlo o nose xd
+
+  handleAmountProducts(){
+    this.quantity;
+  }
+
   addToCart() {
-    console.log('item added to cart');
+    const userJson: string = localStorage.getItem('user')!;
+    const user = JSON.parse(userJson);
+    const userID = user.userID;
+    console.log(userID);
+    const api = environment.api;
+    const data = {
+      userID: userID,
+      productID: this.idProducto,
+      quantity:this.producto //contador de productos
+    };
+    this.http.post(`${api}/api/cart`, data).subscribe(
+      (response: any) => {
+        // Lógica adicional después de agregar un producto al carrito
+        console.log(response);
+        //renderizar
+        this.router.navigate(['/cart']);
+
+      },
+      (error: any) => {
+        console.error(error);
+      console.log("no se logro agregar al carrito }"  );
+      }
+    );
+
+
   }
 }
