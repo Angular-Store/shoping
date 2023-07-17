@@ -113,7 +113,7 @@ export class CartComponent implements OnInit {
       productID: product.productID,
       quantity: 1
     };
-
+    
     this.http.post(`${url}/api/cart`, data).subscribe(
       (response: any) => {
         // Lógica adicional después de agregar un producto al carrito
@@ -143,6 +143,10 @@ export class CartComponent implements OnInit {
       shippingAddress: shippingAddress
     };
 
+    if (this.cartItems.length === 0) {
+      this.message = 'No hay productos en el carrito';
+      return;
+    }
     this.http.post(`${url}/api/orders`, data).subscribe(
       (response: any) => {
         console.log(response);
