@@ -11,8 +11,9 @@ import { environment } from 'src/enviroment/enviroment';
 })
 
 export class HomeComponent implements OnInit {
-
+  
   products: any[] = [];
+  loading = false;
 
   constructor(private http: HttpClient,private router: Router) {}
 
@@ -39,6 +40,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  fakeLoading() {
+    this.loading = true;
+    setTimeout(() => {
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
+    }, 1500);
+
 }
 
-
+}
