@@ -77,3 +77,11 @@ button:hover {
   color: white;
 }
 
+ 
+.footerSecond{
+  background-color: #0654ae;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}

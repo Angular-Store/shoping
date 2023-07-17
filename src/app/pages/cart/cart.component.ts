@@ -2,6 +2,7 @@ import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   user: any;
   message: string = '';
   cartItems: any[] = [];
- quantityCard: number = 0;
+  quantityCart: number = 0;
 
   constructor(private http: HttpClient,
      private cdr: ChangeDetectorRef ) {}
@@ -29,7 +30,7 @@ export class CartComponent implements OnInit {
     this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
       (response: any) => {
         this.cartItems = response;
-        this.quantityCard = response.quantity;
+        this.quantityCart = response.quantity;
         console.log('Carrito de compras:', response);
         this.loading = false;
       },
@@ -40,6 +41,20 @@ export class CartComponent implements OnInit {
       }
     );
   }
+  calculateTotal(): number {
+    let total = 0;
+    console.log(this.cartItems);
+    this.cartItems.forEach(item => {
+      const price = Number(item.product.price);
+      const quantity = Number(item.quantity);
+      if (!isNaN(price) && !isNaN(quantity)) {
+        total += price * quantity;
+      }
+    });
+    console.log(total);
+    return total;
+  }
+
 
   substractProduct(product: any) {
     const url: string = environment.api;
@@ -66,13 +81,17 @@ export class CartComponent implements OnInit {
     );
   }
 
-  removeProduct(userID: any) {
+  removeProduct(cartID: any) {
     const url: string = environment.api;
-    const body = {};
 
-    this.http.put(`${url}/api/${userID}/cancel`, body).subscribe(
+    this.http.delete(`${url}/api/cart/${cartID}`).subscribe(
       (response: any) => {
+        this.cdr.detectChanges();
+        this.cartItems = this.cartItems.filter((item) => item.cartID !== cartID);
         console.log('Eliminado con éxito', response);
+        //renderi
+
+
       },
       (error: any) => {
         console.error(error);

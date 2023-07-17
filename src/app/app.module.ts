@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 //importar mat icon de material
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './layouts/header/header.component';
+
 import { CartComponent } from './pages/cart/cart.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
@@ -28,6 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { CarruselProductsComponent } from './layouts/carruselProducts/carruselProducts.component';
+
+
 
 
 
@@ -39,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
     LoginComponent,
     CartComponent,
     RegisterComponent,
+    CarruselProductsComponent,
 
     LoginComponent,
     HeaderComponent,
