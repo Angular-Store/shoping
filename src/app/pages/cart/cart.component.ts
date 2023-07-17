@@ -27,11 +27,11 @@ export class CartComponent implements OnInit {
     console.log(userID);
 
     // Obtener usuario desde la API
-    this.http.get(`${url}/api/cart/user/:userID/active`).subscribe(
+    this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
       (response: any) => {
         this.cartItems = response;
         this.quantityCart = response.quantity;
-        console.log('Carrito de compras:', this.cartItems[0]);
+        console.log('Carrito de compras:', response);
         this.loading = false;
       },
       (error: any) => {
@@ -41,6 +41,20 @@ export class CartComponent implements OnInit {
       }
     );
   }
+  calculateTotal(): number {
+    let total = 0;
+    console.log(this.cartItems);
+    this.cartItems.forEach(item => {
+      const price = Number(item.product.price);
+      const quantity = Number(item.quantity);
+      if (!isNaN(price) && !isNaN(quantity)) {
+        total += price * quantity;
+      }
+    });
+    console.log(total);
+    return total;
+  }
+
 
   substractProduct(product: any) {
     const url: string = environment.api;
@@ -69,11 +83,15 @@ export class CartComponent implements OnInit {
 
   removeProduct(cartID: any) {
     const url: string = environment.api;
-    const body = {};
 
-    this.http.put(`${url}/api/${cartID}/cancel`, body).subscribe(
+    this.http.delete(`${url}/api/cart/${cartID}`).subscribe(
       (response: any) => {
+        this.cdr.detectChanges();
+        this.cartItems = this.cartItems.filter((item) => item.cartID !== cartID);
         console.log('Eliminado con éxito', response);
+        //renderi
+
+
       },
       (error: any) => {
         console.error(error);

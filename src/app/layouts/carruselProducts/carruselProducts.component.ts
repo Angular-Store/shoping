@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/enviroment/enviroment';
+
+interface MatCarouselSlide {
+  imageUrl: string;
+  title: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-carruselProducts',
@@ -6,10 +14,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carruselProducts.component.css']
 })
 export class CarruselProductsComponent implements OnInit {
+  slides: MatCarouselSlide[] = [];
+  translateX = 0;
+  currentIndex = 0;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    const url = `${environment.api}/api/products`;
+    this.http.get<any[]>(url).subscribe(response => {
+      this.slides = response.map(product => ({
+        imageUrl: product.productImages[0].imageURL,
+        title: product.productName,
+        description: product.description
+      }));
+      this.startCarousel();
+    });
   }
 
+  startCarousel() {
+    setInterval(() => {
+      this.slideRight();
+    }, 3000);
+  }
+
+  slideRight() {
+    this.currentIndex++;
+    if (this.currentIndex >= this.slides.length) {
+      this.currentIndex = 0;
+    }
+    this.translateX = -this.currentIndex * 100;
+  }
+
+  slideLeft() {
+    this.currentIndex--;
+    if (this.currentIndex < 0) {
+      this.currentIndex = this.slides.length - 1;
+    }
+    this.translateX = -this.currentIndex * 100;
+  }
 }
