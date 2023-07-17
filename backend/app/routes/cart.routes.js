@@ -218,6 +218,35 @@ cartRouter.post('/', async (req, res) => {
 			return res.status(404).json({ message: 'Inventory not found' });
 		}
 
+		const allUsersAdmin = await User.findAll({
+			where: { role: 'admin' },
+		});
+
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD,
+			},
+		});
+
+		// Verify if the stock is 1, if it is send an email to the admin to restock
+		if (inventory.quantity === 0 || inventory.quantity === 1 || inventory.quantity < inventory.stockMin) {
+			// Send email to admin
+			const mailOptions = {
+				from: process.env.EMAIL_USER,
+				to: allUsersAdmin.map((user) => user.email),
+				subject: 'Restock',
+				text: `The product ${product.productName} is running out of stock, please restock`,
+			};
+
+			transporter.sendMail(mailOptions, (error, info) => {
+				if (error) {
+					console.log(error);
+				}
+			});
+		}
+
 		if (inventory.quantity === 0 || inventory.quantity < quantity) {
 			return res
 				.status(404)
@@ -265,35 +294,6 @@ cartRouter.post('/', async (req, res) => {
 
 		// Create a new cart item
 		await ShoppingCart.create({ userID, productID, quantity });
-
-		const allUsersAdmin = await User.findAll({
-			where: { role: 'admin' },
-		});
-
-		const transporter = nodemailer.createTransport({
-			service: 'gmail',
-			auth: {
-				user: process.env.EMAIL_USER,
-				pass: process.env.EMAIL_PASSWORD,
-			},
-		});
-
-		// Verify if the stock is 1, if it is send an email to the admin to restock
-		if (inventory.quantity === 1) {
-			// Send email to admin
-			const mailOptions = {
-				from: process.env.EMAIL_USER,
-				to: allUsersAdmin.map((user) => user.email),
-				subject: 'Restock',
-				text: `The product ${product.productName} is running out of stock, please restock`,
-			};
-
-			transporter.sendMail(mailOptions, (error, info) => {
-				if (error) {
-					console.log(error);
-				}
-			});
-		}
 
 		res.status(200).json({ message: 'Product added to the cart' });
 	} catch (error) {
