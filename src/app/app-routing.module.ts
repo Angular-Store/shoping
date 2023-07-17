@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent ,canActivate: [AuthGuard]},
-  { path: 'paymentStatus/:cartID', component: PaymentStatusComponent ,canActivate: [AuthGuard]},
+  { path: 'paymentStatus/:cartID', component: PaymentStatusComponent },
 
 ];
 
