@@ -1,31 +1,45 @@
+/* Estilos generales */
 .inventory {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin-top: 20px;
 }
 
 .messageSuccess {
-    color: green;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  color: green;
 }
 
-table {
-    border-collapse: collapse;
-    border: 1px solid black;
+.actions {
+  margin-top: 20px;
 }
 
-th {
-    background-color: blue;
-    color: white;
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-th,
-td {
-    text-align: left;
-    padding: 8px;
+/* Estilos para mat-list */
+mat-list {
+  margin-top: 20px;
+}
+
+mat-list-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+mat-subheader {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Estilos para mat-form-field y mat-input */
+mat-form-field {
+  width: 100%;
+}
+
+/* Estilos para botones mat-raised-button */
+mat-raised-button {
+  margin-right: 10px;
 }

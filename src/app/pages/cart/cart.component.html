@@ -1,34 +1,65 @@
-<div class="container"> 
-  <div class="encabezado">
-    <div class="imagen">Imagen</div>
-    <div class="producto">Producto</div>
-    <div class="precio">Precio</div>
-    <div class="cantidad">Cantidad</div>
-    <div class="total">Total</div>
-  </div>
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
 
-  <div class="lista-productos">
-    <div *ngFor="let producto of productos" class="item-producto">
-      <label  (click)="seleccionarProducto(producto)">
-        <input type="checkbox" class="seleccionar">
-      </label>
-      <div class="imagen" > Imagen del producto</div>
-      <div class="producto">{{ producto.nombre }}</div>
-      <div class="precio">{{ producto.precio}}</div>
-      <div class="cantidad-productos">
-        <button (click)="restarProducto()">-</button>
-        <div class="cantidad-indicador">{{ cantidadProductos }}</div>
-        <button (click)="sumarProducto()">+</button>
+  </div>
+  <div class="mainContainer">
+    <div *ngIf="!loading" class="container">
+    {{ message }}
+
+      <div class="encabezado">
+        <div class="imagen">Image</div>
+        <div class="producto">Product</div>
+        <div class="precio">Price</div>
+        <div class="cantidad">Amount</div>
+        <div class="total">Total</div>
+        <div> </div>
       </div>
-      <div class="total">{{(producto.precio * cantidadProductos)}}</div>
-      <div class="borrar">
-        <button (click)="borrarProducto(producto)">Borrar</button>
+
+      <div class="lista-productos">
+        <div class="item-producto" *ngFor="let item of cartItems ">
+          <div class="imagen">
+
+            <!-- Mostrar imagen del producto -->
+            <img [src]="item.productImages[0].imageURL" alt="Imagen del producto">
+          </div>
+          <!-- Mostrar nombre del producto -->
+          <div class="producto">
+            {{ item.product.productName }}
+          </div>
+
+          <!-- Mostrar precio del producto -->
+          <div class="precio">
+            {{ item.product.price | currency }}
+          </div>
+
+          <div class="cantidad-productos">
+
+            <!-- reducir cantidad del producto -->
+            <button (click)="substractProduct(item)">-</button>
+            <!-- Mostrar cantidad del producto -->
+            <div class="cantidad-indicador">
+              {{item.quantity }}
+            </div>
+            <!-- aumentar cantidad del producto -->
+            <button (click)="addProduct(item)">+</button>
+          </div>
+          <div class="total">
+            {{ item.quantity * item.product.price | currency }}
+          </div>
+          <!-- Borar  producto -->
+          <div class="borrar">
+            <button (click)="removeProduct(item.cartID)">Delete</button>
+          </div>
+        </div>
       </div>
+
+      <div class="resumen-total">
+        <div class="total-etiqueta">Total: </div>
+        <div class="total">{{ calculateTotal() | currency }}</div>
+      </div>
+      <div class="pagar-button-container">
+        <button (click)="payment()" mat-raised-button color="primary" class="pagar-button">Pay</button>
+      </div>
+
     </div>
   </div>
-
-  <div class="resumen-total">
-    <div class="total-etiqueta">Total</div>
-    <div class="total-suma">Suma de todos los productos</div>
-  </div>
-</div>

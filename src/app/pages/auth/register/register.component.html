@@ -1,32 +1,35 @@
 <div class="mainContainer">
-  <div class="registerForm">
+  <div class="registerForm" > {{message}}
     <div class="content">
       <div class="titleContainer">
-        <p>Registrarme</p>
+        <p>Sign Up</p>
       </div>
       <div class="formContainer">
-        <form >
+        <form [formGroup]="register" (ngSubmit)="Registrar()" >
           <div class="inputContainer">
 
-            <p class="titleFullName">Nombre Completo</p>
-            <input class="inputFullName" type="text" name="fullName" id="fullName" placeholder="Nombre completo" />
+            <p class="titleFullName">Name</p>
+            <input class="inputFullName" type="text" name="fullName" id="fullName" placeholder="Name" formControlName="fullName" />
 
-            <p class="titleEmail">Correo Electrónico</p>
-            <input class="inputEmail" type="email" name="user" id="user" placeholder="Correo electrónico" />
+            <p class="titleEmail">Email</p>
+            <input class="inputEmail" type="email" name="email" id="email" placeholder="Email" formControlName="email"/>
 
-            <p class="titleCellphone">Celular</p>
-            <input class="inputCellphone" type="tel" name="cellphone" id="cellphone" placeholder="Celular" />
+            <p class="titleUserName">Username</p>
+            <input class="inputUserName" type="text" name="username" id="Username" placeholder="Username" formControlName="username" />
 
-            <p class="titleAddress">Dirección</p>
-            <input class="inputAddress" type="text" name="address" id="address" placeholder="Dirección" />
+            <p class="titleCellphone">Cellphone</p>
+            <input class="inputPhone" type="tel" name="phone" id="phone" placeholder="Cellphone"  formControlName="phone"/>
 
-            <p class="titlePassword">Contraseña</p>
-            <input class="inputPassword" type="password" name="pass" id="pass" placeholder="Contraseña" />
+            <p class="titleAddress">Address</p>
+            <input class="inputAddress" type="text" name="address" id="address" placeholder="Address" formControlName="address" />
+
+            <p class="titlePassword">Password</p>
+            <input class="inputPassword" type="password" name="password" id="password" placeholder="Password" formControlName="password" />
 
           </div>
 
           <div class="BtnContainer">
-            <input type="submit" class="btn-login" value="REGISTRARSE">
+            <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="register.invalid" >Sign up</button>
           </div>
         </form>
       </div>

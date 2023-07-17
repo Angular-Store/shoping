@@ -3,26 +3,25 @@
   <div class="login-form" *ngIf="!loading">
     <div class="content">
       <div class="titleContainer">
-        <p>Ingresar / Login </p>
+        <p> Login </p>
       </div>
       <form [formGroup]="form" class="formContainer" (ngSubmit)="Ingresar()">
         <div class="inputContainer">
-          <p class="titleEmail">Correo Electrónico</p>
+          <p class="titleEmail">User Name</p>
           <input class="inputEmail" type="text" name="user" id="user" placeholder="Username" autocomplete="off" formControlName="username" />
-          <p class="titlePassword">Contraseña</p>
+          <p class="titlePassword">Password</p>
           <input class="inputPassword" type="password" name="pass" id="pass" placeholder="Contraseña" autocomplete="off" formControlName="password"/>
         </div>
-      
-
         <div class="BtnContainer">
           <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="form.invalid">Login</button>
-
-          <a href="/register" mat-raised-button color="primary" class="BtnRegistrame">REGISTRAME</a>
-
-      
-        
+  
+          <a href="/register" mat-raised-button color="primary" class="BtnRegistrame">Sign up</a>
+          
         </div>
       </form>
+
+    
+      
     </div>
 
   </div>

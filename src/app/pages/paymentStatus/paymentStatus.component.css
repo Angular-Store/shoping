@@ -1,20 +1,18 @@
 .container {
-    display: flex;
-    max-width: 390px;
-    max-height: 250px;
+    max-width: 500px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px #ccc;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    background-color: #f5f5f585;
+    box-shadow: 0 0 10px #141313;
     margin: 0 auto;
-    margin-top: 220px;
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 
-h1 {
+h2 {
+    margin-top: 30px;
+    text-align: center;
     font-size: 24px;
     color: #0654ae;
     margin-bottom: 10px;
@@ -26,16 +24,48 @@ p {
     margin-bottom: 20px;
 }
 
-button {
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.user-form.loading {
+    font-size: 18px;
+    color: #474747;
+}
+
+.btnWithHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #0099ff;
-    color: #fff;
-    padding: 10px 20px;
+    padding: 2px 10px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
+    text-align: center;
 }
 
-button:hover {
+p {
+    margin-top: 20px;
+}
+
+.btnWithHome:hover {
     background-color: #707070;
 }

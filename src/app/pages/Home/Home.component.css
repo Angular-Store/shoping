@@ -1,5 +1,7 @@
 .product-list {
   display: flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
@@ -12,6 +14,12 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.product-card:hover {
+  cursor: pointer;
+  scale: 1.02;
 }
 
 mat-card {
@@ -25,17 +33,24 @@ mat-card-header {
 }
 
 mat-card-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  color: #666666;
+  line-height: 1.2; /* Ajusta el valor según tus necesidades */
+  margin-bottom: 20px;
 }
 
 mat-card-subtitle {
   font-size: 16px;
-  color: #666666;
+  color: rgb(144, 143, 143);
 }
 
 mat-card-content {
   flex-grow: 1;
+  font-size: 18px;
+  font-weight: regular;
+  color: #474747;
+  margin-bottom: 20px;
 }
 
 .price {
@@ -49,16 +64,30 @@ mat-card-actions {
   justify-content: center;
 }
 
-button {
-  background-color: #007bff;
+.buttonCard {
+  background-color: #0056b3;
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0099ff;
+  color: #ffffff;
 }
 
+.buttonAddToCart {
+  color: white;
+}
+
+ 
+.footerSecond{
+  background-color: #0654ae;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}

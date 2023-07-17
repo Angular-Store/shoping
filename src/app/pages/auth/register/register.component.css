@@ -1,6 +1,6 @@
 .mainContainer {
     background-color: #0654ae;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
 
 .registerForm {
     width: 280px;
-    height: 68%;
+    min-height: -moz -fit-content;
     padding: 40px 80px 80px 80px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
@@ -44,7 +44,8 @@
 .registerForm .titleEmail,
 .registerForm .titleAddress,
 .registerForm .titleCellphone,
-.registerForm .titleFullName {
+.registerForm .titleFullName,
+.registerForm .titleUserName {
     padding-top: 3px;
     font-size: 16px;
 }
@@ -73,7 +74,8 @@
 .registerForm .inputPassword,
 .registerForm .inputFullName,
 .registerForm .inputAddress,
-.registerForm .inputCellphone {
+.registerForm .inputPhone,
+.registerForm .inputUserName {
     width: 93.5%;
     height: 10px;
     border: 1px solid black;
@@ -108,15 +110,6 @@
 
 
 /* Estilos responsive */
-
-
-@media (max-width: 680px) {
-
-    .registerForm {
-        max-width: 280px;
-    }
-}
-
 @media (max-width: 550px) {
 
     .registerForm {
@@ -127,7 +120,8 @@
     .registerForm .titleEmail,
     .registerForm .titleAddress,
     .registerForm .titleCellphone,
-    .registerForm .titleFullName {
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
         font-size: 16px;
     }
 
@@ -140,9 +134,10 @@
     .registerForm .inputPassword,
     .registerForm .inputFullName,
     .registerForm .inputAddress,
-    .registerForm .inputCellphone {
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
         width: 91%;
-        height: 18px;
+        height: 10px;
     }
 
 
@@ -160,11 +155,11 @@
 
     .registerForm {
         width: 200px;
-        height: 65%;
         padding: 40px 80px 80px 80px;
     }
 
     .registerForm .titleContainer {
+        padding: 0 0;
         font-size: 25px;
 
     }
@@ -173,16 +168,17 @@
     .registerForm .inputPassword,
     .registerForm .inputFullName,
     .registerForm .inputAddress,
-    .registerForm .inputCellphone {
+    .registerForm .inputPhone {
         width: 89%;
-        height: 12px;
+        height: 10px;
     }
 
     .registerForm .titlePassword,
     .registerForm .titleEmail,
     .registerForm .titleAddress,
     .registerForm .titleCellphone,
-    .registerForm .titleFullName {
+    .registerForm .titleFullName,
+    .registerForm .titleUserName  {
      font-size: 13px;
 }
 }
@@ -192,23 +188,35 @@
 
     .registerForm {
         width: 150px;
-        height: 65%;
         padding: 20px 40px 40px 40px;
     }
 
     .registerForm .titleContainer {
-        font-size: 20px;
-        padding: 10px 0;
+        font-size: 16px;
+        padding: 8px 0;
+        margin-bottom: 2px;
     }
 
+
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    font-size: 10px;
+}
 
     .registerForm .inputEmail,
     .registerForm .inputPassword,
     .registerForm .inputFullName,
     .registerForm .inputAddress,
-    .registerForm .inputCellphone {
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
         width: 85%;
-        height: 10px;
+        height: 8px;
+        font-size: 9px;
     }
 
 
@@ -232,8 +240,51 @@
 
     
     .registerForm {
-       
         height: 69%;
-        
+    }
+    
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
+        width: 85%;
+        height: 6px;
+        font-size: 9px;
+    }
+    
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
+        width: 85%;
+        height: 6px;
+        font-size: 9px;
     }
 }

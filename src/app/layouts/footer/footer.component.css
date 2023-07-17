@@ -1,11 +1,98 @@
-.footerContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+body{
+  padding: 0;
+  margin: 0;
 }
-.footer-text {
-  font-size: 12px;
-  color: white;
-  opacity: 0.7;
+
+h2 {
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.footerSecond{
+  background-color: #0654ae;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.footer-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0.5, 0, 0); /* Agrega una sombra */
+  position: sticky;
+  top: 0; /* Hace que el encabezado sea pegajoso en la parte superior */
+  z-index: 100; /* Asegura que el encabezado esté por encima de otros elementos */
+  height: 150px;
+  padding: 30px;
+}
+
+.column {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  align-items: first baseline;
+}
+
+h3 {
+  margin-bottom: 0px;
+  font-size: 14px;
+  color: #707070;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #707070;
+}
+
+.social-icons {
+  display: flex;
+  
+}
+
+.social-icons mat-icon {
+  display: flex;
+  flex-direction: column;
+  color: #0654ae;
+  cursor: pointer;  
+}
+
+.social-icons mat-icon:hover {
+  display: flex;
+  flex-direction: column;
+  color: #0099ff;
+  cursor: pointer;  
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0654ae;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+  .footer-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100; /* Asegura que el encabezado esté por encima de otros elementos */
+    height: 320px;
+    padding: 20px;
+
+  }
+
+  .footerSecond{
+    margin-bottom: 20px;
+  }
+  
 }
