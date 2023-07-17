@@ -12,6 +12,7 @@ export class DetailsComponent implements OnInit {
   message: string = '';
   products: any[] = [];
   amountProducts: number = 1;
+  imgP: string = '';
   img1: string = '';
   img2: string = '';
   img3: string = '';
@@ -44,6 +45,7 @@ export class DetailsComponent implements OnInit {
           (p) => p.productID == this.idProducto
         );
         if (product) {
+          this.imgP = product.productImages[0].imageURL;
           this.img1 = product.productImages[0].imageURL;
           this.img2 = product.productImages[1].imageURL;
           this.img3 = product.productImages[2].imageURL;
@@ -59,14 +61,15 @@ export class DetailsComponent implements OnInit {
   }
 
   changeImage(index: number) {
-    if (index === 2) {
-      const tempImg = this.img1;
-      this.img1 = this.img2;
-      this.img2 = tempImg;
-    } else if (index === 3) {
-      const tempImg = this.img1;
-      this.img1 = this.img3;
-      this.img3 = tempImg;
+    if (index === 1) {
+      this.imgP = this.img1;
+      this.imgP = this.img1;
+    }  if (index === 2) {
+      this.imgP = this.img2;
+    this.imgP = this.img2;
+    }  if (index === 3) {
+      this.imgP = this.img3;
+    this.imgP = this.img3;
     }
   }
 

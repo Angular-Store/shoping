@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit {
   isMenuIconClose: boolean = false; // Agregar variable para el icono del menú
   isAdmin: boolean = false;
 
-
-
   constructor() { }
 
   ngOnInit() {

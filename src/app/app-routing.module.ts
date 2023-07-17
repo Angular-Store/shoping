@@ -16,8 +16,10 @@ const routes: Routes = [
   { path: 'details/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent ,canActivate: [AuthGuard]},
   { path: 'paymentStatus/:cartID', component: PaymentStatusComponent },
+  // import child routes from AdminModule
+  { path: '', loadChildren: () => import('./pages/Admin/Admin.module').then(m => m.AdminModule) },
   //ruta para el 404
-  { path: '**', component:Page404Component },
+  { path: '**', component: Page404Component },
 
 ];
 
