@@ -1,44 +1,30 @@
-/* Estilos generales */
-h2 {
-    margin-top: 20px;
-  }
-  
-  button {
-    margin-bottom: 20px;
-  }
-  
-  .mat-spinner {
-    margin: 20px auto;
-    display: block;
-  }
-  
-  /* Estilos para la tabla */
-  table {
+.table-container {
+  overflow: auto;
+  position: relative;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.scroll-right-arrow {
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+  table.mat-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
   }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+
+  table.mat-table th.mat-header-cell,
+  table.mat-table td.mat-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Estilos responsive */
-  @media screen and (max-width: 600px) {
-    table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  
-    th, td {
-      display: inline-block;
-    }
-  }
-  
+}

@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 
-
-
 @Component({
   selector: 'app-inventory-edit',
   templateUrl: './inventory-edit.component.html',
@@ -34,7 +32,6 @@ export class InventoryEditComponent {
         this.loading = false;
       }
     );
-    
   }
 
   inventorySelected(item: any) {
@@ -44,5 +41,15 @@ export class InventoryEditComponent {
 
   goBack() {
     window.history.back();
+  }
+
+  isTableScrollable(): boolean {
+    const tableContainer = document.querySelector('.table-container') as HTMLElement;
+    return tableContainer.scrollWidth > tableContainer.clientWidth;
+  }
+
+  scrollTableRight(): void {
+    const tableWrapper = document.querySelector('.table-wrapper') as HTMLElement;
+    tableWrapper.scrollLeft += 100; // Adjust the scroll amount as needed
   }
 }
