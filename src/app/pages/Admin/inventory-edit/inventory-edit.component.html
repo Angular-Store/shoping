@@ -1,8 +1,10 @@
 <h2>Edit Inventory</h2>
 
-<button (click)="goBack()">Back</button>
+<button mat-button (click)="goBack()">Back</button>
 
-<div *ngIf="loading">Loading...</div>
+<div class="loading" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
 
 <div *ngIf="!loading && inventory">
   <table>
@@ -21,51 +23,65 @@
       <tr *ngFor="let item of inventory">
         <td>{{ item.inventoryID }}</td>
         <td>
-          <input
-            type="text"
-            [(ngModel)]="item.product.productName"
-            [disabled]="disabled"
-            placeholder="Item name"
-          />
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="item.product.productName"
+              [disabled]="disabled"
+              placeholder="Item name"
+            />
+          </mat-form-field>
         </td>
         <td>
-          <input
-            type="number"
-            [(ngModel)]="item.quantity"
-            [disabled]="disabled"
-            placeholder="Quantity"
-          />
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="item.quantity"
+              [disabled]="disabled"
+              placeholder="Quantity"
+            />
+          </mat-form-field>
         </td>
         <td>
-          <input
-            type="number"
-            [(ngModel)]="item.stockMin"
-            [disabled]="disabled"
-            placeholder="Stock Min"
-          />
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="item.stockMin"
+              [disabled]="disabled"
+              placeholder="Stock Min"
+            />
+          </mat-form-field>
         </td>
         <td>
-          <input
-            type="number"
-            [(ngModel)]="item.stockMax"
-            [disabled]="disabled"
-            placeholder="Stock Max"
-          />
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="item.stockMax"
+              [disabled]="disabled"
+              placeholder="Stock Max"
+            />
+          </mat-form-field>
         </td>
         <td>
-          <input
-            type="number"
-            [(ngModel)]="item.product.price"
-            [disabled]="disabled"
-            placeholder="Price"
-          />
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="item.product.price"
+              [disabled]="disabled"
+              placeholder="Price"
+            />
+          </mat-form-field>
         </td>
         <td>
           <!-- Actions -->
-          <button (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
+          <button mat-raised-button color="primary" (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

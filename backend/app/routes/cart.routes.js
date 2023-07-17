@@ -3,6 +3,7 @@ import ShoppingCart from '../models/cart.models.js';
 import User from '../models/user.models.js';
 import Product from '../models/product.models.js';
 import Inventory from '../models/inventory.model.js';
+import ProductImage from '../models/productImages.model.js';
 
 const cartRouter = express.Router();
 
@@ -32,7 +33,15 @@ cartRouter.get('/user/:userID', async (req, res) => {
 				if (product.length === 0) {
 					return { ...cartItem.dataValues, product: {} };
 				}
-				return { ...cartItem.dataValues, product };
+				// Obtaining the images of the product
+				const productImages = await ProductImage.findAll({
+					where: { productID: product.productID },
+				});
+				if (productImages.length === 0) {
+					return { ...cartItem.dataValues, product: {} };
+				}
+
+				return { ...cartItem.dataValues, product, productImages };
 			})
 		);
 
@@ -77,7 +86,15 @@ cartRouter.get('/user/:userID/active', async (req, res) => {
 				if (product.length === 0) {
 					return { ...cartItem.dataValues, product: {} };
 				}
-				return { ...cartItem.dataValues, product };
+				// Obtaining the images of the product
+				const productImages = await ProductImage.findAll({
+					where: { productID: product.productID },
+				});
+				if (productImages.length === 0) {
+					return { ...cartItem.dataValues, product: {} };
+				}
+
+				return { ...cartItem.dataValues, product, productImages };
 			})
 		);
 

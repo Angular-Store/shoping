@@ -4,30 +4,27 @@
 <div class='body'>
   <div class='productInfoContainer'>
     <div class='ContainerProductImage'>
-    <img   class='productImage' src='{{img1}}' alt='img'>
-    <div class='LittleImages'>
-      <img (click)="changeImage(2)" class='Littleimage' src='{{img2}}' alt='img'>
-      <img (click)="changeImage(3)" class='Littleimage' src='{{img3}}' alt='img'>
-      <img (click)="changeImage(4)" class='Littleimage' src='{{img4}}' alt='img'>
-    </div>
+      <img class='productImage' [src]='img1' alt='img1'>
+      <div class='LittleImages'>
+        <img (click)="changeImage(2)" class='Littleimage' [src]='img2' alt='img2'>
+        <img (click)="changeImage(3)" class='Littleimage' [src]='img3' alt='img3'>
+      </div>
     </div>
     <div class='descriptionContainer'>
-      <div class='productName'>Product name</div>
+      <div class='productName'>{{ products[1]?.productName }}</div>
       <h2>DESCRIPTION </h2>
-      <p class='productDescription'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed beatae asperiores vel
-        officiis perferendis iusto eligendi. Necessitatibus voluptates ipsum ex magnam velit, labore harum odit illo
-        atque, maxime neque aut.</p> 
-        <h3 class='productPrice'>$200.000</h3>
-        <p class='AmountP'>Amount</p>
+      <p class='productDescription'>{{ products[1]?.description }}</p> 
+      <h3 class='productPrice'>{{ products[1]?.price | currency }}</h3>
+      <p class='AmountP'>Amount</p>
       <div class='amountBtn'>
-          <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
+        <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
           <mat-button-toggle class='decrementBtn' (click)='disminuirCompra()' value='bold'>-</mat-button-toggle>
           <mat-button-toggle class='productAmount' value='italic'>{{ producto }}</mat-button-toggle>
           <mat-button-toggle class='incrementBtn' (click)='aumentarCompra()' value='underline'>+</mat-button-toggle>
-          </mat-button-toggle-group>    
+        </mat-button-toggle-group>    
       </div>
       <div class='exampleButtonRow'>
-        <button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
+        <button mat-button routerLink='/cart' class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
       </div>
     </div>
   </div>
@@ -39,29 +36,29 @@
   <div class='latestAdded'>
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='latestProductImage' src='https://rickandmortyapi.com/api/character/avatar/2.jpeg' alt='img'>
+        <img class='latestProductImage' [src]='img4' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
-        <p>producto 1</p>
-        <h3>$200.000</h3>
+        <p>{{ products[2]?.productName }}</p>
+        <h3>{{ products[2]?.price | currency }}</h3>
       </div>
     </div>
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='latestProductImage' src='https://rickandmortyapi.com/api/character/avatar/3.jpeg' alt='img'>
+        <img class='latestProductImage' [src]='img5' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
-        <p>peoducto 1</p>
-        <h3>$200.000</h3>
+        <p>{{ products[3]?.productName }}</p>
+        <h3>{{ products[3]?.price | currency }}</h3>
       </div>
     </div>
     <div class='productComponent'>
       <div class='ImageContainer'>
-        <img class='latestPoductImage' src='https://rickandmortyapi.com/api/character/avatar/4.jpeg' alt='img'>
+        <img class='latestPoductImage' [src]='img6' alt='img'>
       </div>
       <div class='descriptionContainerImg'>
-        <p>peoducto 1</p>
-        <h3>$200.000</h3>
+        <p>{{ products[4]?.productName }}</p>
+        <h3>{{ products[4]?.price | currency }}</h3>
       </div>
     </div>
   </div>

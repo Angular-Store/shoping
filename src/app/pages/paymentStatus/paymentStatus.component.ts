@@ -19,7 +19,8 @@ export class PaymentStatusComponent implements OnInit {
   ngOnInit() {
     const cartID = this.route.snapshot.params['cartID'];
     console.log(cartID)
-    const url = `${environment.api}/api/orders/cart/${cartID}`;
+    // const url = `${environment.api}/api/orders/cart/${cartID}`;
+    const url = `http://localhost:8080/api/orders/cart/${cartID}`;
     this.http.get<any>(url).subscribe(
       (response: any) => {
         console.log(response)
