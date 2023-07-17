@@ -7,21 +7,21 @@
   position: sticky;
   top: 0; /* Hace que el encabezado sea pegajoso en la parte superior */
   z-index: 100; /* Asegura que el encabezado esté por encima de otros elementos */
-  padding: 30px;
-
-
+  padding: 20px;
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
   color: #0099ff;
+  cursor: pointer;
 }
 
 .icon-buttons {
   display: flex;
   gap: 12px;
 }
+
 
 
 button.pages:hover {
@@ -37,11 +37,11 @@ button {
   border: none;
   cursor: pointer;
   transition: opacity 0.3s;
+  color: #0654ae;
 }
 
 button:hover {
-  color: white;
-  background: #0654ae;
+  color: #0099ff;
 }
 
 
@@ -119,3 +119,4 @@ button:hover {
     display: none;
   }
 }
+

@@ -1,3 +1,10 @@
+<ngx-slick-carousel class="carousel" [config]="carouselConfig">
+  <div *ngFor="let image of images">
+    <h1>Soy un Carrusel</h1>
+    <img [src]="image" alt="Imagen">
+  </div>
+</ngx-slick-carousel>
+
 <div class="product-list">
   <div class="product-card" *ngFor="let product of products">
     <mat-card>
@@ -10,7 +17,7 @@
         <p class="price">{{ product.price | currency }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="primary" (click)="addToCart(product)">Añadir al carrito</button>
+        <button class="buttonCard" mat-button color="primary" (click)="addToCart(product)">Añadir al carrito</button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/enviroment/enviroment';
 
+
+
 @Component({
   selector: 'app-Home',
   templateUrl: './Home.component.html',
   styleUrls: ['./Home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   products: any[] = [];
 
@@ -32,5 +35,18 @@ export class HomeComponent implements OnInit {
       },0);
     }
   }
+
+  images = [
+    'assets/home/img1.jpg',
+    'assets/home/img2.webp',
+    'assets/home/img3.webp'
+  ];
+
+  carouselConfig = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: true
+  };
 
 }

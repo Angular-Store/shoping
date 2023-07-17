@@ -27,6 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { SlickCarouselModule  } from 'ngx-slick-carousel'; //Carrusel
+
+
 
 
 @NgModule({
@@ -67,6 +70,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     FormsModule,
     AdminModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent],
