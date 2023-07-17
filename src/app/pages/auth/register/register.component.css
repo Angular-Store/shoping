@@ -1,6 +1,6 @@
 .mainContainer {
     background-color: #0654ae;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
 
 .registerForm {
     width: 280px;
-    height: 75%;
+    min-height: -moz -fit-content;
     padding: 40px 80px 80px 80px;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
@@ -110,30 +110,6 @@
 
 
 /* Estilos responsive */
-
-
-@media (max-width: 730px) {
-
-    .registerForm {
-        max-width: 280px;
-        height: 73%;
-        
-    }
-
-    .content {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-
-@media (max-width: 710px) {
-
-    .registerForm {
-        max-width: 280px;
-    }
-}
-
 @media (max-width: 550px) {
 
     .registerForm {
@@ -179,7 +155,6 @@
 
     .registerForm {
         width: 200px;
-        height: 70%;
         padding: 40px 80px 80px 80px;
     }
 
@@ -213,7 +188,6 @@
 
     .registerForm {
         width: 150px;
-        height: 70%;
         padding: 20px 40px 40px 40px;
     }
 
@@ -266,9 +240,7 @@
 
     
     .registerForm {
-       
         height: 69%;
-        
     }
     
     .registerForm .titlePassword,
@@ -278,7 +250,6 @@
     .registerForm .titleFullName,
     .registerForm .titleUserName {
     padding-top: 2px;
-    
     font-size: 10px;
     margin-bottom: 4px;
 }
