@@ -1,36 +1,38 @@
-import { Component, OnInit } from '@angular/core'; // Importa la clase Component y OnInit desde '@angular/core'
-import { ActivatedRoute } from '@angular/router'; // Importa la clase ActivatedRoute desde '@angular/router'
-import { HttpClient } from '@angular/common/http'; // Importa la clase HttpClient desde '@angular/common/http'
-import { environment } from 'src/enviroment/enviroment'; // Importa el archivo de configuración de entorno
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; // Importa el módulo MatProgressSpinnerModule de Angular Material
-import {MatIconModule} from '@angular/material/icon'; // Importa el módulo MatIconModule de Angular Material
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/enviroment/enviroment';
 
 @Component({
-  selector: 'app-payment-status', // Selector CSS para el componente
-  templateUrl: './paymentStatus.component.html', // Ruta del archivo de plantilla HTML para el componente
-  styleUrls: ['./paymentStatus.component.css'] // Rutas de los archivos de estilos CSS para el componente
+  selector: 'app-payment-status',
+  templateUrl: './paymentStatus.component.html',
+  styleUrls: ['./paymentStatus.component.css']
 })
-export class PaymentStatusComponent implements OnInit { // Definición de la clase PaymentStatusComponent implementando OnInit
-  loading: boolean = true; // Variable para controlar el estado de carga
-  order: any; // Variable para almacenar los datos del pedido
-  message: string = ''; // Variable para almacenar un mensaje
+export class PaymentStatusComponent implements OnInit {
+  loading: boolean = true;
+  order: any; 
+  message: string = '';
+  cartID: string = ''; 
+  userID: string = ''; 
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
-    // Constructor del componente que recibe instancias de ActivatedRoute y HttpClient
-  }
+  constructor(private route: ActivatedRoute, private http: HttpClient) {} // Constructor: creates an instance of the PaymentStatusComponent component
 
   ngOnInit() {
-    const cartID = this.route.snapshot.params['cartID']; // Obtiene el parámetro 'cartID' de la URL
-    console.log(cartID); // Imprime el valor de 'cartID' en la consola
-    const url = `${environment.api}/api/orders/cart/${cartID}`; // Construye la URL para realizar una solicitud HTTP
-    this.http.get<any>(url).subscribe(
+    // Lifecycle hook called after the component has been initialized
+    const userJson: string = localStorage.getItem('user')!;
+    const user = JSON.parse(userJson);
+    this.userID = user.userID; // Get the userID from local storage
+
+    const url: string = environment.api; // Get the API base URL from environment configuration
+    this.http.get(`${url}/api/orders/user/${this.userID}`).subscribe(
       (response: any) => {
-        console.log(response); // Imprime la respuesta recibida en la consola
-        this.order = response; // Asigna la respuesta a la variable 'order'
-        this.loading = false; // Cambia el estado de carga a falso
+        // Success callback, handle the response from the API
+        this.order = response; // Assign the API response to the 'order' variable
+        this.loading = false; // Set loading to false as data loading is complete
       },
       (error: any) => {
-        console.error(error); // Imprime el error en la consola
+        // Error callback, handle any errors that occurred during API call
+        console.error(error);
       }
     );
   }

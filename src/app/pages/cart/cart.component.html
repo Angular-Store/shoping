@@ -7,10 +7,10 @@
     {{ message }}
 
       <div class="encabezado">
-        <div class="imagen">Imagen</div>
-        <div class="producto">Producto</div>
-        <div class="precio">Precio</div>
-        <div class="cantidad">Cantidad</div>
+        <div class="imagen">Image</div>
+        <div class="producto">Product</div>
+        <div class="precio">Price</div>
+        <div class="cantidad">Amount</div>
         <div class="total">Total</div>
         <div> </div>
       </div>
@@ -48,7 +48,7 @@
           </div>
           <!-- Borar  producto -->
           <div class="borrar">
-            <button (click)="removeProduct(item.cartID)">Borrar</button>
+            <button (click)="removeProduct(item.cartID)">Delete</button>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
         <div class="total">{{ calculateTotal() | currency }}</div>
       </div>
       <div class="pagar-button-container">
-        <button (click)="payment()" mat-raised-button color="primary" class="pagar-button">Pagar</button>
+        <button (click)="payment()" mat-raised-button color="primary" class="pagar-button">Pay</button>
       </div>
 
     </div>
