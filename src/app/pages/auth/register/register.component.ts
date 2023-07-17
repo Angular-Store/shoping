@@ -22,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
         fullName: ['', Validators.required],
         username: ['', Validators.required],
         email: ['', Validators.required],
-        cellphone: ['', Validators.required],
+        phone: ['', Validators.required],
         address: ['', Validators.required],
         password: ['', Validators.required],
       })
@@ -39,7 +39,7 @@ import { HttpClient } from '@angular/common/http';
          username: this.register.value.username,
          fullName: this.register.value.fullName,
          email: this.register.value.email,
-         cellphone: this.register.value.cellphone,
+         phone: this.register.value.phone,
          address: this.register.value.address,
          password: this.register.value.password
       }
