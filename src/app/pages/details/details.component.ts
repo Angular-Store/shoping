@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
 
   products: any[] = []; // Array para almacenar los productos
   amountProducts: number; // Variable para el número de productos
+  producto: number=0; // Variable para el número de productos
   img1: string = ''; // Variables para almacenar las URLs de las imágenes
   img2: string = '';
   img3: string = '';
@@ -95,6 +96,30 @@ export class DetailsComponent implements OnInit {
   }
 
   addToCart() {
-    
+    const userJson: string = localStorage.getItem('user')!;
+    const user = JSON.parse(userJson);
+    const userID = user.userID;
+    console.log(userID);
+    const api = environment.api;
+    const data = {
+      userID: userID,
+      productID: this.idProducto,
+      quantity:this.producto //contador de productos
+    };
+    this.http.post(`${api}/api/cart`, data).subscribe(
+      (response: any) => {
+        // Lógica adicional después de agregar un producto al carrito
+        console.log(response);
+        //renderizar
+        this.router.navigate(['/cart']);
+
+      },
+      (error: any) => {
+        console.error(error);
+      console.log("no se logro agregar al carrito }"  );
+      }
+    );
+
+
   }
 }
