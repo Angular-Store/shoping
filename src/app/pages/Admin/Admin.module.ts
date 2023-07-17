@@ -14,7 +14,7 @@ import { AdminGuard } from 'src/app/guard/admin.guard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
     UserEditComponent,
     AdminComponent,
     InventoryEditComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -51,6 +52,7 @@ import { MatListModule } from '@angular/material/list';
     MatProgressSpinnerModule,
     MatTableModule,
     MatListModule,
+    MatIconModule,
   ],
 })
 export class AdminModule {}
