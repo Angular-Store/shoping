@@ -96,31 +96,27 @@ export class DetailsComponent implements OnInit {
   }
 
   addToCart() {
-    const userJson: string = localStorage.getItem('user')!;
-    const user = JSON.parse(userJson);
-    const userID = user.userID;
-    console.log(userID);
-    const api = environment.api;
-    const data = {
-      userID: userID,
-      productID: this.idProducto,
-      quantity:this.amountProducts //contador de productos
-    };
-    console.log(data.quantity);
-    this.http.post(`${api}/api/cart`, data).subscribe(
-      (response: any) => {
-        // Lógica adicional después de agregar un producto al carrito
-        console.log(response);
-        console.log("se logro agregar al carrito }"  );
-        //redirigir a carrito
-        this.router.navigate(['/cart']);
-      },
-      (error: any) => {
-        console.error(error);
-      console.log("no se logro agregar al carrito }"  );
-      }
-    );
-
-
+    try {
+      const userJson: string = localStorage.getItem('user')!;
+      const user = JSON.parse(userJson);
+      const userID = user.userID;
+      const api = environment.api;
+      const data = {
+        userID: userID,
+        productID: this.idProducto,
+        quantity: this.amountProducts // contador de productos
+      };
+      console.log(data.quantity);
+      this.http.post(`${api}/api/cart`, data).subscribe(
+        (response: any) => {
+            window.location.reload(); // Recargar la página actual
+            this.router.navigate(['/cart']); // Navegar a la ruta '/cart' después de recargar
+          },
+      );
+    } catch (error) {
+      console.error(error);
+      console.log("No se pudo agregar al carrito");
+    }
   }
+
 }
