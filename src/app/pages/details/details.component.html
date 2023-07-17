@@ -6,20 +6,21 @@
     <div class='ContainerProductImage'>
       <img class='productImage' [src]='img1' alt='img1'>
       <div class='LittleImages'>
+        <img (click)="changeImage(2)" class='Littleimage' [src]='img1' alt='img2'>
         <img (click)="changeImage(2)" class='Littleimage' [src]='img2' alt='img2'>
         <img (click)="changeImage(3)" class='Littleimage' [src]='img3' alt='img3'>
       </div>
     </div>
     <div class='descriptionContainer'>
-      <div class='productName'>{{ products[1]?.productName }}</div>
+      <div class='productName'>{{ products[0]?.productName }}</div>
       <h2>DESCRIPTION </h2>
-      <p class='productDescription'>{{ products[1]?.description }}</p> 
-      <h3 class='productPrice'>{{ products[1]?.price | currency }}</h3>
+      <p class='productDescription'>{{ products[0]?.description }}</p> 
+      <h3 class='productPrice'>{{ products[0]?.price | currency }}</h3>
       <p class='AmountP'>Amount</p>
       <div class='amountBtn'>
         <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
           <mat-button-toggle class='decrementBtn' (click)='disminuirCompra()' value='bold'>-</mat-button-toggle>
-          <mat-button-toggle class='productAmount' value='italic'>{{ producto }}</mat-button-toggle>
+          <mat-button-toggle class='productAmount'  value='italic'>{{ producto }}</mat-button-toggle>
           <mat-button-toggle class='incrementBtn' (click)='aumentarCompra()' value='underline'>+</mat-button-toggle>
         </mat-button-toggle-group>    
       </div>
@@ -66,4 +67,3 @@
 <div class='viewFooter'>
   TODO LO QUE TU NECESITAS EN UNA SOLA TIENDA  
 </div>
-<hr>

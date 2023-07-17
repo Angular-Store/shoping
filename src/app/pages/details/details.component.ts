@@ -36,39 +36,24 @@ export class DetailsComponent implements OnInit {
         console.log(this.products[i]);
       }
       console.log(this.products);
-
+  
       // Obtener las imágenes del primer producto
       if (this.products.length > 0) {
-        const productId = this.products[0].productID;
-        const imagesUrl = `https://angular-store.onrender.com/api/products/${productId}/imageURL`;
-        this.http.get<any[]>(imagesUrl).subscribe(imagesResponse => {
-          if (imagesResponse.length > 0) {
-            // Asigna las URLs de las imágenes a las variables correspondientes
-            this.img1 = imagesResponse[0].imageURL;
-            this.img2 = imagesResponse[1].imageURL;
-            this.img3 = imagesResponse[2].imageURL;
-            this.img4 = imagesResponse[3].imageURL;
-            this.img5 = imagesResponse[4].imageURL;
-            this.img6 = imagesResponse[5].imageURL;
-          }
-        });
+
+        const product = this.products[4]; // Obtener el primer producto
+        // Asigna las URLs de las imágenes del primer producto a las variables correspondientes
+        this.img1 = product.productImages[0].imageURL;
+        this.img2 = product.productImages[1].imageURL;
+        this.img3 = product.productImages[2].imageURL;
+        this.img4 = 'https://rickandmortyapi.com/api/character/avatar/3.jpeg';
+        this.img5 = 'https://rickandmortyapi.com/api/character/avatar/2.jpeg';
+        this.img6 = 'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
+        console.log(this.img1);
+        // Puedes continuar asignando las URLs restantes si es necesario
       }
     });
   }
   
-  // actualizarImagenes() {
-  //   if (this.products.length > 0) {
-  //     const product = this.products[0]; // Obtener el primer producto
-  //     // Asigna las URLs de las imágenes del primer producto a las variables correspondientes
-  //     this.img1 = product.productImages[0].imageURL;
-  //     this.img2 = product.productImages[1].imageURL;
-  //     this.img3 = product.productImages[2].imageURL;
-  //     this.img4 = product.productImages[3].imageURL;
-  //     this.img5 = product.productImages[4].imageURL;
-  //     this.img6 = product.productImages[5].imageURL;
-  //   }
-  // }
-
   //funcion para que al dar click en una imagen pequeña se mustre como la principal
   changeImage(index: number) {
     if (index === 2) {
@@ -81,7 +66,16 @@ export class DetailsComponent implements OnInit {
       this.img1 = this.img3;
       this.img3 = tempImg;
     }
+  
+
+    if (index === 2 || index === 3) {
+      const originalImg2 = this.img2;
+      const originalImg3 = this.img3;
+      this.img2 = originalImg2;
+      this.img3 = originalImg3;
+    }
   }
+  
 
   //funcion para aumentar la cantidad de productos
   aumentarCompra() {
@@ -89,9 +83,9 @@ export class DetailsComponent implements OnInit {
     console.log('cantidad en ' + this.producto);
   }
 
-  //funcion para ¿disminuir la cantidad de productos
+  //funcion para disminuir la cantidad de productos
   disminuirCompra() {
-    if (this.producto === 0) {
+    if (this.producto === 1) {
       console.log('cantidad en 0');
     } else {
       this.producto--;
@@ -99,6 +93,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  handleAmountProducts(){
+    
+  }
   //esto hay que quitarlo o nose xd
   addToCart() {
     console.log('item added to cart');
