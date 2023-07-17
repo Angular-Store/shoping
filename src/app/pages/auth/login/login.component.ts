@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  
   fakeLoading() {
     this.loading = true;
     setTimeout(() => {
