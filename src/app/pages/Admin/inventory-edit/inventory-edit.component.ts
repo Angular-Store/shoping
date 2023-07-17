@@ -23,7 +23,6 @@ export class InventoryEditComponent {
       (response: any) => {
         this.inventory = response;
         this.loading = false;
-        console.log(this.inventory);
       },
       (error: any) => {
         console.error(error);
@@ -34,7 +33,6 @@ export class InventoryEditComponent {
 
   inventorySelected(item: any) {
     // navigate to inventory selected
-    console.log(item.productID);
     this.router.navigate(['/admin/inventory', item.productID]); // Add '/' before 'admin/inventory'
   }
 

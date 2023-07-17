@@ -55,11 +55,11 @@ CREATE TABLE shoppingCart (
 
 CREATE TABLE orders (
     orderID INT AUTO_INCREMENT,
-    cartID INT NOT NULL,
+    userID INT NOT NULL,
     orderDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     orderStatus ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled') NOT NULL DEFAULT 'Pending',
     totalPrice FLOAT NOT NULL,
     shippingAddress VARCHAR(150) NOT NULL,
     CONSTRAINT `PK_orderID` PRIMARY KEY (orderID),
-    CONSTRAINT `FK_cartID_orders` FOREIGN KEY (cartID) REFERENCES shoppingCart(cartID)
+    CONSTRAINT `FK_userID_orders` FOREIGN KEY (userID) REFERENCES users(userID)
 );

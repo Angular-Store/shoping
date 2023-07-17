@@ -24,5 +24,4 @@ export class AdminComponent implements OnInit {
   navigateToInventorySelected(id: number) {
     this.router.navigate(['admin/inventory', id]);
   }
-
 }
