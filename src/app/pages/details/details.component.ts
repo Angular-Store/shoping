@@ -10,16 +10,18 @@ import { environment } from 'src/enviroment/enviroment';
 export class DetailsComponent implements OnInit {
 
   products: any[] = []; // Array para almacenar los productos
-  producto: number; // Variable para el número de productos
+  amountProducts: number; // Variable para el número de productos
   img1: string = ''; // Variables para almacenar las URLs de las imágenes
   img2: string = '';
   img3: string = '';
   img4: string = '';
   img5: string = '';
   img6: string = '';
+  quantity: number; 
 
   constructor(private http: HttpClient) {
-    this.producto = 1; // Establece el número de productos en 1
+    this.amountProducts = 1; // Establece el número de productos en 1
+    this.quantity = this.amountProducts;
     this.consumirAPI(); // Llama a la función para consumir la API
   }
 
@@ -33,6 +35,7 @@ export class DetailsComponent implements OnInit {
       this.products = response; // Asigna la respuesta de la API a la variable products
       //console de cada producto con un ciclo
       for (let i = 0; i < this.products.length; i++) {
+
         console.log(this.products[i]);
       }
       console.log(this.products);
@@ -66,35 +69,28 @@ export class DetailsComponent implements OnInit {
       this.img1 = this.img3;
       this.img3 = tempImg;
     }
-  
-
-    if (index === 2 || index === 3) {
-      const originalImg2 = this.img2;
-      const originalImg3 = this.img3;
-      this.img2 = originalImg2;
-      this.img3 = originalImg3;
-    }
   }
   
 
   //funcion para aumentar la cantidad de productos
   aumentarCompra() {
-    this.producto++;
-    console.log('cantidad en ' + this.producto);
+    this.amountProducts++;
+    console.log('cantidad en ' + this.amountProducts);
   }
 
   //funcion para disminuir la cantidad de productos
   disminuirCompra() {
-    if (this.producto === 1) {
+    if (this.amountProducts === 1) {
       console.log('cantidad en 0');
     } else {
-      this.producto--;
-      console.log('cantidad en ' + this.producto);
+      this.amountProducts--;
+      console.log('cantidad en ' + this.amountProducts);
     }
   }
 
+  //aqui se manda la cantidad de productos pero nose como
   handleAmountProducts(){
-    
+    this.quantity;
   }
   //esto hay que quitarlo o nose xd
   addToCart() {

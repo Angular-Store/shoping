@@ -1,5 +1,5 @@
 <div class='title'>
-  DETALLE DEL PRODUCTO
+  Detalle del producto
 </div>
 <div class='body'>
   <div class='productInfoContainer'>
@@ -20,7 +20,7 @@
       <div class='amountBtn'>
         <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
           <mat-button-toggle class='decrementBtn' (click)='disminuirCompra()' value='bold'>-</mat-button-toggle>
-          <mat-button-toggle class='productAmount'  value='italic'>{{ producto }}</mat-button-toggle>
+          <mat-button-toggle class='productAmount' (click)='handleAmountProducts()' value='italic'>{{  amountProducts }}</mat-button-toggle>
           <mat-button-toggle class='incrementBtn' (click)='aumentarCompra()' value='underline'>+</mat-button-toggle>
         </mat-button-toggle-group>    
       </div>
@@ -64,6 +64,4 @@
     </div>
   </div>
 </div>
-<div class='viewFooter'>
-  TODO LO QUE TU NECESITAS EN UNA SOLA TIENDA  
-</div>
+
