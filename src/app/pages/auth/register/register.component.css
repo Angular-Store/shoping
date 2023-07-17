@@ -264,4 +264,27 @@
         height: 6px;
         font-size: 9px;
     }
+    
+    .registerForm .titlePassword,
+    .registerForm .titleEmail,
+    .registerForm .titleAddress,
+    .registerForm .titleCellphone,
+    .registerForm .titleFullName,
+    .registerForm .titleUserName {
+    padding-top: 2px;
+    
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+    .registerForm .inputEmail,
+    .registerForm .inputPassword,
+    .registerForm .inputFullName,
+    .registerForm .inputAddress,
+    .registerForm .inputPhone,
+    .registerForm .inputUserName {
+        width: 85%;
+        height: 6px;
+        font-size: 9px;
+    }
 }
