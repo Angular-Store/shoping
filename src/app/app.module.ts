@@ -30,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { CarruselProductsComponent } from './layouts/carruselProducts/carruselProducts.component';
+import { Page404Component } from './Extrapeges/Page404/Page404.component';
 
 
 
@@ -44,6 +45,7 @@ import { CarruselProductsComponent } from './layouts/carruselProducts/carruselPr
     CartComponent,
     RegisterComponent,
     CarruselProductsComponent,
+    Page404Component,
 
     LoginComponent,
     HeaderComponent,
