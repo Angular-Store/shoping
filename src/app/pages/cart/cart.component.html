@@ -1,4 +1,11 @@
-<div class="container"> 
+<div *ngIf="loading">
+  <mat-spinner></mat-spinner>
+
+</div>
+
+<div *ngIf="!loading" class="container">
+{{ message }}
+
   <div class="encabezado">
     <div class="imagen">Imagen</div>
     <div class="producto">Producto</div>
@@ -8,32 +15,34 @@
   </div>
 
   <div class="lista-productos">
-    <div  class="item-producto">
-      <div class="imagen" > Imagen del producto</div>
+    <div class="item-producto" *ngFor="let item of cartItems ">
+      <div class="imagen">
+        <!-- Mostrar imagen del producto -->
+        <img [src]="item.productImage" alt="Imagen del producto">
+      </div>
       <div class="producto">
-
+        {{ item.productName }}
       </div>
       <div class="precio">
-
+        {{ item.price | currency }}
       </div>
       <div class="cantidad-productos">
-        <button (click)="substractProduct()">-</button>
+        <button (click)="substractProduct(item)">-</button>
         <div class="cantidad-indicador">
-
+          {{item.quantity }}
         </div>
-        <button (click)="addProduct()">+</button>
+        <button (click)="addProduct(item)">+</button>
       </div>
       <div class="total">
-
+        {{ item.total | currency }}
       </div>
       <div class="borrar">
-        <button (click)="substractProduct()">Borrar</button>
+        <button (click)="removeProduct(item.ID)">Borrar</button>
       </div>
     </div>
   </div>
 
   <div class="resumen-total">
     <div class="total-etiqueta">Total</div>
-    <div class="total-suma">Suma de todos los productos</div>
   </div>
 </div>
