@@ -27,11 +27,11 @@ export class CartComponent implements OnInit {
     console.log(userID);
 
     // Obtener usuario desde la API
-    this.http.get(`${url}/api/cart/user/:userID/active`).subscribe(
+    this.http.get(`${url}/api/cart/user/${userID}/active`).subscribe(
       (response: any) => {
         this.cartItems = response;
         this.quantityCart = response.quantity;
-        console.log('Carrito de compras:', this.cartItems[0]);
+        console.log('Carrito de compras:', response);
         this.loading = false;
       },
       (error: any) => {

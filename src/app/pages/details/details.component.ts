@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
   img5: string = '';
   img6: string = '';
   idProducto: any= ''; // Variable para almacenar el idProducto
-  quantity: number; 
+  quantity: number;
 
   constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {
     this.amountProducts = 1; // Establece el número de productos en 1
@@ -104,15 +104,16 @@ export class DetailsComponent implements OnInit {
     const data = {
       userID: userID,
       productID: this.idProducto,
-      quantity:this.producto //contador de productos
+      quantity:this.amountProducts //contador de productos
     };
+    console.log(data.quantity);
     this.http.post(`${api}/api/cart`, data).subscribe(
       (response: any) => {
         // Lógica adicional después de agregar un producto al carrito
         console.log(response);
-        //renderizar
+        console.log("se logro agregar al carrito }"  );
+        //redirigir a carrito
         this.router.navigate(['/cart']);
-
       },
       (error: any) => {
         console.error(error);
