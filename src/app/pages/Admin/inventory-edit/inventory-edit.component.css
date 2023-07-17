@@ -16,6 +16,14 @@
   transform: translateY(-50%);
 }
 
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 600px) {
   table.mat-table {
     width: 100%;

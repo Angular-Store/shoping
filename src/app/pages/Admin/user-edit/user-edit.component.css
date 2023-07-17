@@ -1,18 +1,25 @@
 .user-form {
-    margin-top: 20px;
-  }
-  
-  mat-form-field {
-    width: 100%;
-  }
-  
-  mat-list-item {
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: 36px;
-  }
-  
-  .actions {
-    margin-top: 20px;
-  }
-  
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-list-item {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 36px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
