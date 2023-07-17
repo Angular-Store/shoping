@@ -11,7 +11,7 @@ import { environment } from 'src/enviroment/enviroment';
 })
 
 export class HomeComponent implements OnInit {
-  
+
   products: any[] = [];
   loading = false;
 
@@ -22,8 +22,9 @@ export class HomeComponent implements OnInit {
     const url = `${environment.api}/api/products`;
     this.http.get<any[]>(url).subscribe(response => {
       this.products = response;
+      console.log('Productos:', this.products);
       //console de cada producto con un ciclo
-  
+
     });
   }
 
@@ -38,6 +39,11 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/login']);
       },0);
     }
+  }
+
+  goToDetails(productId: string) {
+    const url = `/details/${productId}`;
+    this.router.navigateByUrl(url);
   }
 
   fakeLoading() {

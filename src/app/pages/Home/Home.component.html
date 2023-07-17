@@ -9,7 +9,7 @@
 <div class="product-list" *ngIf="!loading">
   <div class="product-card" *ngFor="let product of products">
     <mat-card>
-      <img mat-card-image src="{{ product.productImages[0].imageURL }}" alt="Product Image">
+      <img (click)="goToDetails(product.productID)" mat-card-image src="{{ product.productImages[0].imageURL }}" alt="Product Image">
       <mat-card-header>
         <mat-card-title>{{ product.productName }}</mat-card-title>
         <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
