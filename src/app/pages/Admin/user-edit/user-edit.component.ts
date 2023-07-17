@@ -21,11 +21,13 @@ export class UserEditComponent implements OnInit {
     // Obtener usuario desde la API
     this.http.get(`${url}/api/users/${userID}`).subscribe(
       (response: any) => {
+        this.message = response.message;
         this.user = response;
         this.loading = false;
       },
       (error: any) => {
         console.error(error);
+        this.message = error.message;
         this.loading = false;
       }
     );
