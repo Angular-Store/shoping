@@ -147,8 +147,8 @@ export class CartComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.paymentLink = response.url;
-        // Redireccionar a nueva página __blank
-        window.open(this.paymentLink, '_blank');
+        // cambiar la url de la misma ventana
+        window.open(this.paymentLink, '_self');
       },
       (error: any) => {
         console.error(error);
