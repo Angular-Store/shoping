@@ -18,12 +18,12 @@ orderRouter.get("/", async (req, res) => {
       return res.status(404).json({ message: "Orders not found" });
     }
 
-    // Obtaining the products of the order by cartID when finded the cart search the product within the cart
+    // Obtaining the products of the order by userID when finded the cart search the product within the cart
     const ordersWithProducts = await Promise.all(
       orders.map(async (order) => {
-        const cartID = order.cartID;
+        const userID = order.userID;
         const orderWithCart = await ShoppingCart.findAll({
-          where: { cartID },
+          where: { userID },
         });
 
         const orderWithProducts = await Promise.all(
@@ -51,29 +51,29 @@ orderRouter.get("/", async (req, res) => {
 });
 
 // Obtaining an order by userID with their corresponding products (base path /api/orders/user/:userID)
-orderRouter.get("/cart/:cartID", async (req, res) => {
+orderRouter.get("/user/:userID", async (req, res) => {
   try {
-    const cartID = req.params.cartID;
+    const userID = req.params.userID;
 
     // Verify if the user exists
-    const cart = await ShoppingCart.findByPk(cartID);
+    const user = await User.findByPk(userID);
 
-    if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Obtaining the order
     const order = await Order.findOne({
-      where: { cartID },
+      where: { userID },
     });
 
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
-    console.log(order);
+
     // Obtaining the products of the order by cartID when finded the cart search the product within the cart
     const orderWithCart = await ShoppingCart.findAll({
-      where: { cartID },
+      where: { userID },
     });
 
     const orderWithProducts = await Promise.all(

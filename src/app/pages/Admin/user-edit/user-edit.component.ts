@@ -11,15 +11,24 @@ export class UserEditComponent implements OnInit {
   disabled: boolean = true;
   user: any;
   message: string = '';
-
+  userID: number = 1;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    const userID: number = 1; // Replace with the actual user ID
     const url: string = 'https://angular-store.onrender.com';
-
+    
+    // Retrieve userID from localStorage
+    const localStorageUser = localStorage.getItem('user');
+    // Check if userID exists in localStorage
+    if (localStorageUser) {
+      const user = JSON.parse(localStorageUser);
+      this.userID = user.userID;
+    } else {
+      console.error('userID not found in localStorage');
+    }
+  
     // Obtener usuario desde la API
-    this.http.get(`${url}/api/users/${userID}`).subscribe(
+    this.http.get(`${url}/api/users/${this.userID}`).subscribe(
       (response: any) => {
         this.message = response.message;
         this.user = response;
@@ -32,6 +41,7 @@ export class UserEditComponent implements OnInit {
       }
     );
   }
+  
 
   editUser() {
     this.disabled = false;
@@ -42,7 +52,10 @@ export class UserEditComponent implements OnInit {
     const url: string = 'https://angular-store.onrender.com';
 
     // Enviar información a la API
+    // User id in local storage 
     const userID: number = 1; // Replace with the actual user ID
+    
+
 
     this.http.put(`${url}/api/users/${userID}`, this.user).subscribe(
       (response: any) => {
