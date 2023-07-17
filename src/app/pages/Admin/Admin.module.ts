@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { InventorySelectedComponent } from './inventory-edit/inventory-selected/inventory-selected.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { InventorySelectedComponent } from './inventory-edit/inventory-selected/inventory-selected.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 import { InventoryEditComponent } from './inventory-edit/inventory-edit.component';
 import { AdminComponent } from './Admin.component';
 import { AdminGuard } from 'src/app/guard/admin.guard';
@@ -16,7 +19,6 @@ import { AdminGuard } from 'src/app/guard/admin.guard';
     AdminComponent,
     InventoryEditComponent,
   ],
-
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -27,6 +29,9 @@ import { AdminGuard } from 'src/app/guard/admin.guard';
     ]),
     FormsModule,
     HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
   ],
 })
 export class AdminModule {}
