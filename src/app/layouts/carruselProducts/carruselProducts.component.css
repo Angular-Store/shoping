@@ -1,0 +1,67 @@
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 300px; /* Ajusta la altura según tus necesidades */
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+  margin-right: 10px; /* Espacio entre las tarjetas */
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-description {
+  font-size: 14px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 767px) {
+  .carousel-container {
+    height: 200px;
+  }
+
+  .slide {
+    width: 200px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-description {
+    font-size: 12px;
+  }
+}

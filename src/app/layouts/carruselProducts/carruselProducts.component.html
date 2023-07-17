@@ -1,3 +1,10 @@
-<p>
-  carruselProducts works!
-</p>
+<h2>NOVEDADES</h2>
+<div class="carousel-container">
+  <div class="carousel" [style.transform]="'translateX(' + translateX + 'px)'">
+    <div class="slide" *ngFor="let slide of slides">
+      <div class="card">
+        <img [src]="slide.imageUrl" alt="Imagen del producto">
+      </div>
+    </div>
+  </div>
+</div>
