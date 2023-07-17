@@ -12,10 +12,12 @@ export class DetailsComponent implements OnInit {
   message: string = '';
   products: any[] = [];
   amountProducts: number = 1;
+  imgP: string = '';
   img1: string = '';
   img2: string = '';
   img3: string = '';
   idProducto: any;
+  inputPrice: number = 0;
 
   constructor(
     private http: HttpClient,
@@ -44,9 +46,11 @@ export class DetailsComponent implements OnInit {
           (p) => p.productID == this.idProducto
         );
         if (product) {
+          this.imgP = product.productImages[0].imageURL;
           this.img1 = product.productImages[0].imageURL;
           this.img2 = product.productImages[1].imageURL;
           this.img3 = product.productImages[2].imageURL;
+          this.inputPrice = product.price;
         } else {
           this.router.navigate(['/']);
         }
@@ -59,19 +63,18 @@ export class DetailsComponent implements OnInit {
   }
 
   changeImage(index: number) {
-    if (index === 2) {
-      const tempImg = this.img1;
-      this.img1 = this.img2;
-      this.img2 = tempImg;
+    if (index === 1) {
+      this.imgP = this.img1;
+    } else if (index === 2) {
+      this.imgP = this.img2
     } else if (index === 3) {
-      const tempImg = this.img1;
-      this.img1 = this.img3;
-      this.img3 = tempImg;
+      this.imgP = this.img3
     }
   }
 
   aumentarCompra() {
     this.amountProducts++;
+    this.inputPrice = this.products[this.idProducto - 1]?.price * this.amountProducts;
   }
 
   disminuirCompra() {
@@ -79,6 +82,7 @@ export class DetailsComponent implements OnInit {
       console.log('cantidad en 0');
     } else {
       this.amountProducts--;
+      this.inputPrice = this.products[this.idProducto - 1]?.price * this.amountProducts;
     }
   }
 
