@@ -14,7 +14,7 @@
 
 .login-form {
   width: 330px;
-  height: 65%;
+  height: 72%;
   padding: 40px 80px;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .login-form .titleContainer {
@@ -109,12 +110,35 @@
 
 /* Estilos responsive */
 
-@media (max-width: 680px) {
+@media (max-width: 750px) {
   .login-form {
     max-width: 280px;
+    height: 60%;
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .inputContainer {
+    padding-bottom: 70px;
+   
+  }
+
+  .login-form .BtnContainer {
+    padding: 30px 0;
   }
 }
 
+
+@media (max-width: 710px) {
+  .inputContainer {
+    padding-bottom: 10px;
+  }
+}
 @media (max-width: 550px) {
   .login-form {
     max-width: 240px;
@@ -130,6 +154,8 @@
     padding-top: 30px;
   }
 
+  
+
   .login-form .inputEmail,
   .login-form .inputPassword {
     width: 91%;
@@ -138,7 +164,7 @@
 
   .login-form .BtnContainer {
     width: 100%;
-    padding-top: 70px;
+    padding-top: 50px;
   }
 
   .login-form form {
@@ -175,8 +201,9 @@
     font-size: 20px;
   }
 
-  .BtnContainer {
-    padding-top: 20px;
+  .login-form .BtnContainer {
+    width: 100%;
+    padding-top: 30px;
   }
 
   .login-form .inputEmail,
