@@ -30,6 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCardModule,
     CommonModule,
     FormsModule,
-    AdminModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],

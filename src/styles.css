@@ -4,6 +4,8 @@ body{
   padding: 0;
   margin: 0;
 }
+
+
 /* Define tus propios colores personalizados */
 :root {
   --custom-primary-50: #ffffff;

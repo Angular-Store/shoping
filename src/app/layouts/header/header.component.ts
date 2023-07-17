@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -39,5 +39,18 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
     this.isMenuIconClose = false; // Restaurar el icono de hamburguesa
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkResponsive();
+  }
+
+  checkResponsive() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 600) {
+      this.isMenuOpen = false;
+      this.isMenuIconClose = false;
+  }
 }
 
+}
