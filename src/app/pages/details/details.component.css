@@ -16,11 +16,11 @@
 }
 
 .productInfoContainer {
-  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 30px;
+  margin: 40px 60px;
+  gap: 60px;
 }
 
 .ContainerProductImage {
@@ -56,6 +56,8 @@
 }
 
 .descriptionContainer h2 {
+  display: flex;
+  flex-wrap: wrap;
   color: gray;
   font-size: 20px;
   font-weight: 500;
@@ -81,6 +83,8 @@
 }
 
 .productDescription {
+  display: flex;
+  flex-wrap: wrap;
   color: gray;
   margin-bottom: 10px;
   width: 335px;
@@ -125,7 +129,6 @@
 .productImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .productButtons {
@@ -162,6 +165,7 @@ span {
   color: black;
   width: 164px;
   border: 1px solid #c4c4c4;
+  font-size: 22px;
 }
 
 .incrementBtn {
@@ -172,14 +176,12 @@ span {
   border: 1px solid #c4c4c4;
 }
 
-.addToCartBtn {
+.addToCartBtn{
   background-color: #0654ae;
-  text-align: left;
   color: white;
-  padding: 15px 100px;
+  padding: 23px 92px;
+  border-radius: none;
   border: none;
-  margin: 10px 0;
-  cursor: pointer;
 }
 
 .viewFooter {
@@ -222,12 +224,19 @@ span {
     flex-direction: column;
     align-items: center;
     margin: 20px;
+    max-width: 80%;
   }
 
   .ContainerProductImage {
-    margin-right: 0;
-    margin-bottom: 20px;
-    max-width: none;
+    margin-right: 80%;
+    width: 80%;
+    height: auto;
+  }
+
+  .ImageContainer{
+    margin: 2px;
+    max-width: 60%;
+    padding: 0;
   }
 
   .LittleImages {
@@ -248,10 +257,21 @@ span {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .title {
     padding: 30px;
-    font-size: 28px;
+    font-size: 20px;
+  }
+
+  .productImage{
+    width: 80%;
+    height: auto;
+    margin-left: 2px;
+  }
+  
+  .ContainerProductImage {
+    width: 80%;
+    height: auto;
   }
 
   .productName {
@@ -261,6 +281,7 @@ span {
 
   .productDescription {
     font-size: 16px;
+    max-width: 260px;
   }
 
   .productPrice {
