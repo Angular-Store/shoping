@@ -27,6 +27,7 @@ export class UserEditComponent implements OnInit {
       },
       (error: any) => {
         console.error(error);
+        this.message = error.message;
         this.loading = false;
       }
     );
