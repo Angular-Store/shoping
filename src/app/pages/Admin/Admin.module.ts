@@ -13,6 +13,8 @@ import { AdminComponent } from './Admin.component';
 import { AdminGuard } from 'src/app/guard/admin.guard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,6 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     CommonModule,
-    MatTableModule,
     RouterModule.forChild([
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
       {
@@ -48,6 +49,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatTableModule,
+    MatListModule,
   ],
 })
 export class AdminModule {}
