@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -10,34 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  message: string = ''; // Variable para almacenar el mensaje
-  products: any[] = []; // Array para almacenar los productos
-  amountProducts: number; // Variable para el número de productos
-  producto: number = 0; // Variable para el número de productos
-  img1: string = ''; // Variables para almacenar las URLs de las imágenes
+  message: string = '';
+  products: any[] = [];
+  amountProducts: number = 1;
+  img1: string = '';
   img2: string = '';
   img3: string = '';
-  img4: string = '';
-  img5: string = '';
-  img6: string = '';
-  idProducto: any = ''; // Variable para almacenar el idProducto
-  quantity: number;
+  idProducto: any;
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.amountProducts = 1; // Establece el número de productos en 1
-    this.idProducto = this.extractLastParamFromUrl(); // Obtiene el idProducto de la ruta
-    console.log(this.idProducto); // Imprime el idProducto en la consola
-    this.quantity = this.amountProducts;
-    this.consumirAPI(); // Llama a la función para consumir la API
+    this.idProducto = this.extractLastParamFromUrl();
+    this.consumirAPI();
   }
 
-  ngOnInit(): void {
-    // Método ngOnInit, se ejecuta después del constructor
-  }
+  ngOnInit(): void {}
 
   extractLastParamFromUrl(): string {
     const urlSegments = this.route.snapshot.url;
@@ -47,21 +36,20 @@ export class DetailsComponent implements OnInit {
 
   consumirAPI() {
     const api = environment.api;
-    const productsUrl = `${api}/api/products/${this.idProducto}`; // Agrega el idProducto a la URL
-    this.http.get<any>(productsUrl).subscribe(
+    const productsUrl = `${api}/api/products`;
+    this.http.get<any[]>(productsUrl).subscribe(
       (response) => {
-        this.products = response; // Asigna la respuesta de la API a la variable products
-        //console de cada producto con un ciclo
-        console.log(this.products);
-        // Obtener las imágenes del producto
-        if (this.idProducto > 0 && this.idProducto < 11) {
-          const product = this.products[0]; // Obtener el primer producto
-          // Asigna las URLs de las imágenes del producto a las variables correspondientes
-          this.img1 = response.productImages[0].imageURL;
-          this.img2 = response.productImages[1].imageURL;
-          this.img3 = response.productImages[2].imageURL;
+        this.products = response;
+        const product = this.products.find(
+          (p) => p.productID == this.idProducto
+        );
+        if (product) {
+          this.img1 = product.productImages[0].imageURL;
+          this.img2 = product.productImages[1].imageURL;
+          this.img3 = product.productImages[2].imageURL;
+        } else {
+          this.router.navigate(['/']);
         }
-        //sino rediriga a home o a una pagina de error
       },
       (error) => {
         console.log(error);
@@ -75,7 +63,6 @@ export class DetailsComponent implements OnInit {
       const tempImg = this.img1;
       this.img1 = this.img2;
       this.img2 = tempImg;
-      console.log(this.img1, this.img2, tempImg);
     } else if (index === 3) {
       const tempImg = this.img1;
       this.img1 = this.img3;
@@ -85,7 +72,6 @@ export class DetailsComponent implements OnInit {
 
   aumentarCompra() {
     this.amountProducts++;
-    console.log('cantidad en ' + this.amountProducts);
   }
 
   disminuirCompra() {
@@ -93,35 +79,36 @@ export class DetailsComponent implements OnInit {
       console.log('cantidad en 0');
     } else {
       this.amountProducts--;
-      console.log('cantidad en ' + this.amountProducts);
     }
   }
 
   handleAmountProducts() {
-    this.quantity;
+    // Implement any logic you need here
   }
 
   addToCart() {
-      const userJson: string = localStorage.getItem('user')!;
+    const userJson: string | null = localStorage.getItem('user');
+    if (userJson) {
       const user = JSON.parse(userJson);
       const userID = user.userID;
       const api = environment.api;
       const data = {
         userID: userID,
         productID: this.idProducto,
-        quantity: this.amountProducts, // contador de productos
+        quantity: this.amountProducts,
       };
-      console.log(data.quantity);
-      this.http.post(`${api}/api/cart`, data).subscribe((response: any) => { // Recargar la página actual
-        //renderizar el carrito
-        window.location.reload(); 
-        this.router.navigate(['/cart']); // Navegar a la ruta '/cart' después de recargar
-      },
-      (error) => {
-        console.log(error);
-        this.message = error.error.message;
-      }
+      this.http.post(`${api}/api/cart`, data).subscribe(
+        (response: any) => {
+          window.location.reload();
+          this.router.navigate(['/cart']);
+        },
+        (error) => {
+          console.log(error);
+          this.message = error.error.message;
+        }
       );
+    } else {
+      // Handle the case when the user is not logged in
     }
   }
-
+}
