@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/enviroment/enviroment';
 
 
-
 @Component({
   selector: 'app-Home',
   templateUrl: './Home.component.html',
@@ -12,17 +11,21 @@ import { environment } from 'src/enviroment/enviroment';
 })
 
 export class HomeComponent implements OnInit {
+
   products: any[] = [];
 
   constructor(private http: HttpClient,private router: Router) {}
+
 
   ngOnInit() {
     const url = `${environment.api}/api/products`;
     this.http.get<any[]>(url).subscribe(response => {
       this.products = response;
       //console de cada producto con un ciclo
+  
     });
   }
+
 
   addToCart(product: any) {
     const token = localStorage.getItem('token');
@@ -36,17 +39,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  images = [
-    'assets/home/img1.jpg',
-    'assets/home/img2.webp',
-    'assets/home/img3.webp'
-  ];
-
-  carouselConfig = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    dots: true
-  };
-
 }
+
+

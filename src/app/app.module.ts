@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './layouts/header/header.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './pages/Admin/Admin.module';
 import { HomeComponent } from './pages/Home/Home.component';
@@ -27,8 +27,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
-import { SlickCarouselModule  } from 'ngx-slick-carousel'; //Carrusel
-
 
 
 
@@ -69,8 +67,7 @@ import { SlickCarouselModule  } from 'ngx-slick-carousel'; //Carrusel
     MatCardModule,
     CommonModule,
     FormsModule,
-    AdminModule,
-    SlickCarouselModule
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],
