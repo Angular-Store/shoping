@@ -1,21 +1,45 @@
-<mat-toolbar color="primary">
-  <span class="logo">Mi Tienda</span>
+<mat-toolbar color="header">
+
+  <span class="logo">iParadise</span>
+
+  <button class="menu-toggle" (click)="toggleMenu()">
+    <mat-icon aria-label="Menu" *ngIf="!isMenuIconClose">menu</mat-icon>
+    <mat-icon aria-label="Close" *ngIf="isMenuIconClose">close</mat-icon>
+  </button>
+
   <div class="icon-buttons">
+
     <button mat-icon-button routerLink="/">
       <mat-icon aria-label="Home">home</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/cart">
-      <mat-icon aria-label="Carrito">shopping_cart</mat-icon>
-    </button>
+
     <button *ngIf="isLoggedIn" mat-icon-button (click)="logout()">
       <mat-icon aria-label="Logout">exit_to_app</mat-icon>
     </button>
+
     <button *ngIf="!isLoggedIn" mat-icon-button routerLink="/login">
       <mat-icon aria-label="Login">account_circle</mat-icon>
     </button>
+
     <button *ngIf="!isLoggedIn" mat-icon-button routerLink="/register">
       <mat-icon aria-label="Register">person_add</mat-icon>
     </button>
+
+    <button mat-icon-button routerLink="/cart">
+      <mat-icon aria-label="Carrito">shopping_cart</mat-icon>
+    </button>
+    
   </div>
+
+  <div class="mobile-menu" [class.open]="isMenuOpen">
+    <!-- Enlaces del menú desplegable -->
+    <a mat-button routerLink="/" (click)="closeMenu()">Home</a>
+    <a mat-button routerLink="/" (click)="closeMenu()">Tienda</a>
+    <a mat-button routerLink="/cart" (click)="closeMenu()">Carrito</a>
+    <a *ngIf="isLoggedIn" mat-button (click)="logout(); closeMenu()">Cerrar Sesion</a>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/login" (click)="closeMenu()">Iniciar Sesion</a>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/register" (click)="closeMenu()">Registrarse</a>
+  </div>
+
 </mat-toolbar>
 
