@@ -12,6 +12,9 @@ import { InventoryEditComponent } from './inventory-edit/inventory-edit.componen
 import { AdminComponent } from './Admin.component';
 import { AdminGuard } from 'src/app/guard/admin.guard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     UserEditComponent,
     AdminComponent,
     InventoryEditComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -46,6 +50,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatTableModule,
+    MatListModule,
+    MatIconModule,
   ],
 })
 export class AdminModule {}

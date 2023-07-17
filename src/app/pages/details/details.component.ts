@@ -1,39 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-
-  products: any[] = []; // Array para almacenar los productos
-  amountProducts: number; // Variable para el número de productos
-  producto: number=0; // Variable para el número de productos
-  img1: string = ''; // Variables para almacenar las URLs de las imágenes
+  message: string = '';
+  products: any[] = [];
+  amountProducts: number = 1;
+  imgP: string = '';
+  img1: string = '';
   img2: string = '';
   img3: string = '';
-  img4: string = '';
-  img5: string = '';
-  img6: string = '';
-  idProducto: any= ''; // Variable para almacenar el idProducto
-  quantity: number;
+  idProduct: any;
+  inputPrice: number = 0;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {
-    this.amountProducts = 1; // Establece el número de productos en 1
-    this.idProducto = this.extractLastParamFromUrl(); // Obtiene el idProducto de la ruta
-    console.log(this.idProducto); // Imprime el idProducto en la consola
-    this.quantity = this.amountProducts;
-    this.consumirAPI(); // Llama a la función para consumir la API
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.idProduct = this.extractLastParamFromUrl();
+    this.consumeAPI();
   }
 
-  ngOnInit(): void {
-    // Método ngOnInit, se ejecuta después del constructor
-  }
+  ngOnInit(): void {}
 
   extractLastParamFromUrl(): string {
     const urlSegments = this.route.snapshot.url;
@@ -41,82 +36,81 @@ export class DetailsComponent implements OnInit {
     return lastSegment.path;
   }
 
-  consumirAPI() {
+  consumeAPI() {
     const api = environment.api;
-    const productsUrl = `${api}/api/products/${this.idProducto}`; // Agrega el idProducto a la URL
-    this.http.get<any>(productsUrl).subscribe(response => {
-      this.products = response; // Asigna la respuesta de la API a la variable products
-      //console de cada producto con un ciclo
-      console.log(this.products);
-      // Obtener las imágenes del producto
-      if (this.idProducto > 0 && this.idProducto < 11) {
-        const product = this.products[0]; // Obtener el primer producto
-        // Asigna las URLs de las imágenes del producto a las variables correspondientes
-        this.img1 = response.productImages[0].imageURL;
-        this.img2 = response.productImages[1].imageURL;
-        this.img3 = response.productImages[2].imageURL;
+    const productsUrl = `${api}/api/products`;
+    this.http.get<any[]>(productsUrl).subscribe(
+      (response) => {
+        this.products = response;
+        const product = this.products.find(
+          (p) => p.productID == this.idProduct
+        );
+        if (product) {
+          this.imgP = product.productImages[0].imageURL;
+          this.img1 = product.productImages[0].imageURL;
+          this.img2 = product.productImages[1].imageURL;
+          this.img3 = product.productImages[2].imageURL;
+          this.inputPrice = product.price;
+        } else {
+          this.router.navigate(['/']);
+        }
+      },
+      (error) => {
+        console.log(error);
+        this.router.navigate(['/']);
       }
-      //sino rediriga a home o a una pagina de error
-    }, error => {
-      console.log(error);
-      this.router.navigate(['/']);
-    });
+    );
   }
 
   changeImage(index: number) {
-    if (index === 2) {
-      const tempImg = this.img1;
-      this.img1 = this.img2;
-      this.img2 = tempImg;
-      console.log(this.img1, this.img2, tempImg);
+    if (index === 1) {
+      this.imgP = this.img1;
+    } else if (index === 2) {
+      this.imgP = this.img2
     } else if (index === 3) {
-      const tempImg = this.img1;
-      this.img1 = this.img3;
-      this.img3 = tempImg;
+      this.imgP = this.img3
     }
   }
 
-  aumentarCompra() {
+  addAmountProducts() {
     this.amountProducts++;
-    console.log('cantidad en ' + this.amountProducts);
+    this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
   }
 
-  disminuirCompra() {
+  restAmountProducts() {
     if (this.amountProducts === 1) {
-      console.log('cantidad en 0');
+      console.log('quantity in 1');
     } else {
       this.amountProducts--;
-      console.log('cantidad en ' + this.amountProducts);
+      this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
     }
   }
 
 
-  handleAmountProducts(){
-    this.quantity;
-  }
 
   addToCart() {
-    try {
-      const userJson: string = localStorage.getItem('user')!;
+    const userJson: string | null = localStorage.getItem('user');
+    if (userJson) {
       const user = JSON.parse(userJson);
       const userID = user.userID;
       const api = environment.api;
       const data = {
         userID: userID,
-        productID: this.idProducto,
-        quantity: this.amountProducts // contador de productos
+        productID: this.idProduct,
+        quantity: this.amountProducts,
       };
-      console.log(data.quantity);
       this.http.post(`${api}/api/cart`, data).subscribe(
         (response: any) => {
-            window.location.reload(); // Recargar la página actual
-            this.router.navigate(['/cart']); // Navegar a la ruta '/cart' después de recargar
-          },
+          window.location.reload();
+          this.router.navigate(['/cart']);
+        },
+        (error) => {
+          console.log(error);
+          this.message = error.error.message;
+        }
       );
-    } catch (error) {
-      console.error(error);
-      console.log("No se pudo agregar al carrito");
+    } else {
+      // Handle the case when the user is not logged in
     }
   }
-
 }

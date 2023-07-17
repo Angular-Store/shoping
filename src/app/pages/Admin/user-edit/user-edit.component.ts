@@ -52,12 +52,7 @@ export class UserEditComponent implements OnInit {
     const url: string = 'https://angular-store.onrender.com';
 
     // Enviar información a la API
-    // User id in local storage 
-    const userID: number = 1; // Replace with the actual user ID
-    
-
-
-    this.http.put(`${url}/api/users/${userID}`, this.user).subscribe(
+    this.http.put(`${url}/api/users/${this.userID}`, this.user).subscribe(
       (response: any) => {
         this.message = response.message;
         this.disabled = true;

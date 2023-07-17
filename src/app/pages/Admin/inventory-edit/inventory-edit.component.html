@@ -2,86 +2,61 @@
 
 <button mat-button (click)="goBack()">Back</button>
 
-<div class="loading" *ngIf="loading">
+<div *ngIf="loading" class="loading">
   <mat-spinner></mat-spinner>
 </div>
 
 <div *ngIf="!loading && inventory">
-  <table>
-    <thead>
-      <tr>
-        <th>Inventory ID</th>
-        <th>Item Name</th>
-        <th>Quantity</th>
-        <th>Stock Min</th>
-        <th>Stock Max</th>
-        <th>Price</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of inventory">
-        <td>{{ item.inventoryID }}</td>
-        <td>
-          <mat-form-field>
-            <input
-              matInput
-              type="text"
-              [(ngModel)]="item.product.productName"
-              [disabled]="disabled"
-              placeholder="Item name"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="item.quantity"
-              [disabled]="disabled"
-              placeholder="Quantity"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="item.stockMin"
-              [disabled]="disabled"
-              placeholder="Stock Min"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="item.stockMax"
-              [disabled]="disabled"
-              placeholder="Stock Max"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="item.product.price"
-              [disabled]="disabled"
-              placeholder="Price"
-            />
-          </mat-form-field>
-        </td>
-        <td>
-          <!-- Actions -->
-          <button mat-raised-button color="primary" (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+
+        <ng-container matColumnDef="inventoryID">
+          <th mat-header-cell *matHeaderCellDef>Inventory ID</th>
+          <td mat-cell *matCellDef="let item">{{ item.inventoryID }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef>Item Name</th>
+          <td mat-cell *matCellDef="let item">{{ item.product.productName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="stockMin">
+          <th mat-header-cell *matHeaderCellDef>Stock Min</th>
+          <td mat-cell *matCellDef="let item">{{ item.stockMin }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="stockMax">
+          <th mat-header-cell *matHeaderCellDef>Stock Max</th>
+          <td mat-cell *matCellDef="let item">{{ item.stockMax }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let item">{{ item.product.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let item">
+            <button mat-raised-button color="primary" (click)="inventorySelected(item)" *ngIf="disabled">Edit</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['inventoryID', 'productName', 'quantity', 'stockMin', 'stockMax', 'price', 'action']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['inventoryID', 'productName', 'quantity', 'stockMin', 'stockMax', 'price', 'action']"></tr>
+
+      </table>
+    </div>
+    <div class="scroll-right-arrow" *ngIf="isTableScrollable()">
+      <button mat-icon-button (click)="scrollTableRight()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
