@@ -16,7 +16,7 @@ export class DetailsComponent implements OnInit {
   img1: string = '';
   img2: string = '';
   img3: string = '';
-  idProducto: any;
+  idProduct: any;
   inputPrice: number = 0;
 
   constructor(
@@ -24,8 +24,8 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.idProducto = this.extractLastParamFromUrl();
-    this.consumirAPI();
+    this.idProduct = this.extractLastParamFromUrl();
+    this.consumeAPI();
   }
 
   ngOnInit(): void {}
@@ -36,14 +36,14 @@ export class DetailsComponent implements OnInit {
     return lastSegment.path;
   }
 
-  consumirAPI() {
+  consumeAPI() {
     const api = environment.api;
     const productsUrl = `${api}/api/products`;
     this.http.get<any[]>(productsUrl).subscribe(
       (response) => {
         this.products = response;
         const product = this.products.find(
-          (p) => p.productID == this.idProducto
+          (p) => p.productID == this.idProduct
         );
         if (product) {
           this.imgP = product.productImages[0].imageURL;
@@ -72,23 +72,21 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  aumentarCompra() {
+  addAmountProducts() {
     this.amountProducts++;
-    this.inputPrice = this.products[this.idProducto - 1]?.price * this.amountProducts;
+    this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
   }
 
-  disminuirCompra() {
+  restAmountProducts() {
     if (this.amountProducts === 1) {
-      console.log('cantidad en 0');
+      console.log('quantity in 1');
     } else {
       this.amountProducts--;
-      this.inputPrice = this.products[this.idProducto - 1]?.price * this.amountProducts;
+      this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
     }
   }
 
-  handleAmountProducts() {
-    // Implement any logic you need here
-  }
+
 
   addToCart() {
     const userJson: string | null = localStorage.getItem('user');
@@ -98,7 +96,7 @@ export class DetailsComponent implements OnInit {
       const api = environment.api;
       const data = {
         userID: userID,
-        productID: this.idProducto,
+        productID: this.idProduct,
         quantity: this.amountProducts,
       };
       this.http.post(`${api}/api/cart`, data).subscribe(
