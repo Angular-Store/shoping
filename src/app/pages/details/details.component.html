@@ -13,16 +13,16 @@
       </div>
     </div>
     <div class='descriptionContainer'>
-      <div class='productName'>{{ products[idProducto - 1]?.productName }}</div>
+      <div class='productName'>{{ products[idProduct - 1]?.productName }}</div>
       <h2>DESCRIPTION </h2>
-      <p class='productDescription'>{{ products[idProducto - 1]?.description }}</p>
+      <p class='productDescription'>{{ products[idProduct - 1]?.description }}</p>
       <h3 class='productPrice'>{{ inputPrice | currency }}</h3>
       <p class='AmountP'>Amount</p>
       <div class='amountBtn'>
         <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
-          <mat-button-toggle class='decrementBtn' (click)='disminuirCompra()' value='bold'>-</mat-button-toggle>
-          <mat-button-toggle class='productAmount' (click)='handleAmountProducts()' value='italic'>{{  amountProducts }}</mat-button-toggle>
-          <mat-button-toggle class='incrementBtn' (click)='aumentarCompra()' value='underline'>+</mat-button-toggle>
+          <mat-button-toggle class='decrementBtn' (click)='restAmountProducts()' value='bold'>-</mat-button-toggle>
+          <mat-button-toggle class='productAmount' value='italic'>{{  amountProducts }}</mat-button-toggle>
+          <mat-button-toggle class='incrementBtn' (click)='addAmountProducts()' value='underline'>+</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div class='exampleButtonRow'>
