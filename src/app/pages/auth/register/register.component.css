@@ -73,7 +73,8 @@
 .registerForm .inputPassword,
 .registerForm .inputFullName,
 .registerForm .inputAddress,
-.registerForm .inputCellphone {
+.registerForm .inputCellphone,
+.registerForm .inputUserName {
     width: 93.5%;
     height: 10px;
     border: 1px solid black;
