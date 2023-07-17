@@ -8,6 +8,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.component';
 import { AdminGuard } from './guard/admin.guard';
 import { AuthGuard } from './guard/auth.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'paymentStatus/:cartID', component: PaymentStatusComponent ,canActivate: [AuthGuard]},
 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

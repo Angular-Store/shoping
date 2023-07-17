@@ -20,6 +20,7 @@ import { PaymentStatusComponent } from './pages/paymentStatus/paymentStatus.comp
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './pages/Admin/Admin.module';
 import { HomeComponent } from './pages/Home/Home.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 // Agrega los módulos de Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,8 +37,9 @@ import { MatRadioModule } from '@angular/material/radio';
     HeaderComponent, // Agrega HeaderComponent a las declaraciones
     LoginComponent,
     CartComponent,
+    RegisterComponent,
 
- LoginComponent,
+    LoginComponent,
     HeaderComponent,
     CartComponent,
     FooterComponent,
