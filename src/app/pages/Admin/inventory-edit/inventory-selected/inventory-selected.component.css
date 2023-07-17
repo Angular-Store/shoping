@@ -1,0 +1,38 @@
+/* Estilos generales */
+.inventory {
+    margin-top: 20px;
+  }
+  
+  .messageSuccess {
+    color: green;
+  }
+  
+  .actions {
+    margin-top: 20px;
+  }
+  
+  /* Estilos para mat-list */
+  mat-list {
+    margin-top: 20px;
+  }
+  
+  mat-list-item {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  mat-subheader {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para mat-form-field y mat-input */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Estilos para botones mat-raised-button */
+  mat-raised-button {
+    margin-right: 10px;
+  }
+  
