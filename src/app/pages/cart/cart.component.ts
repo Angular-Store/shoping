@@ -41,6 +41,20 @@ export class CartComponent implements OnInit {
       }
     );
   }
+  calculateTotal(): number {
+    let total = 0;
+    console.log(this.cartItems);
+    this.cartItems.forEach(item => {
+      const price = Number(item.product.price);
+      const quantity = Number(item.quantity);
+      if (!isNaN(price) && !isNaN(quantity)) {
+        total += price * quantity;
+      }
+    });
+    console.log(total);
+    return total;
+  }
+
 
   substractProduct(product: any) {
     const url: string = environment.api;
