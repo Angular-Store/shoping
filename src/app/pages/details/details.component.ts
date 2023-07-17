@@ -7,23 +7,27 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-
+  message: string = ''; // Variable para almacenar el mensaje
   products: any[] = []; // Array para almacenar los productos
   amountProducts: number; // Variable para el número de productos
-  producto: number=0; // Variable para el número de productos
+  producto: number = 0; // Variable para el número de productos
   img1: string = ''; // Variables para almacenar las URLs de las imágenes
   img2: string = '';
   img3: string = '';
   img4: string = '';
   img5: string = '';
   img6: string = '';
-  idProducto: any= ''; // Variable para almacenar el idProducto
+  idProducto: any = ''; // Variable para almacenar el idProducto
   quantity: number;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.amountProducts = 1; // Establece el número de productos en 1
     this.idProducto = this.extractLastParamFromUrl(); // Obtiene el idProducto de la ruta
     console.log(this.idProducto); // Imprime el idProducto en la consola
@@ -44,23 +48,26 @@ export class DetailsComponent implements OnInit {
   consumirAPI() {
     const api = environment.api;
     const productsUrl = `${api}/api/products/${this.idProducto}`; // Agrega el idProducto a la URL
-    this.http.get<any>(productsUrl).subscribe(response => {
-      this.products = response; // Asigna la respuesta de la API a la variable products
-      //console de cada producto con un ciclo
-      console.log(this.products);
-      // Obtener las imágenes del producto
-      if (this.idProducto > 0 && this.idProducto < 11) {
-        const product = this.products[0]; // Obtener el primer producto
-        // Asigna las URLs de las imágenes del producto a las variables correspondientes
-        this.img1 = response.productImages[0].imageURL;
-        this.img2 = response.productImages[1].imageURL;
-        this.img3 = response.productImages[2].imageURL;
+    this.http.get<any>(productsUrl).subscribe(
+      (response) => {
+        this.products = response; // Asigna la respuesta de la API a la variable products
+        //console de cada producto con un ciclo
+        console.log(this.products);
+        // Obtener las imágenes del producto
+        if (this.idProducto > 0 && this.idProducto < 11) {
+          const product = this.products[0]; // Obtener el primer producto
+          // Asigna las URLs de las imágenes del producto a las variables correspondientes
+          this.img1 = response.productImages[0].imageURL;
+          this.img2 = response.productImages[1].imageURL;
+          this.img3 = response.productImages[2].imageURL;
+        }
+        //sino rediriga a home o a una pagina de error
+      },
+      (error) => {
+        console.log(error);
+        this.router.navigate(['/']);
       }
-      //sino rediriga a home o a una pagina de error
-    }, error => {
-      console.log(error);
-      this.router.navigate(['/']);
-    });
+    );
   }
 
   changeImage(index: number) {
@@ -90,13 +97,11 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-
-  handleAmountProducts(){
+  handleAmountProducts() {
     this.quantity;
   }
 
   addToCart() {
-    try {
       const userJson: string = localStorage.getItem('user')!;
       const user = JSON.parse(userJson);
       const userID = user.userID;
@@ -104,19 +109,19 @@ export class DetailsComponent implements OnInit {
       const data = {
         userID: userID,
         productID: this.idProducto,
-        quantity: this.amountProducts // contador de productos
+        quantity: this.amountProducts, // contador de productos
       };
       console.log(data.quantity);
-      this.http.post(`${api}/api/cart`, data).subscribe(
-        (response: any) => {
-            window.location.reload(); // Recargar la página actual
-            this.router.navigate(['/cart']); // Navegar a la ruta '/cart' después de recargar
-          },
+      this.http.post(`${api}/api/cart`, data).subscribe((response: any) => { // Recargar la página actual
+        //renderizar el carrito
+        window.location.reload(); 
+        this.router.navigate(['/cart']); // Navegar a la ruta '/cart' después de recargar
+      },
+      (error) => {
+        console.log(error);
+        this.message = error.error.message;
+      }
       );
-    } catch (error) {
-      console.error(error);
-      console.log("No se pudo agregar al carrito");
     }
   }
 
-}
