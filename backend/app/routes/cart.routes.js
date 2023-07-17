@@ -4,8 +4,11 @@ import User from '../models/user.models.js';
 import Product from '../models/product.models.js';
 import Inventory from '../models/inventory.model.js';
 import ProductImage from '../models/productImages.model.js';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
 const cartRouter = express.Router();
+dotenv.config();
 
 // GET
 
@@ -245,7 +248,7 @@ cartRouter.post('/', async (req, res) => {
 		}
 
 		// Verify if the quantity is less than 1
-		if (quantity < 1) {
+		if (quantity < 0) {
 			return res.status(404).json({
 				message: 'You must add at least one product to the cart',
 			});
@@ -262,6 +265,35 @@ cartRouter.post('/', async (req, res) => {
 
 		// Create a new cart item
 		await ShoppingCart.create({ userID, productID, quantity });
+
+		const allUsersAdmin = await User.findAll({
+			where: { role: 'admin' },
+		});
+
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: process.env.EMAIL_USER,
+				pass: process.env.EMAIL_PASSWORD,
+			},
+		});
+
+		// Verify if the stock is 1, if it is send an email to the admin to restock
+		if (inventory.quantity === 1) {
+			// Send email to admin
+			const mailOptions = {
+				from: process.env.EMAIL_USER,
+				to: allUsersAdmin.map((user) => user.email),
+				subject: 'Restock',
+				text: `The product ${product.productName} is running out of stock, please restock`,
+			};
+
+			transporter.sendMail(mailOptions, (error, info) => {
+				if (error) {
+					console.log(error);
+				}
+			});
+		}
 
 		res.status(200).json({ message: 'Product added to the cart' });
 	} catch (error) {
