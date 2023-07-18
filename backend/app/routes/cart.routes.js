@@ -250,7 +250,7 @@ cartRouter.post('/', async (req, res) => {
 		if (inventory.quantity === 0 || inventory.quantity <= quantity) {
 			return res
 				.status(404)
-				.json({ message: 'Not enough inventory for the product TEST 2' });
+				.json({ message: 'Not enough inventory for the product' });
 		}
 
 		// Verify if the product is already in the cart and has cartStatus active
@@ -271,7 +271,7 @@ cartRouter.post('/', async (req, res) => {
 				return res.status(200).json({ message: 'Cart item updated' });
 			} else {
 				return res.status(404).json({
-					message: 'Not enough inventory for the product TEST 1',
+					message: 'Not enough inventory for the product',
 				});
 			}
 		}
