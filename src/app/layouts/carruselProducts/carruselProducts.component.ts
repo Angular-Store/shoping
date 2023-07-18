@@ -44,8 +44,15 @@ export class CarruselProductsComponent implements OnInit {
       this.currentIndex = 0;
     }
     this.translateX = -this.currentIndex * 100;
+    console.log(this.currentIndex);
+  
+    if (this.translateX === -600) {
+      setTimeout(() => {
+        this.currentIndex = 0;
+        this.translateX = 0;
+      }, 1000);
+    }
   }
-
   slideLeft() {
     this.currentIndex--;
     if (this.currentIndex < 0) {
