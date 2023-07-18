@@ -250,6 +250,7 @@ span {
   .title {
     padding: 30px; /* Espaciado interno del título en dispositivos móviles */
     font-size: 20px; /* Tamaño de fuente del título en dispositivos móviles */
+    
   }
 
   .productImage {
@@ -266,6 +267,7 @@ span {
   .productName {
     font-size: 24px; /* Tamaño de fuente del nombre del producto en dispositivos móviles */
     line-height: 30px; /* Altura de línea del nombre del producto en dispositivos móviles */
+    text-align: center;
   }
 
   .productDescription {
