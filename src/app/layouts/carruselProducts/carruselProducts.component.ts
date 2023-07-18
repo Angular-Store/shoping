@@ -17,6 +17,7 @@ export class CarruselProductsComponent implements OnInit {
   slides: MatCarouselSlide[] = [];
   translateX = 0;
   currentIndex = 0;
+  carouselInterval: any;
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +34,7 @@ export class CarruselProductsComponent implements OnInit {
   }
 
   startCarousel() {
-    setInterval(() => {
+    this.carouselInterval = setInterval(() => {
       this.slideRight();
     }, 1000);
   }
@@ -43,7 +44,16 @@ export class CarruselProductsComponent implements OnInit {
     if (this.currentIndex >= this.slides.length) {
       this.currentIndex = 0;
     }
+
     this.translateX = -this.currentIndex * 100;
+    console.log(this.currentIndex);
+
+    if (this.translateX === -600) {
+      clearInterval(this.carouselInterval);
+      setTimeout(() => {
+        this.startLeftCarousel();
+      }, 1000);
+    }
   }
 
   slideLeft() {
@@ -51,6 +61,27 @@ export class CarruselProductsComponent implements OnInit {
     if (this.currentIndex < 0) {
       this.currentIndex = this.slides.length - 1;
     }
+
     this.translateX = -this.currentIndex * 100;
+    console.log(this.currentIndex);
+
+    if (this.translateX === 0) {
+      clearInterval(this.carouselInterval);
+      setTimeout(() => {
+        this.startRightCarousel();
+      }, 1000);
+    }
+  }
+
+  startRightCarousel() {
+    this.carouselInterval = setInterval(() => {
+      this.slideRight();
+    }, 1000);
+  }
+
+  startLeftCarousel() {
+    this.carouselInterval = setInterval(() => {
+      this.slideLeft();
+    }, 1000);
   }
 }
