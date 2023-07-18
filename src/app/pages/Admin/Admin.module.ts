@@ -22,7 +22,6 @@ import { MatIconModule } from '@angular/material/icon';
     UserEditComponent,
     AdminComponent,
     InventoryEditComponent,
-    
   ],
   imports: [
     CommonModule,
