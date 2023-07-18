@@ -48,7 +48,7 @@ export class DetailsComponent implements OnInit {
           (p) => p.productID == this.idProduct
         ); // Busca el producto con el ID correspondiente
         if (product) {
-          this.imgP = product.productImages[0].imageURL; // Asigna la URL de la imagen principal
+          this.imgP = product.productImages[0].imageURL; // Asigna la URL de la imagen que sera la principal
           this.img1 = product.productImages[0].imageURL; // Asigna la URL de la primera imagen
           this.img2 = product.productImages[1].imageURL; // Asigna la URL de la segunda imagen
           this.img3 = product.productImages[2].imageURL; // Asigna la URL de la tercera imagen
