@@ -247,7 +247,7 @@ cartRouter.post('/', async (req, res) => {
 			});
 		}
 
-		if (inventory.quantity === 0 || inventory.quantity < quantity) {
+		if (inventory.quantity === 0 || inventory.quantity <= quantity) {
 			return res
 				.status(404)
 				.json({ message: 'Not enough inventory for the product' });
