@@ -98,6 +98,8 @@
   background-color: hsl(0, 1%, 63%);
 }
 
+
+
 /* Estilos responsive */
 @media (max-width: 750px) {
   .login-form {
@@ -121,11 +123,16 @@
   }
 }
 
+
+
 @media (max-width: 710px) {
   .inputContainer {
     padding-bottom: 10px;
   }
 }
+
+
+
 
 @media (max-width: 550px) {
   .login-form {
@@ -158,6 +165,9 @@
   }
 }
 
+
+
+
 @media (max-width: 475px) {
   .login-form {
     width: 200px;
@@ -175,6 +185,9 @@
     height: 15px;
   }
 }
+
+
+
 
 @media (max-width: 400px) {
   .login-form {
