@@ -11,7 +11,7 @@ import { environment } from 'src/enviroment/enviroment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-//Creación del componente
+//Creación automática del componente
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
