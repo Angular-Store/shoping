@@ -1,15 +1,24 @@
+<!-- Use meaningful and descriptive class names -->
 <div class="container">
+  <!-- Use semantic heading tags -->
   <h2>Order Status</h2>
 
+  <!-- Use ngIf to conditionally render elements based on 'loading' flag -->
   <div class="user-form" *ngIf="loading">
+    <!-- Use Angular Material Progress Spinner for loading indication -->
     <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
   </div>
 
+  <!-- Use ngIf to conditionally render elements based on 'loading' flag -->
   <div class="user-form" *ngIf="!loading">
+    <!-- Use paragraph tag for displaying messages -->
     <p>{{ message }}</p>
+
+    <!-- Use table for tabular data -->
     <table>
+      <!-- Use table rows and columns for structured data -->
       <tr>
-        <td>Order ID:</td>
+        <td>Order Number:</td>
         <td>{{ order.orderID }}</td>
       </tr>
       <tr>
@@ -20,14 +29,20 @@
         <td>Order Date:</td>
         <td>{{ order.orderDate }}</td>
       </tr>
-      <!-- For each order with products -->
+
+      <!-- Use ngFor to loop through the 'orderWithProducts' array -->
+      <!-- and display each product in a separate row -->
       <tr *ngFor="let product of order.orderWithProducts">
         <td>Product Name:</td>
         <td>{{ product.product.productName }}</td>
       </tr>
     </table>
+
+    <!-- Use a button-like div to create a clickable element -->
     <div class="btnWithHome" mat-button routerLink="/">
+      <!-- Use icons for better user experience -->
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      <!-- Use plain text for button label -->
       <p>Go Home</p>
     </div>
   </div>

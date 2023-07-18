@@ -4,7 +4,7 @@
 </div>
 
 <div class="footerSecond">
-  <h2> Tienda </h2>
+  <h2> Store </h2>
 </div>
 
 <div class="product-list" *ngIf="!loading">
@@ -19,7 +19,7 @@
         <p class="price">{{ product.price | currency }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button class="buttonCard" mat-button color="primary" (click)="addToCart(product.productID)">Añadir al carrito</button>
+        <button class="buttonCard" mat-button color="primary" (click)="addToCart(product.productID)">Add to car</button>
       </mat-card-actions>
     </mat-card>
   </div>
