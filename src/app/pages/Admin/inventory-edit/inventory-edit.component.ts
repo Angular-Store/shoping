@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { environment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-inventory-edit',
@@ -18,7 +19,7 @@ export class InventoryEditComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    const url: string = 'https://angular-store.onrender.com';
+    const url: string = environment.api;
 
     // Obtener inventario desde la API
     this.http.get(`${url}/api/inventory`).subscribe(
