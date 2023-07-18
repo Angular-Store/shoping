@@ -111,6 +111,8 @@ export class DetailsComponent implements OnInit {
       );
     } else {
       // Handle the case when the user is not logged in
+      alert('You must be logged in to add products to the cart');
+      this.router.navigate(['/login']);
     }
   }
 }
