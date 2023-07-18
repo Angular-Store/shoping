@@ -2,42 +2,42 @@
   Product details
 </div>
 <div class='body'>
-
+  <!-- Contenedor principal de la información del producto -->
   <div class='productInfoContainer'>
+    <!-- Contenedor de la imagen del producto -->
     <div class='ContainerProductImage'>
       <img class='productImage' [src]='imgP' alt='img1'>
+      <!-- Pequeñas imágenes del producto -->
       <div class='LittleImages'>
         <img (click)="changeImage(1)" class='Littleimage' [src]='img1' alt='img2'>
         <img (click)="changeImage(2)" class='Littleimage' [src]='img2' alt='img2'>
         <img (click)="changeImage(3)" class='Littleimage' [src]='img3' alt='img3'>
       </div>
     </div>
+    <!-- Contenedor de la descripción y detalles del producto -->
     <div class='descriptionContainer'>
-      <div class='productName'>{{ products[idProduct - 1]?.productName }}</div>
-      <h2>DESCRIPTION </h2>
-      <p class='productDescription'>{{ products[idProduct - 1]?.description }}</p>
-      <h3 class='productPrice'>{{ inputPrice | currency }}</h3>
+      <div class='productName'>{{ products[idProduct - 1]?.productName }}</div> <!-- Nombre del producto -->
+      <h2>DESCRIPTION</h2>
+      <p class='productDescription'>{{ products[idProduct - 1]?.description }}</p> <!-- Descripción del producto -->
+      <h3 class='productPrice'>{{ inputPrice | currency }}</h3> <!-- Precio del producto -->
       <p class='AmountP'>Amount</p>
       <div class='amountBtn'>
         <mat-button-toggle-group class='amountbuttons' name='fontStyle' aria-label='Font Style'>
-          <mat-button-toggle class='decrementBtn' (click)='restAmountProducts()' value='bold'>-</mat-button-toggle>
-          <mat-button-toggle class='productAmount' value='italic'>{{  amountProducts }}</mat-button-toggle>
-          <mat-button-toggle class='incrementBtn' (click)='addAmountProducts()' value='underline'>+</mat-button-toggle>
+          <mat-button-toggle class='decrementBtn' (click)='restAmountProducts()' value='bold'>-</mat-button-toggle> <!-- Botón para restar la cantidad de productos -->
+          <mat-button-toggle class='productAmount' value='italic'>{{  amountProducts }}</mat-button-toggle> <!-- Cantidad de productos -->
+          <mat-button-toggle class='incrementBtn' (click)='addAmountProducts()' value='underline'>+</mat-button-toggle> <!-- Botón para agregar la cantidad de productos -->
         </mat-button-toggle-group>
       </div>
       <div class='exampleButtonRow'>
-        <button mat-button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button>
-        {{message}}
+        <button mat-button class='addToCartBtn' (click)='addToCart()'>Add To Cart</button> <!-- Botón para agregar el producto al carrito -->
+        {{message}} <!-- Mensaje de respuesta, por ejemplo, para mostrar errores -->
       </div>
     </div>
   </div>
 
   <div class='latestAddedTitle'>
-    <h2>Latest released</h2>
+    <h2>Latest released</h2> <!-- Título de los productos más recientes -->
+    
   </div>
-
-
 </div>
-<app-carruselProducts></app-carruselProducts>
-
-
+<app-carruselProducts></app-carruselProducts> <!-- Componente de carrusel de productos -->

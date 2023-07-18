@@ -183,6 +183,8 @@ span {
   padding: 23px 92px; /* Espaciado interno del botón "Agregar al carrito" */
   border-radius: none;
   border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .descriptionContainerImg {
