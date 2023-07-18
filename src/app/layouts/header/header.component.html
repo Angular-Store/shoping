@@ -41,11 +41,10 @@
   <div class="mobile-menu" [class.open]="isMenuOpen">
     <!-- Enlaces del menú desplegable -->
     <a mat-button routerLink="/" (click)="closeMenu()">Home</a>
-    <a mat-button routerLink="/" (click)="closeMenu()">Tienda</a>
-    <a mat-button routerLink="/cart" (click)="closeMenu()">Carrito</a>
-    <a *ngIf="isLoggedIn" mat-button (click)="logout(); closeMenu()">Cerrar Sesion</a>
-    <a *ngIf="!isLoggedIn" mat-button routerLink="/login" (click)="closeMenu()">Iniciar Sesion</a>
-    <a *ngIf="!isLoggedIn" mat-button routerLink="/register" (click)="closeMenu()">Registrarse</a>
+    <a mat-button routerLink="/cart" (click)="closeMenu()">Cart</a>
+    <a *ngIf="isLoggedIn" mat-button (click)="logout(); closeMenu()">Log out</a>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/login" (click)="closeMenu()">Log in</a>
+    <a *ngIf="!isLoggedIn" mat-button routerLink="/register" (click)="closeMenu()">Sign up</a>
     <a  *ngIf="isAdmin" mat-button routerLink="/admin" (click)="closeMenu()">Admin</a>
   </div>
 

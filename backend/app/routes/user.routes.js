@@ -17,7 +17,7 @@ userRoutes.get('/', async (req, res) => {
 
 		res.status(200).json(users);
 	} catch (error) {
-		res.status(400).json({ message: 'Error retrieving all users', data: {} });
+		res.status(400).json({ message: 'Error retrieving all users', error });
 	}
 });
 
@@ -31,7 +31,7 @@ userRoutes.get('/:userID', async (req, res) => {
 		}
 		res.status(200).json(user);
 	} catch (error) {
-		res.status(400).json({ message: 'Error retrieving user by id', data: {} });
+		res.status(400).json({ message: 'Error retrieving user by id', error });
 	}
 });
 
@@ -45,7 +45,7 @@ userRoutes.get('/username/:username', async (req, res) => {
 		});
 		res.status(200).json(user);
 	} catch (error) {
-		res.status(400).json({ message: 'Error retrieving user by username', data: {} });
+		res.status(400).json({ message: 'Error retrieving user by username', error });
 	}
 });
 
@@ -79,7 +79,7 @@ userRoutes.put('/:userID', async (req, res) => {
 			data: user,
 		});
 	} catch (error) {
-		res.status(400).json({ message: 'Error updating user', data: {} });
+		res.status(400).json({ message: 'Error updating user', error });
 	}
 });
 
@@ -98,7 +98,7 @@ userRoutes.delete('/:userID', async (req, res) => {
 			data: user,
 		});
 	} catch (error) {
-		res.status(400).json({ message: 'Error deleting user', data: {} });
+		res.status(400).json({ message: 'Error deleting user', error});
 	}
 });
 
