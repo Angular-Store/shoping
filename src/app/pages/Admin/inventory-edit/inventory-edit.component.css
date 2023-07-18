@@ -1,0 +1,38 @@
+.table-container {
+  overflow: auto;
+  position: relative;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.scroll-right-arrow {
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  table.mat-table {
+    width: 100%;
+  }
+
+  table.mat-table th.mat-header-cell,
+  table.mat-table td.mat-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
