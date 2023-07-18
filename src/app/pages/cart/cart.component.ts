@@ -139,10 +139,19 @@ export class CartComponent implements OnInit {
       },
       (error: any) => {
         console.error(error);
-        this.message = error.error.message;
+        this.errorAdding();
+        // this.message = error.error.message;
         this.loading = false;
       }
     );
+  }
+
+  errorAdding() {
+    this._snackBar.open('Debes almacenar al menos un item', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    })
   }
 
   payment() {
