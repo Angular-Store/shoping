@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 //Se importan los modulos de angular material.
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/enviroment/enviroment';
 
 
 //creación automática del componente
@@ -21,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 //Componente a exportar: RegisterComponent
 export class RegisterComponent implements OnInit {
 
-  register: FormGroup;                            //Se crea una variable de tipo FormGroup para el formulario. 
+  register: FormGroup;                            //Se crea una variable de tipo FormGroup para el formulario.
   message: string = '';                           //Se crea una variable de tipo string para el mensaje de error.
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {     //
@@ -37,12 +38,12 @@ export class RegisterComponent implements OnInit {
   }
 
   //ngOnInit se utiliza para inicializar propiedades y configuraciones iniciales del componente
-  ngOnInit(): any { 
+  ngOnInit(): any {
   }
 
   //Función para registrar un usuario
   Registrar(): any {                               //Se crea la función para registrar un usuario.
-    console.log(this.register);                    
+    console.log(this.register);
     const user = {                                 //Se crea una variable de tipo objeto para almacenar los datos del usuario.
       username: this.register.value.username,      //Se almacena el usuario ingresado en el formulario.
       fullName: this.register.value.fullName,      //Se almacena el nombre completo ingresado en el formulario.
@@ -53,10 +54,11 @@ export class RegisterComponent implements OnInit {
     }
 
     //Se crea una variable de tipo constante para almacenar la URL de la API.
-    const URL = 'https://angular-store.onrender.com/api/users';
+     const url= environment.api
+    const URL = `${url}/api/users`;
 
     //Se hace una petición POST a la API para registrar un usuario.
-    this.http.post(URL, user).subscribe(           //Se hace la petición POST a la API. 
+    this.http.post(URL, user).subscribe(           //Se hace la petición POST a la API.
       (res: any) => {
         this.message = res.message;                //Se almacena el mensaje de respuesta de la API.
         this.fakeLoading();                        //Se llama a la función fakeLoading para redireccionar al usuario.
@@ -71,15 +73,15 @@ export class RegisterComponent implements OnInit {
   //Función para mostrar un mensaje de error
   error() {
     this.snackBar.open('Datos ingresados inválidos', '', {  //Se muestra un mensaje de error.
-      duration: 3000,                                       //Se establece la duración del mensaje. 
+      duration: 3000,                                       //Se establece la duración del mensaje.
       horizontalPosition: 'center',                         //Se establece la posición horizontal del mensaje.
       verticalPosition: 'top'                               //Se establece la posición vertical del mensaje.
     })
   }
 
-  
+
   //Se crea la función fakeLoading para redireccionar al usuario.
-  fakeLoading() {                                           
+  fakeLoading() {
     // this.loading = true;
     setTimeout(() => {                                      //Se establece un tiempo de espera de 1.5 segundos.
       this.router.navigate(['/login']).then(() => {         //Se redirecciona al usuario a la página de login.

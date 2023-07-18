@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/enviroment/enviroment';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,8 +16,8 @@ export class UserEditComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    const url: string = 'https://angular-store.onrender.com';
-    
+    const url: string = environment.api;
+
     // Retrieve userID from localStorage
     const localStorageUser = localStorage.getItem('user');
     // Check if userID exists in localStorage
@@ -26,7 +27,7 @@ export class UserEditComponent implements OnInit {
     } else {
       console.error('userID not found in localStorage');
     }
-  
+
     // Obtener usuario desde la API
     this.http.get(`${url}/api/users/${this.userID}`).subscribe(
       (response: any) => {
@@ -41,7 +42,7 @@ export class UserEditComponent implements OnInit {
       }
     );
   }
-  
+
 
   editUser() {
     this.disabled = false;
@@ -49,7 +50,7 @@ export class UserEditComponent implements OnInit {
 
   saveUser() {
     this.loading = true;
-    const url: string = 'https://angular-store.onrender.com';
+    const url: string = environment.api;
 
     // Enviar información a la API
     this.http.put(`${url}/api/users/${this.userID}`, this.user).subscribe(
