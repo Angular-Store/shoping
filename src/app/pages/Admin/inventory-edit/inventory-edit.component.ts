@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-inventory-edit',
@@ -12,6 +13,7 @@ export class InventoryEditComponent {
   disabled: boolean = true;
   inventory: any;
   editedInventory: any;
+  dataSource: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -22,6 +24,7 @@ export class InventoryEditComponent {
     this.http.get(`${url}/api/inventory`).subscribe(
       (response: any) => {
         this.inventory = response;
+        this.dataSource = new MatTableDataSource(this.inventory);
         this.loading = false;
       },
       (error: any) => {
@@ -38,5 +41,15 @@ export class InventoryEditComponent {
 
   goBack() {
     window.history.back();
+  }
+
+  isTableScrollable(): boolean {
+    const tableContainer = document.querySelector('.table-container') as HTMLElement;
+    return tableContainer.scrollWidth > tableContainer.clientWidth;
+  }
+
+  scrollTableRight(): void {
+    const tableWrapper = document.querySelector('.table-wrapper') as HTMLElement;
+    tableWrapper.scrollLeft += 100; // Adjust the scroll amount as needed
   }
 }

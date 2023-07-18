@@ -35,7 +35,7 @@ export class CarruselProductsComponent implements OnInit {
   startCarousel() {
     setInterval(() => {
       this.slideRight();
-    }, 3000);
+    }, 1000);
   }
 
   slideRight() {
