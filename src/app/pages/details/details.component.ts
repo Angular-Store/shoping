@@ -9,74 +9,79 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  message: string = '';
-  products: any[] = [];
-  amountProducts: number = 1;
-  imgP: string = '';
-  img1: string = '';
-  img2: string = '';
-  img3: string = '';
-  idProduct: any;
-  inputPrice: number = 0;
+  message: string = ''; // Variable para almacenar un mensaje
+  products: any[] = []; // Arreglo para almacenar los productos
+  amountProducts: number = 1; // Cantidad de productos
+  imgP: string = ''; // URL de la imagen principal del producto
+  img1: string = ''; // URL de la primera imagen del producto
+  img2: string = ''; // URL de la segunda imagen del producto
+  img3: string = ''; // URL de la tercera imagen del producto
+  idProduct: any; // ID del producto
+  inputPrice: number = 0; // Precio del producto
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.idProduct = this.extractLastParamFromUrl();
-    this.consumeAPI();
+    this.idProduct = this.extractLastParamFromUrl(); // Extrae el último parámetro de la URL
+    this.consumeAPI(); // Llama a la función para consumir una API
   }
 
   ngOnInit(): void {}
 
+  // Extrae el último parámetro de la URL
   extractLastParamFromUrl(): string {
     const urlSegments = this.route.snapshot.url;
     const lastSegment = urlSegments[urlSegments.length - 1];
     return lastSegment.path;
   }
 
+  // Consumir una API para obtener los productos
   consumeAPI() {
     const api = environment.api;
     const productsUrl = `${api}/api/products`;
     this.http.get<any[]>(productsUrl).subscribe(
       (response) => {
-        this.products = response;
+        this.products = response; // Almacena la respuesta de la API en la variable 'products'
         const product = this.products.find(
           (p) => p.productID == this.idProduct
-        );
+        ); // Busca el producto con el ID correspondiente
         if (product) {
-          this.imgP = product.productImages[0].imageURL;
-          this.img1 = product.productImages[0].imageURL;
-          this.img2 = product.productImages[1].imageURL;
-          this.img3 = product.productImages[2].imageURL;
-          this.inputPrice = product.price;
+          this.imgP = product.productImages[0].imageURL; // Asigna la URL de la imagen principal
+          this.img1 = product.productImages[0].imageURL; // Asigna la URL de la primera imagen
+          this.img2 = product.productImages[1].imageURL; // Asigna la URL de la segunda imagen
+          this.img3 = product.productImages[2].imageURL; // Asigna la URL de la tercera imagen
+          this.inputPrice = product.price; // Asigna el precio del producto
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/']); // Si el producto no se encuentra, redirige al inicio
         }
       },
       (error) => {
         console.log(error);
-        this.router.navigate(['/']);
+        this.router.navigate(['/']); // Si hay un error en la solicitud, redirige al inicio
       }
     );
   }
 
+  // Cambia la imagen principal del producto según el índice recibido
   changeImage(index: number) {
     if (index === 1) {
       this.imgP = this.img1;
     } else if (index === 2) {
-      this.imgP = this.img2
+      this.imgP = this.img2;
     } else if (index === 3) {
-      this.imgP = this.img3
+      this.imgP = this.img3;
     }
   }
 
+  // Aumenta la cantidad de productos y actualiza el precio total
   addAmountProducts() {
     this.amountProducts++;
     this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
   }
 
+  // Reduce la cantidad de productos y actualiza el precio total
   restAmountProducts() {
     if (this.amountProducts === 1) {
       console.log('quantity in 1');
@@ -86,8 +91,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-
-
+  // Agrega el producto al carrito
   addToCart() {
     const userJson: string | null = localStorage.getItem('user');
     if (userJson) {
@@ -110,7 +114,9 @@ export class DetailsComponent implements OnInit {
         }
       );
     } else {
-      // Handle the case when the user is not logged in
+      // Maneja el caso cuando el usuario no ha iniciado sesión
+      alert('You must be logged in to add products to the cart');
+      this.router.navigate(['/login']);
     }
   }
 }

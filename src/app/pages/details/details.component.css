@@ -1,27 +1,27 @@
 .body {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Color de fondo del cuerpo */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
+  padding-bottom: 100px; /* Espacio inferior */
 }
 
 .title {
-  background-color: #0654ae;
-  color: white;
-  padding: 45px;
+  background-color: #0654ae; /* Color de fondo del título */
+  color: white; /* Color del texto del título */
+  padding: 45px; /* Espaciado interno del título */
   text-align: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 32px; /* Tamaño de fuente del título */
 }
 
 .productInfoContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px 60px;
-  gap: 60px;
+  margin: 40px 60px; /* Márgenes superior e inferior y margen izquierdo y derecho */
+  gap: 60px; /* Espacio entre los elementos del contenedor */
 }
 
 .ContainerProductImage {
@@ -30,21 +30,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
-  margin-right: 20px;
+  max-width: 400px; /* Ancho máximo del contenedor de la imagen del producto */
+  margin-right: 20px; /* Margen derecho del contenedor de la imagen del producto */
 }
 
 .LittleImages {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
-  gap: 20px;
+  margin-top: 15px; /* Margen superior */
+  gap: 20px; /* Espacio entre las imágenes pequeñas */
 }
 
 .Littleimage {
   flex: 1;
-  width: 30%;
-  height: auto;
+  width: 30%; /* Ancho de las imágenes pequeñas */
+  height: auto; /* Altura automática para mantener la proporción */
   justify-content: center;
 }
 
@@ -59,43 +59,43 @@
 .descriptionContainer h2 {
   display: flex;
   flex-wrap: wrap;
-  color: gray;
+  color: gray; /* Color del texto */
   font-size: 20px;
   font-weight: 500;
-  line-height: 42px;
-  font-family: Roboto, sans-serif;
-  letter-spacing: 0.0125em;
-  margin: 15px 0px 10px 0px;
+  line-height: 42px; /* Altura de línea */
+  font-family: Roboto, sans-serif; /* Fuente del texto */
+  letter-spacing: 0.0125em; /* Espaciado entre caracteres */
+  margin: 15px 0px 10px 0px; /* Márgenes superior, inferior, izquierdo y derecho */
 }
 
 .AmountP {
-  color: gray;
+  color: gray; /* Color del texto */
   font-size: 20px;
-  font-family: Roboto, sans-serif;
-  margin: 15px 0px 10px 0px;
+  font-family: Roboto, sans-serif; /* Fuente del texto */
+  margin: 15px 0px 10px 0px; /* Márgenes superior, inferior, izquierdo y derecho */
 }
 
 .productName {
-  width: 300px;
-  line-height: 35px;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  width: 300px; /* Ancho del nombre del producto */
+  line-height: 35px; /* Altura de línea */
+  font-size: 30px; /* Tamaño de fuente del nombre del producto */
+  font-weight: bold; /* Grosor de la fuente */
+  margin-bottom: 10px; /* Margen inferior */
 }
 
 .productDescription {
   display: flex;
   flex-wrap: wrap;
-  color: gray;
-  margin-bottom: 10px;
-  width: 335px;
+  color: gray; /* Color del texto */
+  margin-bottom: 10px; /* Margen inferior */
+  width: 335px; /* Ancho de la descripción del producto */
 }
 
 .productPrice {
-  font-weight: bold;
-  font-size: 30px;
-  margin-bottom: 10px;
-  color: #0654ae;
+  font-weight: bold; /* Grosor de la fuente */
+  font-size: 30px; /* Tamaño de fuente del precio del producto */
+  margin-bottom: 10px; /* Margen inferior */
+  color: #0654ae; /* Color del precio del producto */
 }
 
 .latestAddedTitle {
@@ -103,33 +103,33 @@
 }
 
 .latestAddedTitle h2 {
-  font-size: 40px;
-  margin: 50px;
+  font-size: 40px; /* Tamaño de fuente del título */
+  margin: 50px; /* Márgenes superior e inferior */
 }
 
 .latestAdded {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
+  gap: 20px; /* Espacio entre los elementos del contenedor */
 }
 
 .productComponent {
-  background-color: white;
+  background-color: white; /* Color de fondo del componente del producto */
   display: flex;
   flex-direction: column;
   text-align: left;
-  border: 1px solid lightgrey;
+  border: 1px solid lightgrey; /* Borde del componente del producto */
 }
 
 .ImageContainer {
-  width: 100%;
-  margin-bottom: 10px;
+  width: 100%; /* Ancho del contenedor de la imagen */
+  margin-bottom: 10px; /* Margen inferior */
 }
 
 .productImage {
-  width: 100%;
-  height: 100%;
+  width: 100%; /* Ancho de la imagen del producto */
+  height: 100%; /* Altura de la imagen del producto */
 }
 
 .productButtons {
@@ -141,50 +141,49 @@
 
 span {
   margin: 0 10px;
-  font-size: 20px;
+  font-size: 20px; /* Tamaño de fuente del span */
 }
 
 .amountBtn {
   text-align: left;
-  color: white;
+  color: white; /* Color del texto del botón */
   border: none;
   margin: 10px 0;
-  border-radius: 0%;
+  border-radius: 0%; /* Borde redondeado del botón */
 }
 
 .decrementBtn {
-  background-color: #c4c4c4;
-  color: white;
-  width: 50px;
+  background-color: #c4c4c4; /* Color de fondo del botón de decremento */
+  color: white; /* Color del texto del botón de decremento */
+  width: 50px; /* Ancho del botón de decremento */
   border-radius: 0;
-  border: 1px solid #c4c4c4;
-  font-size: 47px;
+  border: 1px solid #c4c4c4; /* Borde del botón de decremento */
+  font-size: 47px; /* Tamaño de fuente del botón de decremento */
 }
 
 .productAmount {
-  background-color: white;
-  color: black;
-  width: 164px;
-  border: 1px solid #c4c4c4;
-  font-size: 22px;
+  background-color: white; /* Color de fondo de la cantidad del producto */
+  color: black; /* Color del texto de la cantidad del producto */
+  width: 164px; /* Ancho de la cantidad del producto */
+  border: 1px solid #c4c4c4; /* Borde de la cantidad del producto */
+  font-size: 22px; /* Tamaño de fuente de la cantidad del producto */
 }
 
 .incrementBtn {
-  background-color: #c4c4c4;
-  color: white;
-  font-size: 25px;
-  width: 50px;
-  border: 1px solid #c4c4c4;
+  background-color: #c4c4c4; /* Color de fondo del botón de incremento */
+  color: white; /* Color del texto del botón de incremento */
+  font-size: 25px; /* Tamaño de fuente del botón de incremento */
+  width: 50px; /* Ancho del botón de incremento */
+  border: 1px solid #c4c4c4; /* Borde del botón de incremento */
 }
 
-.addToCartBtn{
-  background-color: #0654ae;
-  color: white;
-  padding: 23px 92px;
+.addToCartBtn {
+  background-color: #0654ae; /* Color de fondo del botón "Agregar al carrito" */
+  color: white; /* Color del texto del botón "Agregar al carrito" */
+  padding: 23px 92px; /* Espaciado interno del botón "Agregar al carrito" */
   border-radius: none;
   border: none;
 }
-
 
 .descriptionContainerImg {
   justify-content: left;
@@ -192,12 +191,12 @@ span {
 }
 
 .descriptionContainerImg p {
-  font-size: 15px;
+  font-size: 15px; /* Tamaño de fuente del párrafo */
 }
 
 .descriptionContainerImg h3 {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 20px; /* Tamaño de fuente del encabezado */
+  font-weight: bold; /* Grosor de la fuente del encabezado */
 }
 
 @media screen and (max-width: 1030px) {
@@ -207,10 +206,9 @@ span {
     justify-content: space-between;
     gap: 20px;
   }
-  
 }
 
-/* Responsive CSS */
+/* CSS Responsivo */
 @media screen and (max-width: 768px) {
   .productInfoContainer {
     flex-direction: column;
@@ -219,14 +217,13 @@ span {
   }
 
   .ContainerProductImage {
-  
-    width: 80%;
-    height: auto;
+    width: 80%; /* Ancho del contenedor de la imagen del producto en dispositivos móviles */
+    height: auto; /* Altura automática para mantener la proporción */
   }
 
-  .ImageContainer{
+  .ImageContainer {
     margin: 2px;
-    max-width: 60%;
+    max-width: 60%; /* Ancho máximo del contenedor de la imagen en dispositivos móviles */
     padding: 0;
   }
 
@@ -239,57 +236,56 @@ span {
   }
 
   .latestAddedTitle h2 {
-    font-size: 32px;
-    margin: 30px;
+    font-size: 32px; /* Tamaño de fuente del título en dispositivos móviles */
+    margin: 30px; /* Márgenes superior e inferior */
   }
 
   .latestAdded {
-    margin: 20px;
+    margin: 20px; /* Márgenes superior e inferior */
   }
 }
 
 @media screen and (max-width: 600px) {
   .title {
-    padding: 30px;
-    font-size: 20px;
+    padding: 30px; /* Espaciado interno del título en dispositivos móviles */
+    font-size: 20px; /* Tamaño de fuente del título en dispositivos móviles */
   }
 
-  .productImage{
-    width: 80%;
-    height: auto;
+  .productImage {
+    width: 80%; /* Ancho de la imagen del producto en dispositivos móviles */
+    height: auto; /* Altura automática para mantener la proporción */
     margin-left: 2px;
   }
-  
+
   .ContainerProductImage {
-    width: 80%;
-    height: auto;
+    width: 80%; /* Ancho del contenedor de la imagen del producto en dispositivos móviles */
+    height: auto; /* Altura automática para mantener la proporción */
   }
 
   .productName {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 24px; /* Tamaño de fuente del nombre del producto en dispositivos móviles */
+    line-height: 30px; /* Altura de línea del nombre del producto en dispositivos móviles */
   }
 
   .productDescription {
-    font-size: 16px;
-    max-width: 260px;
+    font-size: 16px; /* Tamaño de fuente de la descripción del producto en dispositivos móviles */
+    max-width: 260px; /* Ancho máximo de la descripción del producto en dispositivos móviles */
   }
 
   .productPrice {
-    font-size: 24px;
+    font-size: 24px; /* Tamaño de fuente del precio del producto en dispositivos móviles */
   }
 
   .latestAddedTitle h2 {
-    font-size: 28px;
-    margin: 40px;
+    font-size: 28px; /* Tamaño de fuente del título en dispositivos móviles */
+    margin: 40px; /* Márgenes superior e inferior */
   }
 
   .descriptionContainerImg p {
-    font-size: 14px;
+    font-size: 14px; /* Tamaño de fuente del párrafo en dispositivos móviles */
   }
 
   .descriptionContainerImg h3 {
-    font-size: 18px;
+    font-size: 18px; /* Tamaño de fuente del encabezado en dispositivos móviles */
   }
 }
-
