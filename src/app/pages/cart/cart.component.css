@@ -115,6 +115,15 @@
   margin: 0px;
 }
 
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
 
 
   /* Estilos para el botón Borrar */

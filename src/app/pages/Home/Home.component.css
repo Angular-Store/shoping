@@ -95,3 +95,12 @@ button:hover {
 .tittleSecond{
   font-size: 1.8rem;
 }
+
+.loading {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
