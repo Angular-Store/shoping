@@ -247,7 +247,7 @@ cartRouter.post('/', async (req, res) => {
 			});
 		}
 
-		if (inventory.quantity === 0 || inventory.quantity < quantity) {
+		if (inventory.quantity === 0 || inventory.quantity <= quantity) {
 			return res
 				.status(404)
 				.json({ message: 'Not enough inventory for the product' });
@@ -260,7 +260,7 @@ cartRouter.post('/', async (req, res) => {
 
 		if (cartItem) {
 			// Update the quantity of the product in the cart if the sum of the quantity is less than the inventory
-			if (quantity + cartItem.quantity <= 1) {
+			if (quantity + cartItem.quantity <= 0) {
 				return res.status(404).json({
 					message: 'You must add at least one product to the cart',
 				});
