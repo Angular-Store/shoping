@@ -5,31 +5,31 @@
         <p>Sign Up</p>
       </div>
       <div class="formContainer">
-        <form [formGroup]="register" (ngSubmit)="Registrar()" >
+        <form [formGroup]="register" (ngSubmit)="Registrar()" >  <!--register corresponde al formulario a rellenar y Registrar() es la funcion que se ejecuta al dar click en el boton-->
           <div class="inputContainer">
 
-            <p class="titleFullName">Name</p>
-            <input class="inputFullName" type="text" name="fullName" id="fullName" placeholder="Name" formControlName="fullName" />
+            <p class="titleFullName">Name</p>     <!--campo de nombre-->
+            <input class="inputFullName" type="text" name="fullName" id="fullName" placeholder="Name" formControlName="fullName" />  
 
-            <p class="titleEmail">Email</p>
+            <p class="titleEmail">Email</p>       <!--campo de email-->
             <input class="inputEmail" type="email" name="email" id="email" placeholder="Email" formControlName="email"/>
 
-            <p class="titleUserName">Username</p>
+            <p class="titleUserName">Username</p> <!--campo de nombre de usuario-->
             <input class="inputUserName" type="text" name="username" id="Username" placeholder="Username" formControlName="username" />
 
-            <p class="titleCellphone">Cellphone</p>
+            <p class="titleCellphone">Cellphone</p>  <!--campo de telefono-->
             <input class="inputPhone" type="tel" name="phone" id="phone" placeholder="Cellphone"  formControlName="phone"/>
 
-            <p class="titleAddress">Address</p>
+            <p class="titleAddress">Address</p>  <!--campo de dirección-->
             <input class="inputAddress" type="text" name="address" id="address" placeholder="Address" formControlName="address" />
 
-            <p class="titlePassword">Password</p>
+            <p class="titlePassword">Password</p>  <!--campo de contraseña-->
             <input class="inputPassword" type="password" name="password" id="password" placeholder="Password" formControlName="password" />
 
           </div>
 
-          <div class="BtnContainer">
-            <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="register.invalid" >Sign up</button>
+          <div class="BtnContainer">  <!--campo de botón para enviar el registro-->
+            <button type="submit" mat-raised-button color="primary" class="btn-login" [disabled]="register.invalid" >Sign up</button>  <!--el boton se deshabilita si el formulario no es valido-->
           </div>
         </form>
       </div>

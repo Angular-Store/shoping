@@ -2,7 +2,7 @@ import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +20,8 @@ export class CartComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private router: Router,
-     private cdr: ChangeDetectorRef ) {}
+     private cdr: ChangeDetectorRef,
+     private _snackBar: MatSnackBar ) {}
 
   ngOnInit() {
     const userJson: string = localStorage.getItem('user')!;
@@ -76,11 +77,23 @@ export class CartComponent implements OnInit {
       },
       (error: any) => {
         console.error(error);
-        this.message = error.error.message;
+        this.error();
+        // this.message = error.error.message;
         this.loading = false;
       }
     );
   }
+
+
+
+  error() {
+    this._snackBar.open('Debes almacenar al menos un item', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    })
+  }
+
 
   removeProduct(cartID: any) {
     const url: string = environment.api;
