@@ -1,14 +1,22 @@
+//Importar librerias necesarias para el funcionamiento del componente y del formulario.
 import { Component, OnInit , ChangeDetectorRef } from '@angular/core';
+
+//Se importan las rutas necesarias para el enrutamiento.
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
 import { Router } from '@angular/router';
+
+//Se importan los modulos de angular material.
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+//Creación automática del componente
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
+//Componente a exportar: LoginComponent
 export class CartComponent implements OnInit {
   loading: boolean = true;
   disabled: boolean = true;
