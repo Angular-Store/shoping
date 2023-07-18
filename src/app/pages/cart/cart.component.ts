@@ -147,7 +147,7 @@ export class CartComponent implements OnInit {
   }
 
   errorAdding() {
-    this._snackBar.open('Debes almacenar al menos un item', '', {
+    this._snackBar.open('Limite de stock alcanzado', '', {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
