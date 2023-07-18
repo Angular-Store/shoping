@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroment/enviroment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +23,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.idProduct = this.extractLastParamFromUrl();
     this.consumeAPI();
@@ -73,9 +75,33 @@ export class DetailsComponent implements OnInit {
   }
 
   addAmountProducts() {
-    this.amountProducts++;
-    this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
+    const URL = `https://angular-store.onrender.com/api/inventory/product/${this.idProduct}`;
+    
+    this.http.get(URL).subscribe(
+      (response: any) => {
+        const quantity = response.quantity;
+        if (quantity > this.amountProducts) {
+          this.amountProducts++;
+          this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
+        } else {
+          this.error();
+        }
+      },
+      (error) => {
+        console.error('Error al obtener el stock del producto', error);
+      }
+    );
   }
+
+  
+  error() {
+    this.snackBar.open("There's not enough stock", '', {  //Se muestra un mensaje de error.
+      duration: 3000,                                       //Se establece la duración del mensaje. 
+      horizontalPosition: 'center',                         //Se establece la posición horizontal del mensaje.
+      verticalPosition: 'top'                               //Se establece la posición vertical del mensaje.
+    })
+  }
+  
 
   restAmountProducts() {
     if (this.amountProducts === 1) {
