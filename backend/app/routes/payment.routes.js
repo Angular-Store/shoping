@@ -65,7 +65,7 @@ paymentRouter.get("/success", async (req, res) => {
           where: { productID: activeCarts[i].productID },
         }
       );
-    }    
+    }
 
     // Updating the cart status
     await ShoppingCart.update(
@@ -83,8 +83,8 @@ paymentRouter.get("/success", async (req, res) => {
 });
 
 // Obtaining the payment cancel page (base path /api/payment/cancel)
-paymentRouter.get("/", (req, res) => {
-  res.redirect(`${url}/cart`);
+paymentRouter.get("/cancel", (req, res) => {
+  res.status(200).json({ message: "Payment cancelled" });
 });
 
 export default paymentRouter;
