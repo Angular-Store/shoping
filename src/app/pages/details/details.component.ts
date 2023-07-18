@@ -101,7 +101,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  
+  /**
+   * Agrega el producto al carrito.
+   */
   addToCart(): void {
     const userJson: string | null = localStorage.getItem('user');
     if (userJson) {
@@ -124,7 +126,7 @@ export class DetailsComponent implements OnInit {
         }
       );
     } else {
-      
+      // Maneja el caso cuando el usuario no ha iniciado sesión
       alert('You must be logged in to add products to the cart');
       this.router.navigate(['/login']);
     }
