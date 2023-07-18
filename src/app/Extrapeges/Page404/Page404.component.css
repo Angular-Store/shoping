@@ -1,19 +1,22 @@
-
-* {
+/* Establece el modelo de caja para todos los elementos */
+*{
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+/* Configuración básica del body */
 body {
   padding: 0;
   margin: 0;
 }
 
+/* Estilos para el contenedor principal de la página de error */
 #notfound {
   position: relative;
   height: 100vh;
 }
 
+/* Estilos para el contenedor de la página de error */
 #notfound .notfound {
   position: absolute;
   left: 50%;
@@ -23,6 +26,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* Estilos generales para la página de error */
 .notfound {
   max-width: 520px;
   width: 100%;
@@ -30,11 +34,13 @@ body {
   text-align: center;
 }
 
+/* Estilos para el elemento que muestra el código de error 404 */
 .notfound .notfound-404 {
   position: relative;
   height: 240px;
 }
 
+/* Estilos para el título dentro del elemento de error 404 */
 .notfound .notfound-404 h1 {
   font-family: 'Montserrat', sans-serif;
   position: absolute;
@@ -52,10 +58,12 @@ body {
   margin-left: -20px;
 }
 
+/* Estilos para el texto sombreado dentro del título de error 404 */
 .notfound .notfound-404 h1>span {
   text-shadow: -8px 0px 0px #fff;
 }
 
+/* Estilos para el subtítulo dentro del elemento de error 404 */
 .notfound .notfound-404 h3 {
   font-family: 'Cabin', sans-serif;
   position: relative;
@@ -68,6 +76,7 @@ body {
   padding-left: 6px;
 }
 
+/* Estilos para un segundo título en la página de error */
 .notfound h2 {
   font-family: 'Cabin', sans-serif;
   font-size: 20px;
@@ -78,6 +87,13 @@ body {
   margin-bottom: 25px;
 }
 
+/* Estilos personalizados para un botón */
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #0654ae;
+  --mdc-protected-button-label-text-color: #fff;
+}
+
+/* Estilos para pantallas pequeñas */
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 {
     height: 200px;
@@ -87,6 +103,7 @@ body {
   }
 }
 
+/* Estilos para pantallas aún más pequeñas */
 @media only screen and (max-width: 480px) {
   .notfound .notfound-404 {
     height: 162px;
@@ -100,4 +117,3 @@ body {
     font-size: 16px;
   }
 }
-
