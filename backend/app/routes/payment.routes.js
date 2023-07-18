@@ -84,6 +84,10 @@ paymentRouter.get("/success", async (req, res) => {
 
 // Obtaining the payment cancel page (base path /api/payment/cancel)
 paymentRouter.get("/cancel", (req, res) => {
+  const url =
+      process.env.NODE_ENV === "production"
+        ? process.env.PROD_FRONTEND_URL
+        : process.env.DEV_FRONTEND_URL;
   return res.redirect(`${url}/cart`);
 });
 
