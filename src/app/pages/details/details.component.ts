@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetailsComponent implements OnInit {
   message: string = ''; // Variable para almacenar un mensaje
   products: any[] = []; // Arreglo para almacenar los productos
-  amountProducts: number = 1; // Cantidad de productos
+  amountProducts: number = 1; // Cantidad de productos inical que le aparece al usuario
   imgP: string = ''; // URL de la imagen principal del producto
   img1: string = ''; // URL de la primera imagen del producto
   img2: string = ''; // URL de la segunda imagen del producto
@@ -30,7 +30,10 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Extrae el último parámetro de la URL
+  /**
+   * Extrae el último parámetro de la URL.
+   * @returns El último parámetro de la URL como una cadena de texto.
+   */
   extractLastParamFromUrl(): string {
     const urlSegments = this.route.snapshot.url;
     const lastSegment = urlSegments[urlSegments.length - 1];
@@ -48,7 +51,7 @@ export class DetailsComponent implements OnInit {
           (p) => p.productID == this.idProduct
         ); // Busca el producto con el ID correspondiente
         if (product) {
-          this.imgP = product.productImages[0].imageURL; // Asigna la URL de la imagen que sera la principal
+          this.imgP = product.productImages[0].imageURL; // Asigna la URL de la imagen que será la principal
           this.img1 = product.productImages[0].imageURL; // Asigna la URL de la primera imagen
           this.img2 = product.productImages[1].imageURL; // Asigna la URL de la segunda imagen
           this.img3 = product.productImages[2].imageURL; // Asigna la URL de la tercera imagen
@@ -64,8 +67,11 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  // Cambia la imagen principal del producto según el índice recibido
-  changeImage(index: number) {
+  /**
+   * Cambia la imagen principal del producto según el índice recibido.
+   * @param index El índice de la imagen a mostrar.
+   */
+  changeImage(index: number): void {
     if (index === 1) {
       this.imgP = this.img1;
     } else if (index === 2) {
@@ -75,14 +81,14 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  // Aumenta la cantidad de productos y actualiza el precio total
-  addAmountProducts() {
+  
+  addAmountProducts(): void {
     this.amountProducts++;
     this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
   }
 
-  // Reduce la cantidad de productos y actualiza el precio total
-  restAmountProducts() {
+  
+  restAmountProducts(): void {
     if (this.amountProducts === 1) {
       console.log('quantity in 1');
     } else {
@@ -91,8 +97,8 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  // Agrega el producto al carrito
-  addToCart() {
+  
+  addToCart(): void {
     const userJson: string | null = localStorage.getItem('user');
     if (userJson) {
       const user = JSON.parse(userJson);
@@ -114,7 +120,7 @@ export class DetailsComponent implements OnInit {
         }
       );
     } else {
-      // Maneja el caso cuando el usuario no ha iniciado sesión
+      
       alert('You must be logged in to add products to the cart');
       this.router.navigate(['/login']);
     }
