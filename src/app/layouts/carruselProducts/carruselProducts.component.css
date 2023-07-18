@@ -3,9 +3,11 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   height: 300px; /* Ajusta la altura según tus necesidades */
+  padding-bottom: 10px;
+  padding-top: 20px;
 }
 
 .carousel {
