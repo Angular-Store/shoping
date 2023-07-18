@@ -126,7 +126,7 @@ export class DetailsComponent implements OnInit {
         }
       );
     } else {
-      // Maneja el caso cuando el usuario no ha iniciado sesión
+      // Maneja el caso cuando el usuario no ha iniciado sesión y lo envia a el login
       alert('You must be logged in to add products to the cart');
       this.router.navigate(['/login']);
     }
