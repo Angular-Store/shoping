@@ -81,7 +81,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  
+  /**
+   * Aumenta la cantidad de productos y actualiza el precio total.
+   */
   addAmountProducts(): void {
     this.amountProducts++;
     this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
