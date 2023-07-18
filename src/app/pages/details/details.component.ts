@@ -89,7 +89,9 @@ export class DetailsComponent implements OnInit {
     this.inputPrice = this.products[this.idProduct - 1]?.price * this.amountProducts;
   }
 
-  
+  /**
+   * Reduce la cantidad de productos y actualiza el precio total.
+   */
   restAmountProducts(): void {
     if (this.amountProducts === 1) {
       console.log('quantity in 1');
